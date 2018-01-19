@@ -22,6 +22,7 @@
 
 <script>
 import footernav from '../footernav/footernav';
+import http from '../../http/baseUrl'
 export default{
     components:{
         footernav
@@ -34,7 +35,7 @@ export default{
     methods:{
       submit:function(){
         console.log(33)
-        this.axios.get('http://10.3.136.34:88/login').then((response) => {
+        this.axios.get(http.url+'/login').then((response) => {
             console.log(response.data)
         })
       }
