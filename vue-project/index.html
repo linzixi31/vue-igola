@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>vue-project</title>
-  </head>
-  <body>
-    <div id="app"></div>
+<head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" id="vp">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>vue-project</title>
+</head>
+<body>
+      <div id="app"></div>
+      <script type="text/javascript">
+            var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+            document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+            var scale = 1/window.devicePixelRatio;
+            var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+            document.getElementById("vp").content = mstr;
+    </script>
     <script src="/dist/build.js"></script>
   </body>
 </html>

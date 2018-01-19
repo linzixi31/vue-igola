@@ -1,13 +1,13 @@
 var mysql = require('mysql');
 
-var db = mysql.createPool({
+var  db = mysql.createPool({
     connectionLimit: 10,
     host: "10.3.136.15",
     user: 'root',
     password: '',
     database: 'db_hotel',
     multipleStatements: true
-})
+});
 
 module.exports = {
     select: function(_sql, _callback){
