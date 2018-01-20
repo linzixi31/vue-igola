@@ -20,7 +20,6 @@ module.exports = {
             
         })
     },
-    insert: function(){},
     delete: function(){},
     update: function(){}
 }
