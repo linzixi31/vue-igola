@@ -1,5 +1,5 @@
 <template>
-        <mt-tabbar>
+        <mt-tabbar id='footer'>
               <mt-tab-item id="tab1">
                 <img slot="icon" src="../../assets/img/icon1.png">
                 首页
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-
+import './footernav.scss'
 
 export default {
 
