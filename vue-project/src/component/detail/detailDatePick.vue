@@ -17,15 +17,15 @@
 			return {
 				dateIn:'',
 				dateLeave:'',
-				days:1,
-				dayIn:1,
-				dayOut:1,
+				days:1,//住店日期
+				dayIn:1,//入店日期
+				dayOut:1,//离店日期
 				dateSwitch:3
 			}
 		},
 		methods:{
 			dateFormat:function(date){
-				// console.log(this.dateSwitch);
+				// 格式化日期。格式（-月-日）
 				var m = date.getMonth() + 1;
 				var d = date.getDate();
 				if(this.dateSwitch == 3){
@@ -51,6 +51,7 @@
 			},
 			 openPicker(type) {
 			        this.$refs.picker.open();
+			        //切换日期开关
 			        if(type == 'in'){
 			        		this.dateSwitch = 1;
 			        }else if(type === 'leave'){

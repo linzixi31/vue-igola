@@ -23,9 +23,9 @@
 	export default {
 		data(){
 			return {
-
+				
 			}
 		},
-		props:['hotelName','addr','stars'],
+		props:['hotelName','addr','stars']
 	}
 </script>

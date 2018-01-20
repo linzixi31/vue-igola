@@ -26,13 +26,23 @@ module.exports = {
     getHotelRoom:function(_data,_cb){
             //获取当前id的酒店信息
             var id = _data.hotelId;
-            var sql = 'SELECT a.hotelName,a.stars,a.address,b.type,b.znePrice FROM hotel AS a,room AS b where a.id=b.hotelId and a.id=' + id;
+            var sql = `SELECT a.hotelName,
+                                a.stars,
+                                a.address,
+                                b.id,
+                                b.type,
+                                b.znePrice,
+                                b.availablePerson,
+                                b.bedScale
+                                FROM hotel AS a,room AS b 
+                                where a.id=b.hotelId and a.id=${id}` ;
             
             db.query(sql,function(err,results,fields){
                 if(err){
                         _cb({status:false,error:err});
                 }else{
-                         _cb({status:true,data:{results,fields}});
+                    
+                         _cb({status:true,data:{results}});
                 }
             })
     }

@@ -1,6 +1,6 @@
-<template>
+<template >
 	<div id="hotelBooking">
-		<detailHead :hotelName="dataset[0].hotelName" :addr="dataset[0].address" :stars="dataset[0].stars"></detailHead>
+		<detailHead :hotelName="hotelName" :addr="address" :stars="stars"></detailHead>
 		<detailDatePick></detailDatePick>
 		<section class="userChoose">
 			<span>含早</span><span>可取消</span>
@@ -12,26 +12,33 @@
 
 
 <script type="text/javascript">
+
 	var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
             document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
             var scale = 1/window.devicePixelRatio;
             var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
             document.getElementById("vp").content = mstr;
-            
+
+
+            //引入sass
+	require('./detail.scss');
+
 	//引入各组件
 	import  http from '../../http/baseUrl.js';
 	import detailHead from './detailHead.vue';
 	import detailDatePick from './detailDatePick.vue';
 	import detailRoomList from './detailRoomList.vue';
 	import aboutIgola from './aboutIgola.vue';
-	//引入sass
-	require('./detail.scss');
+	
 
 	export default {
 		data(){
 			return {
 				dataset:[],
-				id:3
+				address:'',
+				hotelName:'',
+				stars:0,
+				id:7
 			}
 		},
 		components:{
@@ -45,14 +52,18 @@
 				//请求当前酒店信息
 				this.axios.get( http.url + '/getHotelRoom',{params:{hotelId:this.id}}).then(function(res){
 					this.dataset = res.data.data.results;
-					console.log(this.dataset[0]);
+					this.hotelInfor(this.dataset);
 				}.bind(this));
-
+			},
+			hotelInfor:function(res){
+				//提取酒店名，地址，星级
+				this.address = res[0].address;
+				this.hotelName = res[0].hotelName;
+				this.stars = res[0].stars;
 			}
 		},
 		mounted:function(){
 			this.detailAjax();
-			
 		}
 		
 	}
