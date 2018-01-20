@@ -1,4 +1,4 @@
 export default {
-    url:'http://10.3.136.34:88',
+    url:'http://10.3.136.4:88',
 }
 

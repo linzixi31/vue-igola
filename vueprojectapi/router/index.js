@@ -6,6 +6,8 @@ app.use(bp.urlencoded({extended: false}));
 
 var rooms = require('./rooms')
 var login = require('./login')
+var homepage = require("./homepage")
+
 module.exports = {
     start: function(_port){
 
@@ -23,6 +25,7 @@ module.exports = {
 
         rooms.register(app);
         login.register(app);
+        homepage.register(app);
         app.listen(_port);
     }
 }
