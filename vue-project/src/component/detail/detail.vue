@@ -1,139 +1,66 @@
 <template>
 	<div id="hotelBooking">
-		<section class="hotelImg">
-			<img src="../../assets/img/hotel.jpg">
-			<a class="backToList" href="#/list"><i class="glyphicon glyphicon-menu-left"></i></a>
-			<div class="hotelImgNum"><span>{{picNum}}</span>张</div>
-		</section>
-		<section class="hotelInfor">
-			<p class="hotelTitle">
-				<span>{{title}}</span>
-				<span class="hotelStar">
-					<i class="glyphicon glyphicon-star"></i>
-					<i class="glyphicon glyphicon-star"></i>
-					<i class="glyphicon glyphicon-star"></i>
-				</span>
-			</p>
-			<p class="hotelEngName">Guang Zhou Masia Hotel</p>
-			<p class="hotelAdr">Buiding E,NO.10 Xintai Commertial St. Daguang ZhongGuo</p>
-		</section>
-		<section class="checkInTime">
-			<div><span>1月20日</span><span>入住</span></div>
-			<div><span>1月20日</span><span>退房</span></div>
-			<div><span>1晚</span></div>
-		</section>
+		<detailHead :hotelName="dataset[0].hotelName" :addr="dataset[0].address" :stars="dataset[0].stars"></detailHead>
+		<detailDatePick></detailDatePick>
 		<section class="userChoose">
 			<span>含早</span><span>可取消</span>
 		</section>
-		<section class="hotelRoomList">
-			<ul>
-				<li>
-					<div>
-						<p class="roomTitle">apartment suite</p>
-						<p class="roomDescribe"><span>1大床或2单床</span>|<span>可住2人</span>|<span>无早餐</span></p>
-						<p class="roomDescribe">不可取消</p>
-					</div>
-					<div>
-						<span class="hotelPrice">￥628</span>
-						<div class="hotelBookBtn">预订</div>
-					</div>
-				</li>
-				<li>
-					<div>
-						<p class="roomTitle">apartment suite</p>
-						<p class="roomDescribe"><span>1大床或2单床</span>|<span>可住2人</span>|<span>无早餐</span></p>
-						<p class="roomDescribe">不可取消</p>
-					</div>
-					<div>
-						<span class="hotelPrice">￥628</span>
-						<div class="hotelBookBtn">预订</div>
-					</div>
-				</li>
-				<li>
-					<div>
-						<p class="roomTitle">apartment suite</p>
-						<p class="roomDescribe"><span>1大床或2单床</span>|<span>可住2人</span>|<span>无早餐</span></p>
-						<p class="roomDescribe">不可取消</p>
-					</div>
-					<div>
-						<span class="hotelPrice">￥628</span>
-						<div class="hotelBookBtn">预订</div>
-					</div>
-				</li>
-				<li>
-					<div>
-						<p class="roomTitle">apartment suite</p>
-						<p class="roomDescribe"><span>1大床或2单床</span>|<span>可住2人</span>|<span>无早餐</span></p>
-						<p class="roomDescribe">不可取消</p>
-					</div>
-					<div>
-						<span class="hotelPrice">￥628</span>
-						<div class="hotelBookBtn">预订</div>
-					</div>
-				</li>
-				<li>
-					<div>
-						<p class="roomTitle">apartment suite</p>
-						<p class="roomDescribe"><span>1大床或2单床</span>|<span>可住2人</span>|<span>无早餐</span></p>
-						<p class="roomDescribe">不可取消</p>
-					</div>
-					<div>
-						<span class="hotelPrice">￥628</span>
-						<div class="hotelBookBtn">预订</div>
-					</div>
-				</li>
-				<li>
-					<div>
-						<p class="roomTitle">apartment sapartment suite</p>
-						<p class="roomDescribe"><span>1大床或2单床</span>|<span>可住2人</span>|<span>无早餐</span></p>
-						<p class="roomDescribe">不可取消</p>
-					</div>
-					<div>
-						<span class="hotelPrice">￥12628</span>
-						<div class="hotelBookBtn">预订</div>
-					</div>
-				</li>
-			</ul>
-		</section>
-		<section class="aboutHotel">
-			<ul>
-				<li class="aboutHotelLink"><span>酒店简介</span><span><i class="glyphicon glyphicon-menu-right"></i></span></li>
-				<li class="aboutHotelLink"><span>酒店政策</span><span><i class="glyphicon glyphicon-menu-right"></i></span></li>
-				<li class="aboutHotelLink"><span>酒店设施</span><span><i class="glyphicon glyphicon-menu-right"></i></span></li>
-				<li><span>iGola服务热线：</span><span class="igolaTel"><i class="glyphicon glyphicon-phone-alt" aria-hidden="true"></i>400-900-7280</span></li>
-				<li>iGola服务时间：7 &times; 24h</li>
-				<li class="aboutHotelLink"><span>iGola酒店问答</span><span><i class="glyphicon glyphicon-menu-right"></i></span></li>
-			</ul>
-		</section>
+		<detailRoomList :roomList="dataset"></detailRoomList>
+		<aboutIgola></aboutIgola>
 	</div>
 </template>
 
 
 <script type="text/javascript">
+	var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+            document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+            var scale = 1/window.devicePixelRatio;
+            var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+            document.getElementById("vp").content = mstr;
+            
+	//引入各组件
+	import  http from '../../http/baseUrl.js';
+	import detailHead from './detailHead.vue';
+	import detailDatePick from './detailDatePick.vue';
+	import detailRoomList from './detailRoomList.vue';
+	import aboutIgola from './aboutIgola.vue';
+	//引入sass
+	require('./detail.scss');
+
 	export default {
 		data(){
 			return {
-				picNum:18,
-				title:'广州大酒店',
-				id:12
+				dataset:[],
+				id:3
 			}
 		},
+		components:{
+			detailHead,
+			detailDatePick,
+			detailRoomList,
+			aboutIgola
+		},
 		methods:{
+			detailAjax:function(){
+				//请求当前酒店信息
+				this.axios.get( http.url + '/getHotelRoom',{params:{hotelId:this.id}}).then(function(res){
+					this.dataset = res.data.data.results;
+					console.log(this.dataset[0]);
+				}.bind(this));
 
+			}
 		},
 		mounted:function(){
-
-			//请求当前酒店房间数据
-			this.axios.get('/getHotelRoom',{hotelId:this.id}).then(function(res){
-				console.log(res);
-			})
+			this.detailAjax();
+			
 		}
+		
 	}
 </script>
 
 
 
-<style type="text/css">
+<!-- /*<style type="text/css">
 	a{text-decoration: none;color:#000;}
 	p,ul{margin:0;padding:0;}
 
@@ -183,5 +110,4 @@
 	.aboutHotel .aboutHotelLink span:last-child{flex:2;text-align: center;}
 	.aboutHotel .igolaTel{color:#159696;font-size:0.426667rem;}
 	.aboutHotel .igolaTel i{padding:0 0.066667rem;}
-
-</style>
+</style>*/ -->
