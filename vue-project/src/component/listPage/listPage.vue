@@ -12,6 +12,7 @@
 	import tabber from './tabber.vue';
 	import baseCss from './base.css';
 	import listPage from './listPage.scss';
+//	import returnTop from '../listPage.returnTop;'
 	export default{
 		name:'app',
 		components:{datagrid,search,tabber},
@@ -35,11 +36,9 @@
             document.getElementById("vp").content = mstr;	
 		},
 		beforeRouteLeave(to,from,next){
-			//console.log(333)
 			document.getElementById("vp").content = ''
 			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
 			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
-			console.log(333)
 			next()
 		}
 	}

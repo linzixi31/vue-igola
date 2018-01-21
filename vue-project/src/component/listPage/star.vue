@@ -1,10 +1,10 @@
 <template>
 	<div id="star">
-		<mt-cell title="星级" style="text-align:center"></mt-cell>
+		<p>星级</p>
 		<div class="startList">
 			<mt-button size="small" v-for="item in starset" @click="selected(item.value)" :class="{active:activeName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
 		</div>
-		<mt-cell title="价格" style="text-align:center"></mt-cell>
+		<p>价格</p>
 		<div class="price">
 			<mt-range
 			  v-model="rangeValue"
@@ -73,10 +73,11 @@
 <style>
 	.clear{background:#FFFFFF;box-shadow:0px;}
 	.startList{display:flex;justify-content:space-around;flex-wrap:wrap;padding:10px}
-	.startList button{width:28%;border-radius:24%;margin-bottom:5%;}
-	.rangeList{display:flex;justify-content:space-between;flex-wrap:wrap;}
+	.startList button{width:28%;border-radius:45px;margin-bottom:5%;}
+	.rangeList{display:flex;justify-content:space-between;flex-wrap:wrap;font-size:24px;}
 	.price{padding:20px;}
 	.active{background:#ccc;}
 	.mint-cell-wrapper{height:60px;}
 	#star button{display:inline-block;height:80px;font-size:26px;}
+	#star p{height:80px;font-size:28px;text-align: center;line-height:80px;font-weight:normal}
 </style>

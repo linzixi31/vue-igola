@@ -39,7 +39,7 @@
 		methods:{
 			detailAjax:function(){
 				//请求当前酒店信息
-				this.axios.get( http.url + '/getHotelRoom',{params:{hotelId:this.id}}).then(function(res){
+				this.axios.get( 'http://127.0.0.1:88/getHotelRoom',{params:{hotelId:this.id}}).then(function(res){
 					this.dataset = res.data.data.results;
 					console.log(this.dataset[0]);
 				}.bind(this));

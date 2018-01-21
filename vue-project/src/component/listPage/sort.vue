@@ -1,6 +1,6 @@
 <template>
 	<div id="sort">
-		<mt-cell title="排序方式" style="text-align:center"></mt-cell>
+		<p>排序方式</p>
 		<div class="sortMiddle">
 			<mt-radio
 			  	align="right"
