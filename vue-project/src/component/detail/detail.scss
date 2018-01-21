@@ -1,0 +1,186 @@
+a {
+  text-decoration: none;
+  color: #000;
+}
+p,ul {
+  margin: 0;
+  padding: 0;
+}
+#hotelBooking {
+  background: #eee;
+}
+.hotelImg {
+  position: relative;
+  font-size: 0;
+  height: 6.6rem;
+  img {
+    width: 100%;
+  }
+  .backToList {
+    display: block;
+    width: 1.066667rem;
+    line-height: 1.066667rem;
+    text-align: center;
+    position: absolute;
+    color: #fff;
+    font-size: 0.48rem;
+    top: 0.133333rem;
+    left: 0;
+  }
+  .hotelImgNum {
+    position: absolute;
+    right: 0.44rem;
+    bottom: 0.333333rem;
+    font-size: 0.373333rem;
+    color: #fff;
+  }
+}
+.hotelInfor {
+  padding: 0.16rem 0.333333rem;
+  background: #fff;
+  .hotelTitle {
+    font-size: 0.426667rem;
+    color: #000;
+    line-height: 0.666667rem;
+  }
+  .hotelStar {
+    color: #ffa100;
+  }
+  .hotelAdr {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #a1a1a1;
+  }
+}
+.hotelInfor .hotelEngName,.hotelInfor .hotelAdr {
+  font-size: 0.346667rem;
+  line-height: 0.506667rem;
+}
+.checkInTime {
+  margin-top: 0.133333rem;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0.506667rem 0.426667rem;
+  div {
+    flex: 1;
+    text-align: center;
+    span {
+      &:nth-child(1) {
+        font-size: 0.426667rem;
+      }
+      &:nth-child(2) {
+        font-size: 0.32rem;
+        color: #a1a1a1;
+        padding-left: 0.24rem;
+      }
+    }
+    &:nth-child(3) {
+      text-align: left;
+      span {
+        background: #f1f1f1;
+        padding: 0 0.4rem;
+        border-radius: 0.226667rem;
+        font-size: 0.32rem;
+      }
+    }
+  }
+}
+.userChoose {
+  background: #fafafa;
+  border-top: 0.013333rem solid #f1f1f1;
+  border-bottom: 0.013333rem solid #f1f1f1;
+  padding: 0.24rem 0.133333rem;
+  font-size: 0.346667rem;
+  span {
+    display: inline-block;
+    padding: 0.266667rem;
+    background: #fff;
+    margin-left: 0.266667rem;
+    border-radius: 0.133333rem;
+    border: 0.013333rem solid #f1f1f1;
+  }
+}
+.hotelRoomList {
+  ul {
+    li {
+      display: flex;
+      padding: 0.333333rem 0.266667rem;
+      border-bottom: 0.066667rem solid #fafafa;
+      background: #fff;
+      .roomTitle {
+        font-size: 0.44rem;
+        line-height: 0.506667rem;
+        padding-bottom: 0.2rem;
+        width: 5.6rem;
+        word-break: break-all;
+        word-wrap: break-word;
+      }
+      .roomDescribe {
+        color: #a5a5a5;
+        font-size: 0.333333rem;
+        line-height: 0.613333rem;
+        span {
+          padding: 0 0.066667rem;
+        }
+      }
+      & > div {
+        &:first-child {
+          flex: 6;
+          padding-right: 0.666667rem;
+        }
+        &:last-child {
+          flex: 2;
+          padding-right: 0.133333rem;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          span {
+            color: #ffa100;
+            font-size: 0.4rem;
+          }
+          .hotelBookBtn {
+            background: #ffa100;
+            font-size: 0.4rem;
+            width: 1.2rem;
+            line-height: 1.2rem;
+            margin-top: 0.266667rem;
+            border-radius: 0.133333rem;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+.aboutHotel {
+  background: #fff;
+  margin-top: 0.133333rem;
+  li {
+    font-size: 0.4rem;
+    border-bottom: 0.013333rem solid #f1f1f1;
+    line-height: 1.186667rem;
+    padding-left: 0.133333rem;
+  }
+  .aboutHotelLink {
+    display: flex;
+    span {
+      &:first-child {
+        flex: 12;
+      }
+      &:last-child {
+        flex: 2;
+        text-align: center;
+      }
+    }
+  }
+  .igolaTel {
+    color: #159696;
+    font-size: 0.426667rem;
+    i {
+      padding: 0 0.066667rem;
+    }
+  }
+}

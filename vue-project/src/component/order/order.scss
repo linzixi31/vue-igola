@@ -1,0 +1,28 @@
+.mint-tab-item-label{
+    font-size: 1.5rem;
+}
+
+.mint-tabbar {
+    background: #fff;
+
+    .mint-tab-item-label{
+        color:#000;
+    }
+}
+.mint-tab-container{
+    margin-top: 90px;
+    .order_list{
+        li{
+          display:flex;
+          padding: 10px;
+
+            .black{
+                color: #000;
+                font-size: 1.7rem;
+            }
+            span{
+                color: #A3A3A3;
+            }
+        }
+    }
+}

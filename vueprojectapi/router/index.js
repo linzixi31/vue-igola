@@ -4,9 +4,17 @@ var app = express();
 
 app.use(bp.urlencoded({extended: false}));
 
+
 var rooms = require('./rooms')
 var login = require('./login')
+
 var listPage = require('./listPage')
+
+var homepage = require("./homepage")
+var order = require('./order')
+var detail = require('./detail');
+
+
 module.exports = {
     start: function(_port){
 
@@ -24,8 +32,13 @@ module.exports = {
 
         rooms.register(app);
         login.register(app);
-        console.log(listPage);
+
         listPage.select(app);
+
+        homepage.register(app);
+        order.register(app);
+        detail.register(app);
+
         app.listen(_port);
     }
 }
