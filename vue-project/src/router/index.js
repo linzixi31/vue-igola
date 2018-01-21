@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Logincomponent from '../component/login/login.vue';
 import IndexComponent from "../component/index/index.vue";
-
+import ChoiceComponent from "../component/choice/choice.vue";
 import ordercomponent from '../component/order/order.vue';
 
 import detail from '../component/detail/detail.vue';
@@ -27,6 +27,10 @@ var router  = new VueRouter({
         {
         	path:'/detail',
         	component:detail
+        },
+        {
+        	path:"/choice",
+        	component:ChoiceComponent
         }
 
     ]

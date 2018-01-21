@@ -10,6 +10,7 @@ var login = require('./login')
 var homepage = require("./homepage")
 var order = require('./order')
 var detail = require('./detail');
+var hotHotel = require("./hotHotel");
 
 module.exports = {
     start: function(_port){
@@ -31,6 +32,7 @@ module.exports = {
         homepage.register(app);
         order.register(app);
         detail.register(app);
+        hotHotel.register(app);
         app.listen(_port);
     }
 }
