@@ -3,13 +3,13 @@ var bp = require('body-parser');
 var app = express();
 
 app.use(bp.urlencoded({extended: false}));
-
+app.use(bp.json())
 
 var rooms = require('./rooms')
 var login = require('./login')
 var order = require('./order')
 var detail = require('./detail');
-
+var payment = require('./payment')
 
 
 module.exports = {
@@ -31,6 +31,7 @@ module.exports = {
         login.register(app);
         order.register(app);
         detail.register(app);
+        payment.reg(app)
         app.listen(_port);
     }
 }

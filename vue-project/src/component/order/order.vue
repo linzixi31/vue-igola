@@ -9,29 +9,74 @@
 
         <mt-tab-container v-model="selected" swipeable='true'>
           <mt-tab-container-item id="1"  >
-            <ul class='order_list'>
-                <li class='line1'>
+            <ul class='order_list' >
+             
+                <li class='line1' v-for='(item,idx) in dataset' :key="idx" @click='pay(item)'>
+                  
                   <div>
-                    <img slot="icon" src="../../assets/img/icon3.png" style='width:2rem'>
+                    <img slot="icon" src="../../assets/img/hotel.png" style='width:2rem'>
                   </div>
                   <div style='flex:0.8'>
-                    <span class='black'>深圳海景奥斯延酒店</span><br />
-                    <span>2018-02-11至2018-02-13</span><br />
-                    <span>2晚，1间，Superior Room（East Wing）</span>  
-                    <span>linzixi</span>
+                    <span class='black'>{{item.hotelName}}</span><br />
+                    <span>{{item.startTime}}至{{item.endTime}}</span><br />
+                    <span>2晚，1间，Superior Room（East Wing）</span><br />  
+                    <span class='name'>{{item.linkman}}</span>
                   </div>
                   <div style='flex:0.2'>
-                    <span class='black' >￥1240</span><br />
-                    <span>等待支付</span>
+                    <span class='black' >￥{{item.totalPrice}}</span><br />
+                    <span v-if="item.status== 1" style='color:blue'>待出行</span>
+                    <span v-else-if="item.status== 2">已完成</span>
+                    <span v-else-if="item.status== 0" style='color:red'>等待支付</span>
+                    <span v-else-if="item.status== 3">订单过期</span>
+                  </div>
+                
+                </li>
+               
+            </ul>
+          </mt-tab-container-item>
+          <mt-tab-container-item id="2">
+            <ul class='order_list' >
+                <li class='line1' v-for='(item,idx) in dataset' :key="idx" v-if='item.status== 1'>
+                  <div>
+                    <img slot="icon" src="../../assets/img/hotel.png" style='width:2rem'>
+                  </div>
+                  <div style='flex:0.8'>
+                    <span class='black'>{{item.hotelName}}</span><br />
+                    <span>{{item.startTime}}至{{item.endTime}}</span><br />
+                    <span>2晚，1间，Superior Room（East Wing）</span><br />  
+                    <span class='name'>{{item.linkman}}</span>
+                  </div>
+                  <div style='flex:0.2'>
+                    <span class='black' >￥{{item.totalPrice}}</span><br />
+                    <span v-if="item.status== 1" style='color:blue'>待出行</span>
+                    <span v-else-if="item.status== 2">已完成</span>
+                    <span v-else-if="item.status== 0" style='color:red'>等待支付</span>
+                    <span v-else-if="item.status== 3">订单过期</span>
                   </div>
                 </li>
             </ul>
           </mt-tab-container-item>
-          <mt-tab-container-item id="2">
-            <mt-cell v-for="n in 4" :title="'测试 ' + n" />
-          </mt-tab-container-item>
           <mt-tab-container-item id="3">
-            <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+            <ul class='order_list' >
+                <li class='line1' v-for='(item,idx) in dataset' :key="idx" v-if='item.status== 2'>
+                  <div>
+                    <img slot="icon" src="../../assets/img/hotel.png" style='width:2rem'>
+                  </div>
+                  <div style='flex:0.8'>
+                    <span class='black'>{{item.hotelName}}</span><br />
+                    <span>{{item.startTime}}至{{item.endTime}}</span><br />
+                    <span>2晚，1间，Superior Room（East Wing）</span><br />  
+                    <span class='name'>{{item.linkman}}</span>
+                  </div>
+                  <div style='flex:0.2'>
+                    <span class='black' >￥{{item.totalPrice}}</span><br />
+                    <span v-if="item.status== 1" style='color:blue'>待出行</span>
+                    <span v-else-if="item.status== 2">已完成</span>
+                    <span v-else-if="item.status== 0" style='color:red'>等待支付</span>
+                    <span v-else-if="item.status== 3">订单过期</span>
+                  </div>
+                </li>
+            </ul>
           </mt-tab-container-item>
         </mt-tab-container>
         <footernav></footernav> 
@@ -47,7 +92,9 @@
     export default  {
         mounted(){
             this.axios.get(http.url+'/order').then((response) => {
-                console.log(response.data)
+                this.dataset = response.data.data.results;
+              console.log(response.data.data.results)
+
             })
         },
         components:{
@@ -55,13 +102,22 @@
         },
         data(){
             return{
-                selected: '1'
+                selected: '1',
+                dataset:[]
             }
         },
         methods:{
             xue(event){
                this.selected = event.target.id
-            }
+            },
+            pay(item){
+              if(item.status=='0'){
+                    this.$router.push({path:'/payment',query:{id:item.id}})
+              }else{
+                return false
+              }
+            },
+
         }
     }
 

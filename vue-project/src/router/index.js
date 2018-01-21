@@ -5,7 +5,7 @@ import Logincomponent from '../component/login/login.vue';
 import ordercomponent from '../component/order/order.vue';
 
 import detail from '../component/detail/detail.vue';
-
+import payment from '../component/payment/payment.vue';
 
 Vue.use(VueRouter);
 
@@ -23,7 +23,12 @@ var router  = new VueRouter({
         {
         	path:'/detail',
         	component:detail
+        },
+         {
+            path:'/payment',
+            component:payment
         }
+
 
     ]
 })
