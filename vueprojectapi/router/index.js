@@ -6,6 +6,7 @@ app.use(bp.urlencoded({extended: false}));
 
 var rooms = require('./rooms')
 var login = require('./login')
+var listPage = require('./listPage')
 module.exports = {
     start: function(_port){
 
@@ -23,6 +24,8 @@ module.exports = {
 
         rooms.register(app);
         login.register(app);
+        console.log(listPage);
+        listPage.select(app);
         app.listen(_port);
     }
 }
