@@ -2,7 +2,7 @@
 <template>
 	<div>
 		<section class="hotelImg">
-			<img src="../../assets/img/hotel.jpg">
+			<img :src="imgurl">
 			<a class="backToList" href="#/list"><i class="glyphicon glyphicon-menu-left"></i></a>
 			<div class="hotelImgNum"><span>32</span>张</div>
 		</section>
@@ -23,9 +23,9 @@
 	export default {
 		data(){
 			return {
-
+				
 			}
 		},
-		props:['hotelName','addr','stars'],
+		props:['hotelName','addr','stars','imgurl']
 	}
 </script>
