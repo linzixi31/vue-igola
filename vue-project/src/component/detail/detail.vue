@@ -32,7 +32,7 @@
 				hotelName:'',
 				stars:0,
 				imgUrl:'',
-				id:2,
+				id:5,
 			}
 		},
 		components:{
