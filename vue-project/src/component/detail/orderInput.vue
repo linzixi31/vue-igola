@@ -137,6 +137,7 @@
 					return;
 				}else{
 					var newOrder = {
+						loginer:userName,
 						room_id:this.roomId,
 						hotel_id:this.hotelId,
 						night:this.nightNum,
@@ -152,6 +153,7 @@
 					console.log(newOrder);
 					this.axios.get(http.url + '/createOrder',{params:newOrder}).then(function(result){
 						var order_id = result.data.orderId;
+						console.log(order_id)
 						this.$router.replace(`/payment/${order_id}`);
 					}.bind(this))
 				}
