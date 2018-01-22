@@ -1,11 +1,11 @@
 <template>
     <div class="login">
-        <header id="head">
+        <header class="l_head">
             <p><span class="iconfont icon-fanhui"></span></p>
             <p><span class="lg">登录</span></p>
             <p><span class="d_login">动态码登录</span></p>
         </header>
-        <section id="main">
+        <section class="l_main">
             <p> 
                 <input type="text" placeholder="手机号码/电子邮箱" class="tel"/> 
             </p>
@@ -15,8 +15,11 @@
             <p> 
                 <button @click="submit">登录</button>
             </p>
-            <p>
-               <span>新来的？去注册</span> 
+            <p>     
+                <router-link to="/register">
+                    <span>新来的？去注册</span> 
+                </router-link>
+               
             </p>
             <p>通过以下第三方注册</p>
             <p><i class="iconfont icon-weixin"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="iconfont icon-qq"></i></p>
@@ -26,7 +29,9 @@
 </template>
 
 <script>
-    import footernav from '../footernav/footernav';
+
+import footernav from '../footernav/footernav';
+import http from '../../http/baseUrl'
 
 export default{
     components:{
@@ -39,19 +44,34 @@ export default{
     },
     methods:{
       submit:function(){
-        this.axios.get('http://localhost:88/login').then((response) => {
-            console.log(response.data.data.results)
-            var res=response.data.data.results;
-            var $username=$('.tel').val();
-            var $password=$('.password').val();
-            res.map(function(item){
-              if($username===item.telephone && $password===item.password){
-                  alert('登录成功');
 
-              }else{
-                  alert('登陆失败');
-              }
+        this.axios.get(http.url+'/login').then((response) => {
+            console.log(response)
+            var _data=response.data.data.results;
+            console.log(response.data.data.results)
+            var _tel=$('.tel').val();
+            var _pass=$('.password').val();
+            console.log(_tel,_pass)
+            _data.map(function(item){
+                if(item.telephone===_tel && item.password===_pass){
+                    alert('登录成功');
+
+                    if(window.localStorage){
+                        var storage=window.localStorage;
+                        storage.username=_tel;
+                        storage.password=_pass;
+
+                    }else{
+                       
+                    }
+
+
+                    location.href="#/loginSucess";
+                    return;
+                }
             })
+
+
         })
       }
     }
