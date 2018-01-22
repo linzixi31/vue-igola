@@ -13,7 +13,7 @@
 					<i class="glyphicon glyphicon-star" v-for="value in stars"></i>
 				</span>
 			</p>
-			<p class="hotelEngName">Guang Zhou Masia Hotel</p>
+			<p class="hotelEngName">{{enghotelName}}</p>
 			<p class="hotelAdr">{{addr}}</p>
 		</section>
 	</div>
@@ -26,6 +26,6 @@
 				
 			}
 		},
-		props:['hotelName','addr','stars','imgurl']
+		props:['hotelName','addr','stars','imgurl','enghotelName']
 	}
 </script>
