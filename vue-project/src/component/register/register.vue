@@ -30,7 +30,7 @@
 
 </template>
 <script type="text/javascript">
-    
+    import http from '../../http/baseUrl'
 
     export default{
         components:{
@@ -43,20 +43,61 @@
         },
         methods:{
             reg:function(){
+                
+                
+                
+
+                var self=this;
+
+
                 var $tel=$('.tel').val();
                 var $pass=$('.password').val();
                 var tel_regExp=/^[1][3,4,5,7,8][\d]{9}$/;
                 var password_regExp=/^[\w]{8,16}$/;
                 console.log(tel_regExp.test($tel),password_regExp.test($pass))
                 if(tel_regExp.test($tel)&& password_regExp.test($pass)){
-                    console.log($tel,$pass)
-                    this.axios.get('http://localhost:88/register',{params:{'telephone':$tel,'password':$pass}}).then((response) => {
-                        console.log(response.data,223);
-                        var res_msg=response.data;
-                        if(res_msg==='sucess'){
-                            location.href="#/registerSucess"
+                    // console.log($tel,$pass)
+                   // 获取数据库注册的数据
+                    self.axios.get(http.url+'/login').then((response) => {
+                        var _data=response.data.data.results;
+                        console.log(response.data.data.results);
+                        var num=0;
+
+
+                        
+                           
+                           
+                        for(var i=0;i<_data.length;i++){
+                            if(_data[i].telephone===$tel){
+                                alert('该用户名已经被注册');
+                                $('.tel').val('');
+                                $('.password').val('');
+                                break;
+
+                            }
+                            num++
                         }
+
+
+                        console.log(num)
+                        if(num===_data.length){
+
+                                    self.axios.get('http://localhost:88/register',{params:{'telephone':$tel,'password':$pass}}).then((response) => {
+                                        console.log(response.data,223);
+                                        var res_msg=response.data;
+                                        if(res_msg==='sucess'){
+                                            location.href="#/registerSucess"
+                                        }
+                                    })
+
+                        }
+
+
                     })
+
+
+
+                    
                 }else{
                     // $('.tel').val('此用户名不合法').css({'color':'red'});
                 }

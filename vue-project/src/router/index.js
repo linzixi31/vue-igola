@@ -86,6 +86,10 @@ var router  = new VueRouter({
          {
             path:'/payment',
             component:payment
+        },
+        {
+            path:'/choice',
+            component:ChoiceComponent
         }
     ]
 })
