@@ -1,6 +1,7 @@
 <template>
 	<div id="listPage">
 		<search></search>
+		<div class="top"></div>
 		<datagrid :dataUp="newData"></datagrid>
 		<tabber @sendNew="renew"></tabber>
 	</div>
@@ -12,7 +13,6 @@
 	import tabber from './tabber.vue';
 	import baseCss from './base.css';
 	import listPage from './listPage.scss';
-//	import returnTop from '../listPage.returnTop;'
 	export default{
 		name:'app',
 		components:{datagrid,search,tabber},
@@ -24,11 +24,12 @@
 		methods: {
 	        renew:function(msg){
 	        	this.newData=msg
+	        	console.log(msg);
 	        	console.log(this.newData);
 	        	this.$children[1].dataset = this.newData;
 	        }
-	  },
-	  mounted:function(){
+	  	},
+	  	mounted:function(){
 			var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
             document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
             var scale = 1/window.devicePixelRatio;

@@ -56,28 +56,19 @@
 				this.rangeValue=500;
 			},
 			send:function(){
-				if(this.activeName&&this.rangeValue){
-					this.axios.get('http://127.0.0.1:88/upDataList',{params:{stars:this.activeName,price:this.rangeValue}}).then(response => {
-						this.msg = response.data.data.results;
-						this.$emit('e1',this.msg);
-						console.log(this.msg);
-					}).catch(function (error) {
-					    console.log(error);
-					});
-				}
+				this.axios.get('http://127.0.0.1:88/upDataList',{params:{stars:this.activeName,price:this.rangeValue}}).then(response => {
+					this.msg = response.data.data.results;
+					console.log(this.msg);
+					this.$emit('e1',this.msg);
+				}).catch(function (error) {
+				    console.log(error);
+				});
 			}
   		}
 	}
 </script>
 
 <style>
-	.clear{background:#FFFFFF;box-shadow:0px;}
-	.startList{display:flex;justify-content:space-around;flex-wrap:wrap;padding:10px}
-	.startList button{width:28%;border-radius:45px;margin-bottom:5%;}
-	.rangeList{display:flex;justify-content:space-between;flex-wrap:wrap;font-size:24px;}
-	.price{padding:20px;}
-	.active{background:#ccc;}
-	.mint-cell-wrapper{height:60px;}
-	#star button{display:inline-block;height:80px;font-size:26px;}
-	#star p{height:80px;font-size:28px;text-align: center;line-height:80px;font-weight:normal}
+	
+
 </style>

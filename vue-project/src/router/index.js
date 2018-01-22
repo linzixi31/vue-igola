@@ -5,12 +5,12 @@ import Logincomponent from '../component/login/login.vue';
 import listPage from '../component/listPage/listPage.vue';
 
 import IndexComponent from "../component/index/index.vue";
-
+import ChoiceComponent from "../component/choice/choice.vue";
 import ordercomponent from '../component/order/order.vue';
 
 import detail from '../component/detail/detail.vue';
-
-
+import payment from '../component/payment/payment.vue';
+import publicSearch from '../component/publicSearch/publicSearch.vue';
 
 Vue.use(VueRouter);
 
@@ -37,7 +37,18 @@ var router  = new VueRouter({
         {
         	path:'/detail',
         	component:detail
-
+        },
+        {
+        	path:"/choice",
+        	component:ChoiceComponent
+        },
+        {
+            path:'/payment',
+            component:payment
+        },
+        {
+        	path:'/publicSearch',
+        	component:publicSearch
         }
 
     ]

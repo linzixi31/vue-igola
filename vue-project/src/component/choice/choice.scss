@@ -1,0 +1,57 @@
+#choice{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.choice_header{
+    width: 100%;
+    height: 4.74rem;
+    background: #0396FE;
+}
+.choice_header h1{
+    width: 100%;
+    height: 4.74rem;
+    line-height: 4.74rem;
+    text-align: center;
+    font-size: 14px;
+    color: #FFFFFF;
+    font-weight: normal;
+}
+.choice_main{
+    width: auto;
+    padding: 0.26rem;
+    flex: 1;
+}
+.item_detail{
+    width: 100%;
+    height: 14rem;
+    border: 1px solid #000000;
+    border-radius: 0.53rem;
+    margin-bottom: 0.53rem;
+}
+.bottom{
+    width: auto;
+    height: 2.66rem;
+    padding: 0.13rem 0.26rem;
+}
+.pic{
+    width: 100%;
+    height: 11rem;
+   img{
+       width:100%;
+       height: 100%;
+   }
+}
+.left{
+    width: 21.53rem;
+    height: 2.66rem;
+    font-size: 12px;
+    float: left;
+}
+.right{
+    width: 8rem;
+    font-size: 14px;
+    text-align: right;
+    float: right;
+    color: #EA758F;
+}

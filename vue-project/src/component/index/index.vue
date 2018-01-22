@@ -3,10 +3,10 @@
 		<div id="index">
 			<div class="index_header">
 				<mt-swipe :auto="4000" class="swipe">
-					<mt-swipe-item class="swipeItem-1">1</mt-swipe-item>
-					<mt-swipe-item class="swipeItem-2">2</mt-swipe-item>
-					<mt-swipe-item class="swipeItem-3">3</mt-swipe-item>
-					<mt-swipe-item class="swipeItem-4">4</mt-swipe-item>
+					<mt-swipe-item class="swipeItem-1"></mt-swipe-item>
+					<mt-swipe-item class="swipeItem-2"></mt-swipe-item>
+					<mt-swipe-item class="swipeItem-3"></mt-swipe-item>
+					<mt-swipe-item class="swipeItem-4"></mt-swipe-item>
 				</mt-swipe>
 				<div class="cover"></div>
 			</div>
@@ -17,7 +17,9 @@
 				</div>
 				<div class="content">
 					<div class="detail" v-for="item in dataset" v-if="item.hot == 1">
-						<div class="pic"></div>
+						<div class="pic">
+							<img :src="item.image1" />
+						</div>
 						<div class="describe">
 							<div class="left">
 								<p class="hotelName">{{item.hotelName}}</p>
