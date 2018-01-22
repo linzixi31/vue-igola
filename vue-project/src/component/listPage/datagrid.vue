@@ -24,11 +24,11 @@
 				dataset:[],
 				id:'',
 				stars:[
-					{img:'/dist/star.jpg'},
-					{img:'/dist/star.jpg'},
-					{img:'/dist/star.jpg'},
-					{img:'/dist/star.jpg'},
-					{img:'/dist/star.jpg'}
+					{img:'./src/assets/img/star.jpg'},
+					{img:'./src/assets/img/star.jpg'},
+					{img:'./src/assets/img/star.jpg'},
+					{img:'./src/assets/img/star.jpg'},
+					{img:'./src/assets/img/star.jpg'}
 				]
 			}
 		},
