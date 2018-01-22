@@ -1,13 +1,13 @@
 <template>
 	<div id="shaixuan">
-		<div>
-			<mt-cell title="评分" style="text-align: center;"></mt-cell>
+		<div class="score">
+			<p>评分</p>
 			<div class="scoreList">
 				<mt-button size="small" v-for="item in scoreSet" @click="selected(item.value)" :class="{active:activeName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
 			</div>
 		</div>
 		<div>
-			<mt-cell title="酒店设施" style="text-align: center;"></mt-cell>
+			<p>酒店设施</p>
 			<div class="equipList">
 				<mt-button size="small" v-for="item in equipment" @click="find(item.value)" :class="{active:EactiveName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
 			</div>
@@ -28,7 +28,7 @@
 				],
 				activeName:'',
 				equipment:[
-					{text:'WiFi',value:'WiFi'},
+					{text:'WiFi',value:'hasWifi'},
 					{text:'停车场',value:'hasParking'},
 					{text:'票务',value:'Ticket'},
 					{text:'餐厅',value:'Restaurant'},
@@ -52,11 +52,10 @@
 				this.EactiveName = equipmentName;
 			},
 			send:function(){
-				console.log(this.EactiveName,this.activeName);
-				this.axios.get('http://127.0.0.1:88/upDataList',{params:{stars:this.activeName,equipment:this.EactiveName}}).then(response => {
+				this.axios.get('http://127.0.0.1:88/shaixuan',{params:{score:this.activeName,equipment:this.EactiveName}}).then(response => {
 					this.msg = response.data.data.results;
-//					this.$emit('e1',this.msg);
-					console.log(this.msg);
+					this.$emit('e1',this.msg);
+					console.log(response);
 				}).catch(function (error) {
 				    console.log(error);
 				});
@@ -64,12 +63,3 @@
 		}
 	}
 </script>
-
-<style>
-	.scoreList{display:flex;justify-content:space-around;flex-wrap:wrap;padding:10px;}
-	.equipList{display:flex;justify-content:space-around;flex-wrap:wrap;padding:10px;}
-	.equipList button{margin:4px;}
-	.mint-cell-wrapper{font-size:26px;}
-	#shaixuan .equipList button:nth-child(12){background:#FFFFFF;height:0px}
-	#shaixuan button{display:inline-block;height:80px;font-size:26px;}
-</style>

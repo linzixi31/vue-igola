@@ -58,7 +58,7 @@
         .about_main .logo{height:5.786667rem;text-align:center;line-height:5.786667rem;}
         .about_main .logo img{width:6.826667rem;height:2.56rem;}
         .about_main .content{padding:0 0.746667rem;text-align:left;font-size:0.28rem;height:4.226667rem;}
-        .about_main .list li{height:1.066667rem;padding:0 0.746667rem;line-height:1.066667rem;font-size:0.4rem;border-bottom:0.013333rem solid #ccc;text-align:left;}  
+        .about_main .list li{height:1.066667rem;padding:0 0.546667rem;padding-left:0.5rem;line-height:1.066667rem;font-size:0.4rem;border-bottom:0.013333rem solid #ccc;text-align:left;}  
         .about_main .list li>i{float:right;line-height:1.066667rem;}
 
 

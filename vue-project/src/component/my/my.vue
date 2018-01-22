@@ -56,8 +56,10 @@
                 <li @click="get_about">关于iGola<span class="gt">&gt;</span></li>
             </ul>
         </div>
-        
-             <footernav></footernav>
+        <div id="registerFoot">
+            <footernav></footernav>
+        </div>
+             
        
          
         
@@ -116,11 +118,12 @@
                 document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
                 // console.log(333)
                 next()
-            },
-            beforeMount(){
-                console.log(this)
-                this.username=window.localStorage.username;
             }
+            // ,
+            // beforeMount(){
+            //     console.log(this)
+            //     this.username=window.localStorage.username;
+            // }
 
 
             
@@ -129,7 +132,7 @@
 </script>
 <style>
     @import './my.scss';
-
-    #footer>a>.mint-tab-item-label{font-size:0.32rem !important;}
-    #footer>a>.mint-tab-item-icon{/*width:35px;height:35px;*/} 
+    #registerFoot #footer .mint-tab-item-label a{padding:10px 0;line-height: 45px;}
+    #registerFoot #footer>a>.mint-tab-item-label{font-size:0.402rem !important;}
+    #registerFoot #footer>a>.mint-tab-item-icon{width:48px;height:48px;margin-bottom:2px;} 
 </style>
