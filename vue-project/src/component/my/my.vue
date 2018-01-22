@@ -76,11 +76,11 @@
        
     import footernav from '../footernav/footernav';
         
-        var _judge=Boolean(window.localStorage.username);
+       
         export default{
             data(){
                 return{
-                    judge:_judge,
+                    judge:Boolean(window.localStorage.username),
                     username:window.localStorage.username
                 }
             },

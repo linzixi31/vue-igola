@@ -54,7 +54,7 @@
                         console.log(response.data,223);
                         var res_msg=response.data;
                         if(res_msg==='sucess'){
-                            
+                            location.href="#/registerSucess"
                         }
                     })
                 }else{
