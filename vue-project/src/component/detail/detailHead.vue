@@ -3,7 +3,7 @@
 	<div>
 		<section class="hotelImg">
 			<img :src="imgurl">
-			<a class="backToList" href="#/list"><i class="glyphicon glyphicon-menu-left"></i></a>
+			<a class="backToList" href="#/listPage"><i class="glyphicon glyphicon-menu-left"></i></a>
 			<div class="hotelImgNum"><span>32</span>张</div>
 		</section>
 		<section class="hotelInfor">
