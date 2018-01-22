@@ -1,13 +1,13 @@
 <template>
     <div>
-        <mt-header fixed title="订单页面"></mt-header>
+        <mt-header fixed title="订单页面" id='order_zx'></mt-header>
         <mt-navbar  fixed style='margin-top:40px; border-bottom:1px solid #eee; color:#000;'>
           <mt-tab-item ><a @click ='xue' id="1">全部</a></mt-tab-item>
           <mt-tab-item ><a @click ='xue' id="2">待出行</a></mt-tab-item>
           <mt-tab-item ><a @click ='xue' id="3">已完成</a></mt-tab-item>
         </mt-navbar>
 
-        <mt-tab-container v-model="selected" swipeable='true'>
+        <mt-tab-container v-model="selected" :swipeable='swipeable'>
           <mt-tab-container-item id="1"  >
             <ul class='order_list' >
              
@@ -103,7 +103,8 @@
         data(){
             return{
                 selected: '1',
-                dataset:[]
+                dataset:[],
+                swipeable:true
             }
         },
         methods:{

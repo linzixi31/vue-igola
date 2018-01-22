@@ -23,7 +23,6 @@ import orderInput from '../component/detail/orderInput.vue'
 import payment from '../component/payment/payment.vue';
 
 
-
 Vue.use(VueRouter);
 
 var router  = new VueRouter({
