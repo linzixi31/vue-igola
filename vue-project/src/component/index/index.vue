@@ -16,7 +16,8 @@
 					<span>▼</span>
 				</div>
 				<div class="content">
-					<div class="detail" v-for="item in dataset" v-if="item.hot == 1">
+					<div class="detail" v-for="item in dataset"
+						 v-if="item.hot == 1" @click="toDetail(item.id)" :id="item.id">
 						<div class="pic">
 							<img :src="item.image1" />
 						</div>
@@ -57,6 +58,11 @@
 			this.axios.get(http.url + "/homepage").then(res =>{
 				this.dataset = res.data.data.results;
 			})
+		},
+		methods:{
+			toDetail(_id){
+				this.$router.push({path:"/detail",query:{id:_id}});
+			}
 		}
 	}
 	
