@@ -1,0 +1,28 @@
+#payment_zx{
+    background: #FFF;
+    color: #000;
+}
+
+#pay_container{
+    height:21.75rem;
+    h1{
+        font-size: 2rem;
+    }
+}
+#pay_footer{
+    display:flex;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background: #595959;
+    color: #fff;
+    div{
+        width:50%;
+        text-align: center;
+    }
+    .price{
+        color: #F5B23D;
+
+    }
+}
+

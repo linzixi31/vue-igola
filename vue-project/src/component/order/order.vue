@@ -1,6 +1,6 @@
 <template>
     <div>
-        <mt-header fixed title="订单页面"></mt-header>
+        <mt-header fixed title="订单页面" id='order_zx'></mt-header>
         <mt-navbar  fixed style='margin-top:40px; border-bottom:1px solid #eee; color:#000;'>
           <mt-tab-item ><a @click ='xue' id="1">全部</a></mt-tab-item>
           <mt-tab-item ><a @click ='xue' id="2">待出行</a></mt-tab-item>
