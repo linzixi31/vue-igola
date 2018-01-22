@@ -6,6 +6,7 @@ import listPage from '../component/listPage/listPage.vue';
 
 import IndexComponent from "../component/index/index.vue";
 import ChoiceComponent from "../component/choice/choice.vue";
+import SearchComponent from "../component/search/search.vue";
 import ordercomponent from '../component/order/order.vue';
 
 import detail from '../component/detail/detail.vue';
@@ -45,6 +46,10 @@ var router  = new VueRouter({
          {
             path:'/payment',
             component:payment
+        },
+        {
+        	path:"/search",
+        	component:SearchComponent
         }
 
     ]
