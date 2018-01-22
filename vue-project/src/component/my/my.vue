@@ -56,7 +56,10 @@
                 <li @click="get_about">关于iGola<span class="gt">&gt;</span></li>
             </ul>
         </div>
-        <footernav></footernav>  
+        
+             <footernav></footernav>
+       
+         
         
     </div>
 </template>
@@ -114,7 +117,10 @@
                 // console.log(333)
                 next()
             },
-            // beforeMount
+            beforeMount(){
+                console.log(this)
+                this.username=window.localStorage.username;
+            }
 
 
             
@@ -125,5 +131,5 @@
     @import './my.scss';
 
     #footer>a>.mint-tab-item-label{font-size:0.32rem !important;}
-    #footer>a>.mint-tab-item-icon{width:35px;height:35px;} 
+    #footer>a>.mint-tab-item-icon{/*width:35px;height:35px;*/} 
 </style>
