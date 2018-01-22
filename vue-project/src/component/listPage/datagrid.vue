@@ -29,9 +29,9 @@
 		beforeMount(){
 			this.axios.get('http://127.0.0.1:88/listPage').then(response => {
 				this.dataset = response.data.data.results;
-				console.log(this.dataset[0].id);
+//				console.log(this.dataset[0].id);
 			}).catch(function (error) {
-			    console.log(error);
+//			    console.log(error);
 			});
 		}
 	}

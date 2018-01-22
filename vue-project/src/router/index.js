@@ -24,6 +24,9 @@ import orderInput from '../component/detail/orderInput.vue'
 import payment from '../component/payment/payment.vue';
 
 
+//====================
+import test from "../component/test/test.vue";
+
 
 Vue.use(VueRouter);
 
@@ -32,7 +35,6 @@ var router  = new VueRouter({
         {
             path:"/login",
             component: Logincomponent
-
         },
         {
             path:'/register',
@@ -91,6 +93,14 @@ var router  = new VueRouter({
         {
         	path:"/search",
         	component:SearchComponent
+        },
+        {
+        	path:"/choice",
+        	component:ChoiceComponent
+        },
+        {
+        	path:"/test",
+        	component:test
         }
     ]
 })

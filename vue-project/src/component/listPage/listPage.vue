@@ -33,13 +33,15 @@
             var scale = 1/window.devicePixelRatio;
             var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
             document.getElementById("vp").content = mstr;	
+            
+//          console.log(this.$route.query.add,this.$route.query.hotelName);
 		},
 		beforeRouteLeave(to,from,next){
 			//console.log(333)
 			document.getElementById("vp").content = ''
 			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
 			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
-			console.log(333)
+//			console.log(333)
 			next()
 		}
 	}
