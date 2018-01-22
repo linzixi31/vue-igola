@@ -27,6 +27,7 @@ import payment from '../component/payment/payment.vue';
 //====================
 import test from "../component/test/test.vue";
 
+import publicSearch from '../component/publicSearch/publicSearch.vue';
 
 Vue.use(VueRouter);
 
@@ -86,7 +87,7 @@ var router  = new VueRouter({
             name:'orderCom',
             component:orderInput
         },
-         {
+        {
             path:'/payment',
             component:payment
         },
@@ -101,7 +102,15 @@ var router  = new VueRouter({
         {
         	path:"/test",
         	component:test
-        }
+        },
+        {
+        	path:'/publicSearch',
+        	component:publicSearch
+		},
+		{
+			path:'/choice',
+			component:ChoiceComponent
+		}
     ]
 })
 

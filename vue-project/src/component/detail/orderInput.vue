@@ -1,12 +1,12 @@
 <template>
 	<div class="orderCom">
 		<mt-header title="预订">
-			<router-link to="/detail" slot="left">
+			<router-link :to="backUrl" slot="left">
 			    	<mt-button icon="back"></mt-button>
 			</router-link>
 		</mt-header>
 		<div class="orderBody">
-			<div class="hotelInfor">
+			<div class="hotelInformation">
 				<p class="hotelName">{{hotelName}}</p>
 				<p class="hotelAddr">{{addr}}</p>
 			</div>
@@ -29,35 +29,44 @@
 				</div>
 			</div>
 			<div class="userInfor"> 
-				<div @click="popup = 'true'">
-					<div><i class="glyphicon glyphicon-signal"></i>入住人</div>
-					<div>
-						<router-link to="/orderCom/person">添加&nbsp;&nbsp;&gt;</router-link>
-					</div>
+				<div class="userinformation">
+					<div><i class="glyphicon glyphicon-user"></i><span >入住人</span><span class="content"></span></div>
+					<div class="addInfor">添加&nbsp;&nbsp;&gt;</div>
 				</div>
-				<router-view></router-view>
-				<div>
-					<div><i class="glyphicon glyphicon-signal"></i>联系人</div>
-					<div>
-						<router-link to="/orderCom/contact">添加&nbsp;&nbsp;&gt;</router-link>
-					</div>
+				<div class="userInput">
+					<span>入住人一：</span>
+					<input type="text" class="form-control" placeholder="请输入入住人1" v-model="linkman">
+					<button type="button" class="btn btn-info">确定</button>
 				</div>
-				<div>
-					<div><i class="glyphicon glyphicon-signal"></i>住客偏好</div>
-					<div>
-						<router-link to="/orderCom/hint">添加&nbsp;&nbsp;&gt;</router-link>
-					</div>
+				
+				<div class="userinformation">
+					<div><i class="glyphicon glyphicon-phone"></i><span >联系电话</span><span class="content"></span></div>
+					<div class="addInfor">添加&nbsp;&nbsp;&gt;</div>
+				</div>
+				<div class="userInput">
+					<span>联系电话：</span>
+					<input type="tel" class="form-control" placeholder="请输入您的联系电话" v-model="tel">
+					<button type="button" class="btn btn-info">确定</button>
+				</div>
+				<div class="userinformation">
+					<div><i class="glyphicon glyphicon-bullhorn"></i><span>住客偏好</span><span class="content"></span></div>
+					<div class="addInfor">添加&nbsp;&nbsp;&gt;</div>
+				</div>
+				<div class="userInput">
+					<span>住客偏好：</span>
+					<input type="text" class="form-control" placeholder="住客偏好" maxlength="10" v-model="hint">
+					<button type="button" class="btn btn-info">确定</button>
 				</div>
 			</div>
+			<router-view></router-view>
 			<p class="attention">备注&取消政策</p>
 		</div>
 		<div class="orderFoot">
-			<div>
+			<div  @click="summationShow">
 				<p>合计</p>
 				<p>￥{{data.price * nightNum}}</p>
 			</div>
 			<div>
-				
 				<span class="toPay" @click="createOrder">去支付</span>
 			</div>
 		</div>
@@ -73,7 +82,12 @@
 
 	import http from '../../http/baseUrl.js';
 
-	// require ('./orderInput.scss');
+	import { MessageBox } from 'mint-ui';
+
+
+
+	require ('./orderInput.scss');
+	
 
 	export default {
 		data(){
@@ -82,7 +96,11 @@
 				hotelName:'',
 				addr:'',
 				type:'',
-				bedScale:''
+				bedScale:'',
+				linkman:'',
+				tel:'',
+				hint:'',
+				summation:false
 			}
 		},
 		computed:{
@@ -97,40 +115,86 @@
 			},
 			nightNum:function(){
 				var n =this.$route.params.data.night;
-				return n.substr(1,1) * 1;
+				return n.slice(1,-1) * 1;
+			},
+			backUrl:function(){
+				return '/detail/?id=' + this.$route.params.hotelId;
 			}
 		},
 		methods:{
 			createOrder:function(){
-				var newOrder = {
-					roomId:this.roomId,
-					hotelName:this.hotelName,
-					night:this.nightNum,
-					dateIn:this.data.data.dateIn,
-					dateOut:this.data.data.dateOut,
-					roomNumer:1,
-					totalPrice:this.data.price * this.nightNum,
-					type:this.type,
-					bedScale:this.bedScale
+				
+				var userName = window.localStorage.username;
+				if(!userName){
+					MessageBox.alert('请先登录哦！').then(action => {
+					  	this.$router.replace('/login');
+					})
+					return;
 				};
-				console.log(newOrder);
-				this.axios.get(http.url + '/createOrder',{params:newOrder}).then(function(result){
-					console.log(result);
-					// this.$router.replace('/pay');
-				})
+
+				if(this.linkman === '' || this.tel == ''){
+					MessageBox('提示', '请输入住户信息！');
+					return;
+				}else if(!/^1[34578]\d{9}$/g.test(this.tel)){
+					MessageBox('提示', '请输入正确的电话号码！');
+					return;
+				}else{
+					//生成订单信息
+					var newOrder = {
+						loginer:userName,
+						room_id:this.roomId,
+						hotel_id:this.hotelId,
+						night:this.nightNum,
+						linkman:this.linkman,
+						telephone:this.tel,
+						startTime:this.data.data.dateIn,
+						endTime:this.data.data.dateOut,
+						orderTime:new Date().toLocaleString(),
+						roomNumer:1,
+						price:this.data.price * this.nightNum,
+						hint:this.hint
+					};
+					console.log(newOrder);
+					this.axios.get(http.url + '/createOrder',{params:newOrder}).then(function(result){
+						var order_id = result.data.orderId;
+						console.log(order_id)
+						this.$router.replace(`/payment/${order_id}`);
+					}.bind(this))
+				}
+			},
+			summationShow:function(){
+				this.summation = true;
 			}
 		},
 		mounted:function(){
-			
+				
 			//请求当前房间信息
 				this.axios.get( http.url + '/getRoomInformation',{params:{roomId:this.roomId,hotelId:this.hotelId}}).then(function(res){
+					
 					this.roomData = res.data.data.results;
 					this.hotelName = this.roomData[0].hotelName;
 					this.addr = this.roomData[0].address;
 					this.type = this.roomData[0].type;
 					this.bedScale = this.roomData[0].bedScale;
-					console.log(this.roomData)
+					console.log(this.$route.params.data)
 				}.bind(this));
+
+				$('.addInfor').on('click',function(e){
+					$(this).parent().next().slideDown();
+					$(this).parent().next().find('input').select();
+				});
+
+				$('.btn').on('click',function(){
+					
+					var value = $(this).prev().val();
+					if(value === ''){
+						MessageBox('提示', '请输入住户信息！');
+					}else{
+						$(this).parent().prev().find('.content').text(value);
+						$(this).parent().slideUp();
+					}
+					
+				})
 		}
 	}
 </script>
@@ -140,7 +204,11 @@
 	#app{height: 100%;}
 	body{background: #F0F0F0;}
 
-	.orderCom{height: 100%;display: flex;flex-direction: column;}
+
+	#summation{position: absolute;width:100%;height:20%;background: rgba(50,50,50,.5);bottom:0;}
+
+
+	/*.orderCom{height: 100%;display: flex;flex-direction: column;}
 
 	.orderBody{flex:1;overflow-x: hidden;}
 
@@ -167,10 +235,16 @@
 	.roomInfor div p:first-child{color:#979797;}
 	
 	.userInfor{background: #fff;line-height: 50px;color:#9A9A9A;}
-	.userInfor>div{display: flex;border-bottom:1px solid #CDCDCD;padding:0 20px;}
-	.userInfor>div div{flex:1;}
-	.userInfor>div div a{display: block;color:#9A9A9A;}
-	.userInfor>div div:last-child{text-align: right;}
+	.userInfor .userinformation{display: flex;border-bottom:1px solid #CDCDCD;padding:0 10px;}
+	.userInfor .userinformation span{padding-left:10px;width:100%;white-space:nowrap;overflow:hidden;text-overflow: ellipsis;}
+	.userInfor .userinformation div:first-child{flex:2;}
+	.userInfor .userinformation div a{display: block;color:#9A9A9A;}
+	.userInfor .userinformation div:last-child{flex:1;text-align: right;}
+	
+	.userInfor .userInput{border-bottom: 1px solid #CDCDCD;display: none;}
+	.userInfor .userInput span{width: 30%;}
+	.userInfor .userInput input{display: inline-block;width: 63%;}
+
 
 	.attention{text-align: center;line-height: 40px;background: #fff;margin-top:5px;color:#bbb;}
 
@@ -179,6 +253,8 @@
 
 	.orderFoot div{flex:1;}
 
-	.orderFoot .toPay{display: block;background: #159696;color:#fff;width: 100px;line-height: 40px;margin-left:80px;text-align: center;border-radius: 20px;}
+	.orderFoot .toPay{display: block;background: #159696;color:#fff;width: 100px;line-height: 40px;margin-left:80px;text-align: center;border-radius: 20px;}*/
+
+		
 
 </style>

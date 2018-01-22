@@ -58,12 +58,12 @@ export default{
       submit:function(){
 
         this.axios.get(http.url+'/login').then((response) => {
-            console.log(response)
+            // console.log(response)
             var _data=response.data.data.results;
-            console.log(response.data.data.results)
+            // console.log(response.data.data.results)
             var _tel=$('.tel').val();
             var _pass=$('.password').val();
-            console.log(_tel,_pass)
+            // console.log(_tel,_pass)
             _data.map(function(item){
                 if(item.telephone===_tel && item.password===_pass){
                     alert('登录成功');

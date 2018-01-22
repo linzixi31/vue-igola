@@ -1,6 +1,7 @@
 <template>
 	<div id="listPage">
 		<search></search>
+		<div class="top"></div>
 		<datagrid :dataUp="newData"></datagrid>
 		<tabber @sendNew="renew"></tabber>
 	</div>
@@ -23,11 +24,12 @@
 		methods: {
 	        renew:function(msg){
 	        	this.newData=msg
+	        	console.log(msg);
 	        	console.log(this.newData);
 	        	this.$children[1].dataset = this.newData;
 	        }
-	  },
-	  mounted:function(){
+	  	},
+	  	mounted:function(){
 			var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
             document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
             var scale = 1/window.devicePixelRatio;
@@ -37,11 +39,9 @@
 //          console.log(this.$route.query.add,this.$route.query.hotelName);
 		},
 		beforeRouteLeave(to,from,next){
-			//console.log(333)
 			document.getElementById("vp").content = ''
 			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
 			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
-//			console.log(333)
 			next()
 		}
 	}
