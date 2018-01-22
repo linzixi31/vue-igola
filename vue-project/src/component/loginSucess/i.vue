@@ -9,7 +9,7 @@
                 <li>手机号码 <span><span>未设置</span><i class="glyphicon glyphicon-chevron-right"></i></span>  </li>
                 <li>电子邮箱 <span><span>未设置</span><i class="glyphicon glyphicon-chevron-right"></i></span>  </li>
                 <li>密码 <span><span>未设置</span><i class="glyphicon glyphicon-chevron-right"></i></span></li>
-                <li class="clearfix"><span>退出登录</span></li>
+                <li class="clearfix"><span @click="quit">退出登录</span></li>
             </ul>   
         </section>
        
@@ -19,6 +19,29 @@
 
 <script type="text/javascript">
 	export default{
+        mounted:function(){
+                var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+                    document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+                    var scale = 1/window.devicePixelRatio;
+                    var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+                    document.getElementById("vp").content = mstr;
+                  
+            },
+        beforeRouteLeave(to,from,next){
+                //console.log(333)
+                document.getElementById("vp").content = ''
+                document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
+                document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
+                // console.log(333)
+                next()
+        },
+        methods:{
+            quit:function(){
+                window.localStorage.username='';
+                window.localStorage.password='';
+                location.href='#/my';
+            }
+        }
 
 	}
 

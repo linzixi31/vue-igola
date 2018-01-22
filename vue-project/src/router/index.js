@@ -4,11 +4,24 @@ import Logincomponent from '../component/login/login.vue';
 import my from '../component/my/my.vue'
 import register from '../component/register/register.vue'
 import registerSucess from '../component/registerSucess/registerSucess.vue'
-import loginSucess from '../component/loginSucess/loginSucess.vue'
+
 import online from '../component/my/online.vue'
 import hobbySet from '../component/my/hobbySet.vue'
 import i from '../component/loginSucess/i.vue'
 import about from '../component/my/about.vue'
+
+import listPage from '../component/listPage/listPage.vue';
+
+import IndexComponent from "../component/index/index.vue";
+import ChoiceComponent from "../component/choice/choice.vue";
+import ordercomponent from '../component/order/order.vue';
+
+import detail from '../component/detail/detail.vue';
+
+import orderInput from '../component/detail/orderInput.vue'
+
+import payment from '../component/payment/payment.vue';
+
 
 
 Vue.use(VueRouter);
@@ -33,10 +46,6 @@ var router  = new VueRouter({
             component:registerSucess
         },
         {
-            path:'/loginSucess',
-            component:loginSucess
-        },
-        {
             path:'/online',
             component:online
         }, 
@@ -47,11 +56,37 @@ var router  = new VueRouter({
         {
             path:'/i',
             component:i
-        },{
+        },
+        {
             path:'/about',
             component:about
+        },
+        {
+        	path:'/listPage',
+        	component:listPage
+            
+        },
+        {
+        	path:"/index",
+        	component:IndexComponent
+        },
+        {
+            path:'/order',
+            component:ordercomponent
+        },
+        {
+        	path:'/detail',
+        	component:detail
+        },
+        {
+            path:'/orderCom',
+            name:'orderCom',
+            component:orderInput
+        },
+         {
+            path:'/payment',
+            component:payment
         }
-
     ]
 })
 

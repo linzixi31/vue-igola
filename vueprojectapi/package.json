@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "cnpm": "^5.1.1",
+    "db": "^1.0.6",
     "express": "^4.16.2",
     "mysql": "^2.15.0",
     "path": "^0.12.7"

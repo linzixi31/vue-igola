@@ -1,4 +1,5 @@
 <template>
+
     <div class="login">
         <header class="l_head">
             <p><span class="iconfont icon-fanhui"></span></p>
@@ -26,12 +27,24 @@
             <p><i>微信</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>QQ</i></p>
         </section>
     </div>
-</template>
 
+  
+</template>
+<script type="text/javascript">
+var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+  //物理像素*设备像素比=真实像素
+  document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+  // 把屏幕的倍率缩小到N分之一（N是window.devicePixelRatio）
+  var scale = 1/window.devicePixelRatio;
+  var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+  document.getElementById("vp").content = mstr;
+</script>
 <script>
 
 import footernav from '../footernav/footernav';
+
 import http from '../../http/baseUrl'
+
 
 export default{
     components:{
@@ -39,7 +52,6 @@ export default{
     },
     data(){
         return {
-
         }
     },
     methods:{
@@ -66,7 +78,7 @@ export default{
                     }
 
 
-                    location.href="#/loginSucess";
+                    location.href="#/my";
                     return;
                 }
             })
@@ -74,6 +86,22 @@ export default{
 
         })
       }
+    },
+    mounted:function(){
+            var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+                    document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+                    var scale = 1/window.devicePixelRatio;
+                    var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+                    document.getElementById("vp").content = mstr;
+            
+    },
+    beforeRouteLeave(to,from,next){
+            //console.log(333)
+            document.getElementById("vp").content = ''
+            document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
+            document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
+            // console.log(333)
+            next()
     }
 
 }
@@ -81,4 +109,5 @@ export default{
 </script>
 <style type="text/css">
     @import './login.scss';
+
 </style>
