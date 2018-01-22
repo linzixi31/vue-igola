@@ -124,6 +124,6 @@
 <style>
     @import './my.scss';
 
-    /*#footer>a>.mint-tab-item-label{font-size:0.32rem !important;}
-    #footer>a>.mint-tab-item-icon{width:35px;height:35px;} */
+    #footer>a>.mint-tab-item-label{font-size:0.32rem !important;}
+    #footer>a>.mint-tab-item-icon{width:35px;height:35px;} 
 </style>
