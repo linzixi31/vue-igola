@@ -6,9 +6,9 @@
                 <li>头像 <span><span>未设置</span><i class="glyphicon glyphicon-chevron-right"></i></span></li>
                 <li>昵称 <span><span>未设置</span><i class="glyphicon glyphicon-chevron-right"></i></span></li>
                 <li>性别 <span><span>未设置</span><i class="glyphicon glyphicon-chevron-right"></i></span></li>
-                <li>手机号码 <span><span>未设置</span><i class="glyphicon glyphicon-chevron-right"></i></span>  </li>
+                <li>手机号码 <span><span>{{tel}}&nbsp;</span><i class="glyphicon glyphicon-chevron-right"></i></span>  </li>
                 <li>电子邮箱 <span><span>未设置</span><i class="glyphicon glyphicon-chevron-right"></i></span>  </li>
-                <li>密码 <span><span>未设置</span><i class="glyphicon glyphicon-chevron-right"></i></span></li>
+                <li>密码 <span><span>更改</span><i class="glyphicon glyphicon-chevron-right"></i></span></li>
                 <li class="clearfix"><span @click="quit">退出登录</span></li>
             </ul>   
         </section>
@@ -19,6 +19,11 @@
 
 <script type="text/javascript">
 	export default{
+        data(){
+            return {
+                tel:window.localStorage.username
+            }
+        },
         mounted:function(){
                 var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
                     document.getElementsByTagName("html")[0].style.fontSize = wd + "px";

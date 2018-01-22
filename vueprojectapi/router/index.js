@@ -7,13 +7,18 @@ app.use(bp.json())
 
 var rooms = require('./rooms')
 var login = require('./login')
+
+
 var reg=require('./register')
+
+
 var listPage = require('./listPage')
 var homepage = require("./homepage")
 var order = require('./order')
 var detail = require('./detail');
 var hotHotel = require("./hotHotel");
 var payment = require('./payment')
+
 
 module.exports = {
     start: function(_port){

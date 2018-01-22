@@ -32,7 +32,7 @@
 				hotelName:'',
 				stars:0,
 				imgUrl:'',
-				id:5,
+				id:'',
 			}
 		},
 		components:{
@@ -42,9 +42,9 @@
 			aboutIgola
 		},
 		methods:{
-			detailAjax:function(){
+			detailAjax:function(id){
 				//请求当前酒店信息
-				this.axios.get( http.url + '/getHotelRoom',{params:{hotelId:this.id}}).then(function(res){
+				this.axios.get( http.url + '/getHotelRoom',{params:{hotelId:id}}).then(function(res){
 					this.dataset = res.data.data.results;
 					this.hotelInfor(this.dataset);
 					console.log(this.dataset)
@@ -64,7 +64,9 @@
             		var scale = 1/window.devicePixelRatio;
             		var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
             		document.getElementById("vp").content = mstr;
-			this.detailAjax();	
+            		console.log(this.$route.query.id)
+            		this.id = this.$route.query.id;
+			this.detailAjax(this.id);	
 		},
 		beforeRouteLeave(to,from,next){
 			//console.log(333)
