@@ -1,10 +1,10 @@
 <template>
 	<div id="star">
-		<mt-cell title="星级" style="text-align:center"></mt-cell>
+		<p>星级</p>
 		<div class="startList">
 			<mt-button size="small" v-for="item in starset" @click="selected(item.value)" :class="{active:activeName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
 		</div>
-		<mt-cell title="价格" style="text-align:center"></mt-cell>
+		<p>价格</p>
 		<div class="price">
 			<mt-range
 			  v-model="rangeValue"
@@ -56,27 +56,19 @@
 				this.rangeValue=500;
 			},
 			send:function(){
-				if(this.activeName&&this.rangeValue){
-					this.axios.get('http://127.0.0.1:88/upDataList',{params:{stars:this.activeName,price:this.rangeValue}}).then(response => {
-						this.msg = response.data.data.results;
-						this.$emit('e1',this.msg);
-						console.log(this.msg);
-					}).catch(function (error) {
-					    console.log(error);
-					});
-				}
+				this.axios.get('http://127.0.0.1:88/upDataList',{params:{stars:this.activeName,price:this.rangeValue}}).then(response => {
+					this.msg = response.data.data.results;
+					console.log(this.msg);
+					this.$emit('e1',this.msg);
+				}).catch(function (error) {
+				    console.log(error);
+				});
 			}
   		}
 	}
 </script>
 
 <style>
-	.clear{background:#FFFFFF;box-shadow:0px;}
-	.startList{display:flex;justify-content:space-around;flex-wrap:wrap;padding:10px}
-	.startList button{width:28%;border-radius:24%;margin-bottom:5%;}
-	.rangeList{display:flex;justify-content:space-between;flex-wrap:wrap;}
-	.price{padding:20px;}
-	.active{background:#ccc;}
-	.mint-cell-wrapper{height:60px;}
-	#star button{display:inline-block;height:80px;font-size:26px;}
+	
+
 </style>

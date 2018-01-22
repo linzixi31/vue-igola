@@ -6,7 +6,7 @@
 			</router-link>
 		</mt-header>
 		<div class="orderBody">
-			<div class="hotelInfor">
+			<div class="hotelInformation">
 				<p class="hotelName">{{hotelName}}</p>
 				<p class="hotelAddr">{{addr}}</p>
 			</div>
@@ -30,7 +30,7 @@
 			</div>
 			<div class="userInfor"> 
 				<div class="userinformation">
-					<div><i class="glyphicon glyphicon-signal"></i><span >入住人</span><span class="content"></span></div>
+					<div><i class="glyphicon glyphicon-user"></i><span >入住人</span><span class="content"></span></div>
 					<div class="addInfor">添加&nbsp;&nbsp;&gt;</div>
 				</div>
 				<div class="userInput">
@@ -40,7 +40,7 @@
 				</div>
 				
 				<div class="userinformation">
-					<div><i class="glyphicon glyphicon-signal"></i><span >联系电话</span><span class="content"></span></div>
+					<div><i class="glyphicon glyphicon-phone"></i><span >联系电话</span><span class="content"></span></div>
 					<div class="addInfor">添加&nbsp;&nbsp;&gt;</div>
 				</div>
 				<div class="userInput">
@@ -49,7 +49,7 @@
 					<button type="button" class="btn btn-info">确定</button>
 				</div>
 				<div class="userinformation">
-					<div><i class="glyphicon glyphicon-signal"></i><span>住客偏好</span><span class="content"></span></div>
+					<div><i class="glyphicon glyphicon-bullhorn"></i><span>住客偏好</span><span class="content"></span></div>
 					<div class="addInfor">添加&nbsp;&nbsp;&gt;</div>
 				</div>
 				<div class="userInput">
@@ -62,7 +62,7 @@
 			<p class="attention">备注&取消政策</p>
 		</div>
 		<div class="orderFoot">
-			<div>
+			<div  @click="summationShow">
 				<p>合计</p>
 				<p>￥{{data.price * nightNum}}</p>
 			</div>
@@ -84,7 +84,9 @@
 
 	import { MessageBox } from 'mint-ui';
 
-	// require ('./orderInput.scss');
+
+
+	require ('./orderInput.scss');
 	
 
 	export default {
@@ -97,7 +99,8 @@
 				bedScale:'',
 				linkman:'',
 				tel:'',
-				hint:''
+				hint:'',
+				summation:false
 			}
 		},
 		computed:{
@@ -136,6 +139,7 @@
 					MessageBox('提示', '请输入正确的电话号码！');
 					return;
 				}else{
+					//生成订单信息
 					var newOrder = {
 						loginer:userName,
 						room_id:this.roomId,
@@ -157,6 +161,9 @@
 						this.$router.replace(`/payment/${order_id}`);
 					}.bind(this))
 				}
+			},
+			summationShow:function(){
+				this.summation = true;
 			}
 		},
 		mounted:function(){
@@ -197,7 +204,11 @@
 	#app{height: 100%;}
 	body{background: #F0F0F0;}
 
-	.orderCom{height: 100%;display: flex;flex-direction: column;}
+
+	#summation{position: absolute;width:100%;height:20%;background: rgba(50,50,50,.5);bottom:0;}
+
+
+	/*.orderCom{height: 100%;display: flex;flex-direction: column;}
 
 	.orderBody{flex:1;overflow-x: hidden;}
 
@@ -242,6 +253,8 @@
 
 	.orderFoot div{flex:1;}
 
-	.orderFoot .toPay{display: block;background: #159696;color:#fff;width: 100px;line-height: 40px;margin-left:80px;text-align: center;border-radius: 20px;}
+	.orderFoot .toPay{display: block;background: #159696;color:#fff;width: 100px;line-height: 40px;margin-left:80px;text-align: center;border-radius: 20px;}*/
+
+		
 
 </style>

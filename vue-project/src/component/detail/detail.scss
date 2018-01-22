@@ -187,3 +187,29 @@ p,ul {
     }
   }
 }
+
+
+// 弹出层样式
+.mint-popup {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(50,50,50,.5);
+}
+
+.aboutHotelContent {
+  background: #323232;
+  p {
+    &:first-child {
+      font-size: 0.68rem;
+      padding-top: 0.8rem;
+      color: #ffa100;
+    }
+    &:last-child {
+      font-size: 0.5rem;
+      line-height: 0.8rem;
+      color: #fff;
+    }
+  }
+}
+

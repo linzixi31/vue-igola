@@ -21,7 +21,11 @@ import detail from '../component/detail/detail.vue';
 import orderInput from '../component/detail/orderInput.vue'
 
 import payment from '../component/payment/payment.vue';
+
 import paySuccess from "../component/payment/paySuccess.vue";
+
+import publicSearch from '../component/publicSearch/publicSearch.vue';
+
 
 Vue.use(VueRouter);
 
@@ -82,18 +86,29 @@ var router  = new VueRouter({
             name:'orderCom',
             component:orderInput
         },
-         {
+        {
             path:'/payment',
             component:payment
         },
         {
+
             path:'/choice',
             component:ChoiceComponent
         },
         {
             path:'/paySuccess',
             component:paySuccess
-        }
+        },
+        {
+
+        	path:'/publicSearch',
+        	component:publicSearch
+		},
+		{
+			path:'/choice',
+			component:ChoiceComponent
+		}
+
     ]
 })
 
