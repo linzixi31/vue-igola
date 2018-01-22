@@ -1,8 +1,8 @@
 <template>
 <div >
-        <mt-header title="支付页面" id='payment_zx'>
+        <mt-header title="支付" id='payment_zx'>
           <router-link to="/" slot="left">
-            <mt-button icon="back">back</mt-button>
+            <mt-button>稍后支付</mt-button>
           </router-link>
           <mt-button icon="more" slot="right"></mt-button>
           
@@ -10,9 +10,9 @@
 
         <div id="pay_container">
             <h1>您的订单已经提交</h1>
-            <p>你的订单号为<span>{{paydata[0].orderId}}</span></p>
+            <p>你的订单号为<span style='color:#478D95'>{{paydata[0].orderId}}</span></p>
             <p>为了您能顺利完成预定，请尽快支付</p>
-            <mt-button>查看我的订单</mt-button>
+            <mt-button style='margin-top:2.1875rem'>查看我的订单</mt-button>
         </div>
         <mt-checklist
               align="right"
@@ -20,8 +20,8 @@
               :options="options">
         </mt-checklist>
         <div id="pay_footer">
-            <div><span>合计</span><br /><span class='price'>￥{{paydata[0].totalPrice}}</span></div>
-            <div><mt-button size="small" style="color:#fff;background:#F5B23D;text-align:center">支付</mt-button></div>
+            <div class='totalPrice'><span>合计</span><br /><span class='price'>￥{{paydata[0].totalPrice}}</span></div>
+            <div class="pay"><mt-button size="small" style="color:#fff;background:#F5B23D;text-align:center" @click='payment'>支付</mt-button></div>
         </div>
 </div>
 </template>
@@ -64,7 +64,14 @@
                             this.paydata = response.data.data.results
 
                         })
-                    }
+        },
+        method:{
+            payment(){
+                this.axios.post(http.url+'/changeStatus',{id:Id}).then((res)=>{
+                    console.log(res)
+                })
+            }
+        }
     }
     
 </script>

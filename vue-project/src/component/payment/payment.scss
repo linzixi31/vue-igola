@@ -5,8 +5,11 @@
 
 #pay_container{
     height:21.75rem;
+    text-align: center;
     h1{
         font-size: 2rem;
+        line-height: 7.8125rem;
+        
     }
 }
 #pay_footer{
@@ -16,9 +19,14 @@
     width:100%;
     background: #595959;
     color: #fff;
+
     div{
         width:50%;
-        text-align: center;
+        &.pay{
+            text-align: right;
+        }
+        margin: 0.5rem;
+
     }
     .price{
         color: #F5B23D;

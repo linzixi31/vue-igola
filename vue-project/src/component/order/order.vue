@@ -7,7 +7,7 @@
           <mt-tab-item ><a @click ='xue' id="3">已完成</a></mt-tab-item>
         </mt-navbar>
 
-        <mt-tab-container v-model="selected" swipeable='true'>
+        <mt-tab-container v-model="selected" :swipeable='swipeable'>
           <mt-tab-container-item id="1"  >
             <ul class='order_list' >
              
@@ -103,7 +103,8 @@
         data(){
             return{
                 selected: '1',
-                dataset:[]
+                dataset:[],
+                swipeable:true
             }
         },
         methods:{
