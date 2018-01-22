@@ -29,6 +29,7 @@ module.exports = {
             var sql = `SELECT a.hotelName,
                                 a.stars,
                                 a.address,
+                                a.image1,
                                 b.id,
                                 b.type,
                                 b.znePrice,
@@ -41,9 +42,29 @@ module.exports = {
                 if(err){
                         _cb({status:false,error:err});
                 }else{
-                    
+                            console.log(results);
                          _cb({status:true,data:{results}});
                 }
             })
+    },
+    getRoom:function(_data,_cb){
+            //获取当前房间信息
+            var id = _data.roomId;
+            var hotelId = _data.hotelId;
+
+            var sql = `select a.hotelName,a.address,b.type,b.znePrice,b.bedScale from hotel AS a,room AS b where a.id=b.hotelId and a.id=${hotelId} and b.id=${id}`;
+            db.query(sql,function(err,results,fields){
+                if(err){
+                        _cb({status:false,error:err});
+                }else{
+                            // console.log(results);
+                         _cb({status:true,data:{results}});
+                }
+            })
+    },
+    createOrder:function(_data,_cb){
+        // 生成订单
+        var sql = '';
+        
     }
 }

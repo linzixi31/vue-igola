@@ -11,23 +11,28 @@
 				<div>
 					<span class="hotelPrice">￥{{item.znePrice}}</span>
 					<div class="hotelBookBtn">
-						<router-link :to="{name:'orderCom', params:{ id: item.id,data:roomList} }">预订</router-link>
+						<router-link :to="{name:'orderCom', params:{ hotelId:hotelId,id: item.id,data:orderInfor,price:item.znePrice}}">预订</router-link>
 					</div>
 				</div>
 			</li>
-			<!-- <li v-if="dataset == []">此酒店暂无房间可选哦</li> -->
 		</ul>
 	</section>
 </template>
 
 <script type="text/javascript">
+	import store from '../../vuex/store.js';
 
 	export default {
 		data(){
 			return {
-				
+
 			}
 		},
-		props:['roomList']
+		computed:{
+			orderInfor:function(){
+				return store.state.orderDate;
+			}
+		},
+		props:['roomList','hotelId'],
 	}
 </script>

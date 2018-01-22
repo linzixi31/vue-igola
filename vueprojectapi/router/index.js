@@ -4,8 +4,10 @@ var app = express();
 
 app.use(bp.urlencoded({extended: false}));
 
-var rooms = require('./rooms');
-var login = require('./login');
+
+var rooms = require('./rooms')
+var login = require('./login')
+var order = require('./order')
 var detail = require('./detail');
 
 
@@ -27,6 +29,7 @@ module.exports = {
 
         rooms.register(app);
         login.register(app);
+        order.register(app);
         detail.register(app);
         app.listen(_port);
     }

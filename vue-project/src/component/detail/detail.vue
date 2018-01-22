@@ -1,11 +1,11 @@
 <template >
 	<div id="hotelBooking">
-		<detailHead :hotelName="hotelName" :addr="address" :stars="stars"></detailHead>
+		<detailHead :hotelName="hotelName" :addr="address" :stars="stars" :imgurl="imgUrl"></detailHead>
 		<detailDatePick></detailDatePick>
 		<section class="userChoose">
 			<span>含早</span><span>可取消</span>
 		</section>
-		<detailRoomList :roomList="dataset"></detailRoomList>
+		<detailRoomList :roomList="dataset" :hotelId="id"></detailRoomList>
 		<aboutIgola></aboutIgola>
 	</div>
 </template>
@@ -13,14 +13,7 @@
 
 <script type="text/javascript">
 
-	var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
-            document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
-            var scale = 1/window.devicePixelRatio;
-            var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
-            document.getElementById("vp").content = mstr;
-
-
-            //引入sass
+            //引入scss
 	require('./detail.scss');
 
 	//引入各组件
@@ -38,7 +31,8 @@
 				address:'',
 				hotelName:'',
 				stars:0,
-				id:7
+				imgUrl:'',
+				id:2,
 			}
 		},
 		components:{
@@ -53,17 +47,32 @@
 				this.axios.get( http.url + '/getHotelRoom',{params:{hotelId:this.id}}).then(function(res){
 					this.dataset = res.data.data.results;
 					this.hotelInfor(this.dataset);
+					console.log(this.dataset)
 				}.bind(this));
 			},
 			hotelInfor:function(res){
-				//提取酒店名，地址，星级
+				//提取酒店名，地址，星级，图片
 				this.address = res[0].address;
 				this.hotelName = res[0].hotelName;
 				this.stars = res[0].stars;
+				this.imgUrl = res[0].image1;
 			}
 		},
 		mounted:function(){
-			this.detailAjax();
+			var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+            		document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+            		var scale = 1/window.devicePixelRatio;
+            		var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+            		document.getElementById("vp").content = mstr;
+			this.detailAjax();	
+		},
+		beforeRouteLeave(to,from,next){
+			//console.log(333)
+			document.getElementById("vp").content = ''
+			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
+			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
+			// console.log(333)
+			next()
 		}
 		
 	}

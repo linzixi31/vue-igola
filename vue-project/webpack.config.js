@@ -68,11 +68,15 @@ module.exports = {
           name: '[name].[ext]?[hash]'
         }
       },
+      {
+          test: /\.(eot|svg|ttf|woff|woff2)$/,
+          loader: 'file-loader'
+      },
       { 
         test: /\.(woff|svg|eot|ttf)\??.*$/,
         exclude: /node_modules/,
         loader: 'url-loader?limit=80000&name=fonts/[name].[md5.hash.hex:7].[ext]'
-    }   
+      }  
     ]
   },
   resolve: {
