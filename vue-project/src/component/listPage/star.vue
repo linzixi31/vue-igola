@@ -56,13 +56,8 @@
 				this.rangeValue=500;
 			},
 			send:function(){
-				this.axios.get('http://127.0.0.1:88/upDataList',{params:{stars:this.activeName,price:this.rangeValue}}).then(response => {
-					this.msg = response.data.data.results;
-					console.log(this.msg);
-					this.$emit('e1',this.msg);
-				}).catch(function (error) {
-				    console.log(error);
-				});
+				this.msg = [{type:"upDataList"},{params:{stars:this.activeName,price:this.rangeValue}}];
+				this.$emit('e1',this.msg);
 			}
   		}
 	}

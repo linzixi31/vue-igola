@@ -1,9 +1,11 @@
 <template>
 	<div id="datagrid">
-		<ul>
+		<mt-spinner type="triple-bounce" :size="80" v-show="switchShow">
+		</mt-spinner>
+		<ul v-show="!switchShow">
 			<li v-for="(obj,index) in dataset">
 				<router-link :to="{path:'/detail',query: {id: obj.id}}">
-				<img src="../../assets/img/hotel.jpg" height=200px/>
+				<img :src="obj.image2" height="200px"/>
 				<div style="display:inline-block" class="description">
 					<h3>{{obj.hotelName}}</h3>
 					<p>{{obj.enghotelName}}</p>
@@ -23,6 +25,8 @@
 			return {
 				dataset:[],
 				id:'',
+				img:[],
+				switchShow:true,
 				stars:[
 					{img:'./src/assets/img/star.jpg'},
 					{img:'./src/assets/img/star.jpg'},
@@ -35,12 +39,29 @@
 		prop:['dataUp'],
 		beforeMount(){
 			console.log(this.$route.query);
-			this.axios.get('http://127.0.0.1:88/listPage').then(response => {
-				this.dataset = response.data.data.results;
-//				console.log(this.dataset[0].id);
-			}).catch(function (error) {
-//			    console.log(error);
-			});
+			if(this.$route.query.add){
+				var add = this.$route.query.add;
+				var hotelName = this.$route.query.hotelName;
+				this.axios.get('http://127.0.0.1:88/listPageReceive',{params:{add:add,hotelName:hotelName}}).then(response => {
+					console.log(1);
+					window.setTimeout(()=>{
+						this.switchShow = false;
+						this.dataset = response.data.data.results;
+					},500)
+				}).catch(function (error) {
+				    console.log(error);
+				})
+			}else{
+				this.axios.get('http://127.0.0.1:88/listPage').then(response => {
+					console.log(2)
+					window.setTimeout(()=>{
+						this.switchShow = false;
+						this.dataset = response.data.data.results;
+					},500)
+				}).catch(function (error) {
+				    console.log(error);
+				});
+			}
 		}
 	}
 </script>

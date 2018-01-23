@@ -52,13 +52,8 @@
 				this.EactiveName = equipmentName;
 			},
 			send:function(){
-				this.axios.get('http://127.0.0.1:88/shaixuan',{params:{score:this.activeName,equipment:this.EactiveName}}).then(response => {
-					this.msg = response.data.data.results;
-					this.$emit('e1',this.msg);
-					console.log(response);
-				}).catch(function (error) {
-				    console.log(error);
-				});
+				this.msg = [{type:"shaixuan"},{params:{score:this.activeName,equipment:this.EactiveName}}];
+				this.$emit('e1',this.msg);
 			}
 		}
 	}
