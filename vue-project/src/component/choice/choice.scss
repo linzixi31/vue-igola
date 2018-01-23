@@ -7,6 +7,8 @@
     width: 100%;
     height: 4.74rem;
     background: #0396FE;
+    position:fixed;
+    top:0;
 }
 .choice_header h1{
     width: 100%;
@@ -21,6 +23,7 @@
     width: auto;
     padding: 0.26rem;
     flex: 1;
+    margin: 4.74rem 0;
 }
 .item_detail{
     width: 100%;
@@ -36,14 +39,14 @@
 }
 .pic{
     width: 100%;
-    height: 11rem;
+    height: 10rem;
    img{
        width:100%;
        height: 100%;
    }
 }
 .left{
-    width: 21.53rem;
+    width: 16.53rem;
     height: 2.66rem;
     font-size: 12px;
     float: left;

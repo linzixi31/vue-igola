@@ -30,6 +30,7 @@
 <script type="text/javascript">
 
     import http from '../../http/baseUrl.js'
+    import { Toast } from 'mint-ui'
     import './payment.scss'
     export default {
         data(){
@@ -66,12 +67,24 @@
                         })
         },
         methods:{
-            payment(event){
-                console.log(event)
+            payment(){
                 var Id = this.paydata[0].orderId
                 console.log(this.paydata[0].orderId)
                 this.axios.post(http.url+'/changeStatus',{orderId:Id}).then((res)=>{
                     console.log(res)
+                    if(res.data.status){
+                        Toast({
+                              message: '支付成功',
+                              iconClass: 'glyphicon glyphicon-ok'
+                            });
+                        this.$router.push({path:'/paySuccess',query:{orderId:Id}});
+                            
+                    }else{
+                        Toast({
+                              message: '支付失败',
+                              iconClass: 'glyphicon glyphicon-remove'
+                            });
+                    }
                 })
             }
         }

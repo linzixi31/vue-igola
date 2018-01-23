@@ -78,6 +78,7 @@ body,html{
 }
 
 #shaixuan{
+    background: #FFFFFF;
     button{display:inline-block;height:80px;font-size:26px;border-radius:45px;margin:4px;}
     p{
         height:80px;font-size:28px;text-align: center;line-height:80px;font-weight:normal;color:#9A9A9A;
@@ -96,6 +97,7 @@ body,html{
 }
 
 #sort{
+    background: #FFFFFF;
     .mint-cell-wrapper{
         height:100px;border-bottom:1px #CACACA solid;font-size:28px;
     }
@@ -109,7 +111,12 @@ body,html{
         display:inline-block;height:80px;font-size:30px;border-radius:45px;margin-top:20px;
     }
 }
+#listPage{
+    .mint-popup{height:auto;}
+}
 #star{
+    
+    background: #FFFFFF;
     p{
         height:100px;font-size:28px;text-align: center;line-height:80px;font-weight:normal;color:#9A9A9A;
     }
