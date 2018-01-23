@@ -1,6 +1,12 @@
 <template>
 	<div class="online">
-        <header class="online_head">在线值机</header>
+        <!-- <header class="online_head"></header> -->
+        <mt-header title="在线值机" id="online_head">
+            <router-link to="/my" slot="left">
+                <mt-button icon="back">返回</mt-button>
+            </router-link>
+            
+        </mt-header>
         <section class="online_main">
             <div>在线值机服务正在升级中，<br>为您带来不便，敬请原谅。</div>
         </section>
@@ -34,10 +40,10 @@
 
 
  <style type="text/css">
-    body,html{height:100%;}
     #app{height:100%;}
     .online{height:100%;display:flex;flex-direction:column;}
-    .online_head{height:1.933333rem;text-align:center;font-size:0.4533333rem;line-height:1.933333rem;background:#0096FF;color:white;}
+    #online_head{height:1.933333rem;font-size:0.4533333rem;background:#0096FF;color:white;}
+    #online_head .mint-button-icon .mintui{font-size:0.5rem;}
     .online_main{flex:1;text-align:center;}
     .online_main>div{margin-top:50%;font-size:0.4533333rem;color:#666;}
         

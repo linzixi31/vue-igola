@@ -1,6 +1,12 @@
 <template>
 	<div class="about">
-        <header class="about_head">关于iGola</header>
+        <!-- <header class="about_head">关于iGola</header> -->
+        <mt-header title="关于iGola" id="about_head">
+            <router-link to="/my" slot="left">
+                <mt-button icon="back">返回</mt-button>
+            </router-link>
+            
+        </mt-header>
         <section class="about_main">
             <div class="logo">
                     <img src="../../assets/img/logo.jpg">
@@ -53,7 +59,8 @@
         ul,li{list-style:none;padding:0;}
         
         .about{height:100%;display:flex;flex-direction:column;}
-        .about_head{height:1.933333rem;text-align:center;font-size:0.4533333rem;line-height:1.933333rem;background:#0096FF;color:white;}
+        #about_head{height:1.933333rem;font-size:0.4533333rem;background:#0096FF;color:white;}
+        #about_head .mint-button-icon .mintui{font-size:0.5rem;}
         .about_main{flex:1;text-align:center;}
         .about_main .logo{height:5.786667rem;text-align:center;line-height:5.786667rem;}
         .about_main .logo img{width:6.826667rem;height:2.56rem;}

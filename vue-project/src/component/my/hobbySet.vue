@@ -1,6 +1,12 @@
 <template>
 	<div class="hobbySet">
-        <header class="hobby_head">偏好设置</header>
+        <!-- <header class="hobby_head">偏好设置</header> -->
+        <mt-header title="偏好设置" id="hobby_head">
+            <router-link to="/my" slot="left">
+                <mt-button icon="back">返回</mt-button>
+            </router-link>
+            
+        </mt-header>
         <section class="hobby_main">
             <ul>
                 <li>语言 <span><span>简体中文</span><i class="glyphicon glyphicon-chevron-right"></i></span></li>
@@ -37,12 +43,12 @@
 </script>
 
 <style type="text/css">
-	body,html{height:100%;}
     .clearfix::after{content:"";display:block;height:0;clear:both;overflow:hidden;visibility:hidden;zoom:1;}
         ul,li{list-style:none;padding:0;}
     #app{height:100%;}
     .hobbySet{height:100%;display:flex;flex-direction:column;}
-    .hobby_head{height:1.933333rem;text-align:center;font-size:0.4533333rem;line-height:1.933333rem;background:#0096FF;color:white;}
+    #hobby_head{height:1.933333rem;font-size:0.4533333rem;background:#0096FF;color:white;}
+    #hobby_head .mint-button-icon .mintui{font-size:0.5rem;}
     .hobby_main{flex:1;}
     .hobby_main>ul>li{padding:0.6rem;font-size:0.4rem;border-bottom:1px solid #ccc;}
       

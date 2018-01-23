@@ -11,6 +11,21 @@ module.exports = {
                 }
             })
         }),
+        app.get('/listPageReceive',function(request,response){
+        	var condition = request.query;
+        	var add = request.query.add;
+        	var hotelName = request.query.hotelName;
+        	console.log(add,hotelName);
+        	var sql = `select * from hotel where address like "%${add}%" and hotelName like "%${hotelName}%"`;
+        	db.select(sql,function(data){
+        		console.log(data);
+        		if(data.status){
+        			response.send(data);
+        		}else{
+                    response.send(data);
+                }
+        	})
+        })
         app.get('/upDataList',function(request,response){
         	var condition = request.query;
         	console.log(request.query);

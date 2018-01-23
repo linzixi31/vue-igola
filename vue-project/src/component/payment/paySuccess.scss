@@ -7,11 +7,29 @@
         margin-top:40px;
         text-align:center;
         height:13.5625rem;
-        padding:2.0625rem 0;
-        h1{
-            font-size: 1.71875rem
-        }
+        background-size:cover;
+        position:relative;
+        
+        
+        
     }
+    .inner{
+            position:absolute;
+            z-index:1;
+            height: 13.5625rem;
+            width:100%;
+            background: rgba(0,0,0,.4);
+            padding-top: 5rem;
+             h1{
+                font-size: 1.71875rem;
+                color:#fff;
+            
+            }
+            p{
+                color: #fff;
+            }
+    }
+
     .paySuc_list{
         border-top:0.09375rem solid #ccc;
         border-bottom:0.09375rem solid #ccc;
