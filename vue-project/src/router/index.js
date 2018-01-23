@@ -22,12 +22,16 @@ import detail from '../component/detail/detail.vue';
 import orderInput from '../component/detail/orderInput.vue'
 
 import payment from '../component/payment/payment.vue';
+import feedback from '../component/my/feedback.vue'
 
 
-//====================
+import paySuccess from "../component/payment/paySuccess.vue";
+
 import test from "../component/test/test.vue";
 
+
 import publicSearch from '../component/publicSearch/publicSearch.vue';
+
 
 Vue.use(VueRouter);
 
@@ -92,12 +96,25 @@ var router  = new VueRouter({
             component:payment
         },
         {
-        	path:"/search",
-        	component:SearchComponent
+            path:'/choice',
+            component:ChoiceComponent
         },
         {
-        	path:"/choice",
-        	component:ChoiceComponent
+
+
+            path:'/feedback',
+            component:feedback
+        },
+        {
+            path:'/paySuccess',
+            component:paySuccess
+
+
+        },
+        {
+
+        	path:"/search",
+        	component:SearchComponent
         },
         {
         	path:"/test",
@@ -106,11 +123,9 @@ var router  = new VueRouter({
         {
         	path:'/publicSearch',
         	component:publicSearch
-		},
-		{
-			path:'/choice',
-			component:ChoiceComponent
 		}
+
+
     ]
 })
 
