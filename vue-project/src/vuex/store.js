@@ -1,23 +1,15 @@
 import Vue from 'vue';
 import VueX from 'vuex';
+import payment from '../component/payment/payment.js'
 Vue.use(VueX)
 
-const state = {
-	orderDate:{}
-};
 
-const mutations ={
-	change(res){
-		state.orderDate = res;
-	}
-}
 
 const store = new VueX.Store({
     modules:{
-
-    },
-    state,
-    mutations
+        payment
+    }
+ 
 })
 
 export default store

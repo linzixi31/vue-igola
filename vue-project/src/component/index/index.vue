@@ -1,5 +1,6 @@
 <template>
 	<div>
+
 		<div id="index">
 			<div class="index_header">
 				<mt-swipe :auto="4000" class="swipe">

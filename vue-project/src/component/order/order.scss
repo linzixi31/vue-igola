@@ -12,8 +12,16 @@
         color:#000;
     }
 }
+.order_spinner{
+    display:block;
+    position:fixed;
+    top: 33%;
+    left: 42%;
+}
 .mint-tab-container{
     margin-top: 90px;
+    margin-bottom: 50px;
+
     .order_list{
         li{
           display:flex;

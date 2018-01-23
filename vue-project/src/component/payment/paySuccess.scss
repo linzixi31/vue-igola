@@ -1,4 +1,51 @@
-#paySuc_zx{
-    background: #FFF;
-    color: #000;
+#paySuc{
+    #paySuc_zx{
+        background: #FFF;
+        color: #000;
+    }
+    #container_paysus{
+        margin-top:40px;
+        text-align:center;
+        height:13.5625rem;
+        padding:2.0625rem 0;
+        h1{
+            font-size: 1.71875rem
+        }
+    }
+    .paySuc_list{
+        border-top:0.09375rem solid #ccc;
+        border-bottom:0.09375rem solid #ccc;
+        display: flex;
+        padding: 0.6rem;
+        flex-direction:column;
+        &.listrow{
+        flex-direction:row;
+        padding: 0.6rem;
+        
+        }
+        .paySuc_title{
+            flex:1;
+            padding-bottom: 0.3rem
+        }
+        .paySuc_list_con{
+            display: flex;
+            flex-direction: row;
+           .paySuc_right{
+                flex:1;
+            }
+            .paySuc_left{
+                flex:0.5;
+                color:#A3A3A3;
+            } 
+        }
+        .paySuc_right{
+                flex:1;
+            }
+        .paySuc_left{
+            flex:0.5;
+            color:#A3A3A3;
+        } 
+        
+    }
+
 }
