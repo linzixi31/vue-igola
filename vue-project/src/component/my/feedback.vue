@@ -47,7 +47,7 @@
 </script>
 
  <style type="text/css">
-    html,body{height:100%;font-size:75px !important;}
+    
     *{margin:0;padding:0;}
     #app{height:100%;}
     .feedback{height:100%;display:flex;flex-direction: column;}

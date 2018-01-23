@@ -1,11 +1,7 @@
 <template>
 
     <div class="login">
-      <!--   <header class="l_head">
-            <p><span class="iconfont icon-fanhui"></span></p>
-            <p><span class="lg">登录</span></p>
-            <p><span class="d_login">动态码登录</span></p>
-        </header> -->
+
         
         <mt-header title="登录" id="l_head">
             <router-link to="/my" slot="left">
