@@ -47,7 +47,7 @@
 		methods:{
 			toDetail(){
 				console.log(this)
-//				this.$router.push(path:"/")
+				// this.$router.push(path:"/")/
 			}
 		}
 	}

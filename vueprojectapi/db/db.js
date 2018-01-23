@@ -38,38 +38,42 @@ module.exports = {
                 }
         })
     },
-    getHotelRoom:function(_data,_cb){
-            //获取当前id的酒店信息
+    getHotel:function(_data,_cb){
+            //获取当前id的酒店房间信息
             var id = _data.hotelId;
-            var sql = `SELECT a.hotelName,
+            var sql = `
+                                 SELECT a.hotelName,
                                 a.stars,
                                 a.address,
                                 a.enghotelName,
                                 a.hasbreakfast,
                                 a.image1,
+                                a.kindDescription,
                                 b.id,
                                 b.type,
                                 b.znePrice,
                                 b.availablePerson,
                                 b.bedScale
                                 FROM hotel AS a,room AS b 
-                                where a.id=b.hotelId and a.id=${id}` ;
-            
-            db.query(sql,function(err,results,fields){
-                if(err){
-                        _cb({status:false,error:err});
-                }else{
-                            // console.log(results);
-                         _cb({status:true,data:{results}});
-                }
-            })
-    },
-    getRoom:function(_data,_cb){
-            //获取当前房间信息
-            var id = _data.roomId;
-            var hotelId = _data.hotelId;
+                                where a.id=b.hotelId and a.id=${id} and b.cancelAllow = 0`;
 
-            var sql = `select a.hotelName,a.address,b.type,b.znePrice,b.bedScale from hotel AS a,room AS b where a.id=b.hotelId and a.id=${hotelId} and b.id=${id}`;
+            db.query(sql,function(err,results,fields){
+                    if(err){
+                            _cb({status:false,error:err});
+                    }else{
+                                // console.log(results);
+                             _cb({status:true,data:{results}});
+                    }
+            })
+
+    },
+    getHotelRoom:function(_data,_cb){
+            console.log(_data);
+            //获取当前id的酒店信息
+            var id = _data.hotelId;
+            var cancel = _data.cancelAllow;
+            var sql = `SELECT id,type,znePrice,availablePerson,bedScale FROM room where room.hotelId = ${id} and room.cancelAllow = ${cancel}`;
+            
             db.query(sql,function(err,results,fields){
                 if(err){
                         _cb({status:false,error:err});
@@ -104,5 +108,15 @@ module.exports = {
                 }
             })
         
+    },
+    getHotelPic:function(_data,_cb){
+        var sql = `select * from hotel where id= ${_data.hotelId}`;
+        db.query(sql,function(err,results,fields){
+                if(err){
+                        _cb({status:false,error:err});
+                }else{
+                         _cb({status:true,data:{results}});
+                }
+            })
     }
 }

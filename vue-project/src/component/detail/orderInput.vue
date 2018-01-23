@@ -62,7 +62,7 @@
 			<p class="attention">备注&取消政策</p>
 		</div>
 		<div class="orderFoot">
-			<div  @click="summationShow">
+			<div >
 				<p>合计</p>
 				<p>￥{{data.price * nightNum}}</p>
 			</div>
@@ -156,45 +156,45 @@
 					};
 					console.log(newOrder);
 					this.axios.get(http.url + '/createOrder',{params:newOrder}).then(function(result){
-						var order_id = result.data.orderId;
-						console.log(order_id)
-						this.$router.replace(`/payment/${order_id}`);
+						if(result.status){
+							var order_id = result.data.orderId;
+							this.$router.push({path:'/payment',query:{id:order_id}});
+						};
 					}.bind(this))
 				}
-			},
-			summationShow:function(){
-				this.summation = true;
 			}
 		},
 		mounted:function(){
 				
 			//请求当前房间信息
-				this.axios.get( http.url + '/getRoomInformation',{params:{roomId:this.roomId,hotelId:this.hotelId}}).then(function(res){
-					
-					this.roomData = res.data.data.results;
-					this.hotelName = this.roomData[0].hotelName;
-					this.addr = this.roomData[0].address;
-					this.type = this.roomData[0].type;
-					this.bedScale = this.roomData[0].bedScale;
-					console.log(this.$route.params.data)
-				}.bind(this));
+			this.axios.get( http.url + '/getRoomInformation',{params:{roomId:this.roomId,hotelId:this.hotelId}}).then(function(res){
+				
+				this.roomData = res.data.data.results;
+				this.hotelName = this.roomData[0].hotelName;
+				this.addr = this.roomData[0].address;
+				this.type = this.roomData[0].type;
+				this.bedScale = this.roomData[0].bedScale;
+				console.log(this.$route.params.data)
+			}.bind(this));
 
-				$('.addInfor').on('click',function(e){
-					$(this).parent().next().slideDown();
-					$(this).parent().next().find('input').select();
-				});
 
-				$('.btn').on('click',function(){
-					
-					var value = $(this).prev().val();
-					if(value === ''){
-						MessageBox('提示', '请输入住户信息！');
-					}else{
-						$(this).parent().prev().find('.content').text(value);
-						$(this).parent().slideUp();
-					}
-					
-				})
+			$('.addInfor').on('click',function(e){
+				$(this).parent().next().slideDown();
+				$(this).parent().next().find('input').select();
+			});
+
+
+			$('.btn').on('click',function(){
+				
+				var value = $(this).prev().val();
+				if(value === ''){
+					MessageBox('提示', '请输入住户信息！');
+				}else{
+					$(this).parent().prev().find('.content').text(value);
+					$(this).parent().slideUp();
+				}
+				
+			})
 		}
 	}
 </script>
@@ -202,59 +202,5 @@
 <style type="text/css">
 	html,body{height: 100%;}
 	#app{height: 100%;}
-	body{background: #F0F0F0;}
-
-
-	#summation{position: absolute;width:100%;height:20%;background: rgba(50,50,50,.5);bottom:0;}
-
-
-	/*.orderCom{height: 100%;display: flex;flex-direction: column;}
-
-	.orderBody{flex:1;overflow-x: hidden;}
-
-	.mint-header{background: #159696;color:#fff;font-size: 18px;}
-
-	.hotelInfor,.roomInformation{padding:10px;border-bottom:1px solid #CDCDCD;background: #fff;}
-
-	.roomInformation{padding-bottom:40px;color:#494949;}
-
-	.hotelInfor .hotelName{line-height: 30px;font-size: 18px;color:#454545;}
-
-	.hotelInfor .hotelAddr{width: 100%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 12px;color:#949494;}
-
-	.roomInformation p{line-height: 24px;font-size:12px;}	
-
-	.roomInformation .totalNight{color:#979797;margin-top:10px;}
-
-	.roomInfor{display: flex;padding:5px 10px;font-size:12px;line-height: 18px;margin-bottom:5px;background: #fff;}
-
-	.roomInfor div{flex:1;padding:0 30px;}
-
-	.roomInfor div:first-child{border-right:1px solid #CDCDCD;text-align: center;}
-
-	.roomInfor div p:first-child{color:#979797;}
-	
-	.userInfor{background: #fff;line-height: 50px;color:#9A9A9A;}
-	.userInfor .userinformation{display: flex;border-bottom:1px solid #CDCDCD;padding:0 10px;}
-	.userInfor .userinformation span{padding-left:10px;width:100%;white-space:nowrap;overflow:hidden;text-overflow: ellipsis;}
-	.userInfor .userinformation div:first-child{flex:2;}
-	.userInfor .userinformation div a{display: block;color:#9A9A9A;}
-	.userInfor .userinformation div:last-child{flex:1;text-align: right;}
-	
-	.userInfor .userInput{border-bottom: 1px solid #CDCDCD;display: none;}
-	.userInfor .userInput span{width: 30%;}
-	.userInfor .userInput input{display: inline-block;width: 63%;}
-
-
-	.attention{text-align: center;line-height: 40px;background: #fff;margin-top:5px;color:#bbb;}
-
-
-	.orderFoot{display: flex;padding:0 10px;}
-
-	.orderFoot div{flex:1;}
-
-	.orderFoot .toPay{display: block;background: #159696;color:#fff;width: 100px;line-height: 40px;margin-left:80px;text-align: center;border-radius: 20px;}*/
-
-		
 
 </style>

@@ -2,9 +2,11 @@
 <template>
 	<div>
 		<section class="hotelImg">
-			<img :src="imgurl">
+			<img :src="imgurl ? imgurl : './src/assets/img/timg.gif'" @click="toPicList">
 			<a class="backToList" href="#/listPage"><i class="glyphicon glyphicon-menu-left"></i></a>
-			<div class="hotelImgNum"><span>32</span>张</div>
+			<div class="hotelDes">
+				<span v-for="val in kindDescription">{{val}}</span>
+			</div>
 		</section>
 		<section class="hotelInfor">
 			<p class="hotelTitle">
@@ -26,6 +28,16 @@
 				
 			}
 		},
-		props:['hotelName','addr','stars','imgurl','enghotelName']
+		props:['hotelName','addr','stars','imgurl','enghotelName','hotelId','kindDescription'],
+		methods:{
+			toPicList:function(){
+
+				this.$router.push({path:'/piclist',query:{hotelId:this.hotelId}})
+			}
+		}
 	}
 </script>
+
+<style type="text/css">
+
+</style>

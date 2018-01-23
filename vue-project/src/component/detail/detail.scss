@@ -6,16 +6,17 @@ p,ul {
   margin: 0;
   padding: 0;
 }
-#hotelBooking {
-  background: #eee;
-}
+// #hotelBooking {
+//   background: #eee;
+// }
 .hotelImg {
   position: relative;
   font-size: 0;
   height: 6.6rem;
-  img {
+  img{
     width: 100%;
-    height:100%;
+    // height:100%;
+     height: 6.6rem;
   }
   .backToList {
     display: block;
@@ -28,12 +29,12 @@ p,ul {
     top: 0.133333rem;
     left: 0;
   }
-  .hotelImgNum {
+  .hotelDes {
     position: absolute;
     right: 0.44rem;
     bottom: 0.333333rem;
     font-size: 0.373333rem;
-    color: #fff;
+    span{padding:0 0.2rem;margin:0 0.1rem;background: rgba(255,255,255,.8);border-radius:0.25rem;}
   }
 }
 .hotelInfor {
@@ -78,7 +79,7 @@ p,ul {
         .night{
                   width:60%;
                    background: #f1f1f1;
-                  padding: 0 0.4rem;
+                  padding: 0.06rem 0.4rem;
                   border-radius: 0.226667rem;
                   font-size: 0.32rem;
         }
@@ -103,7 +104,11 @@ p,ul {
     border-radius: 0.133333rem;
     border: 0.013333rem solid #f1f1f1;
   }
+  .cancelBtn{border:0.013333rem solid #ffa100;}
 }
+
+.loadingIcon img{margin:0 auto;}
+
 .hotelRoomList {
   ul {
     li {

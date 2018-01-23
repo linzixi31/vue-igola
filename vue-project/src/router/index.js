@@ -17,8 +17,8 @@ import ChoiceComponent from "../component/choice/choice.vue";
 import ordercomponent from '../component/order/order.vue';
 
 import detail from '../component/detail/detail.vue';
-
 import orderInput from '../component/detail/orderInput.vue'
+import picList from '../component/detail/picList.vue';
 
 import payment from '../component/payment/payment.vue';
 import publicSearch from '../component/publicSearch/publicSearch.vue';
@@ -89,11 +89,15 @@ var router  = new VueRouter({
         {
         	path:'/publicSearch',
         	component:publicSearch
-		},
-		{
-			path:'/choice',
-			component:ChoiceComponent
-		}
+	},
+	{
+		path:'/choice',
+		component:ChoiceComponent
+	},
+        {
+            path:'/piclist',
+            component:picList
+        }
     ]
 })
 
