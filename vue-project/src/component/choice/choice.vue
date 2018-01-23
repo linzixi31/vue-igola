@@ -46,9 +46,11 @@
 			})
 		},
 		methods:{
+
 			toDetail(_id){
-//				console.log(_id)
+
 				this.$router.push({path:"/detail",query:{id:_id}})
+
 			}
 		}
 	}
