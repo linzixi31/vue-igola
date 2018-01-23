@@ -49,6 +49,7 @@
 				this.axios.get( http.url + '/getHotel',{params:{hotelId:id}}).then(function(res){
 					this.dataset = res.data.data.results;
 					this.loading = false;
+					// console.log(this.dataset);
 					this.hotelInfor(this.dataset);
 
 				}.bind(this));
@@ -63,7 +64,9 @@
 				this.kindDescription = res[0].kindDescription.split('，');
 			},
 			changeRoom:function(newList){
+
 				this.dataset = newList;
+				// console.log(this.dataset);
 			}
 			
 		},
