@@ -8,7 +8,20 @@
 					<mt-swipe-item class="swipeItem-3"></mt-swipe-item>
 					<mt-swipe-item class="swipeItem-4"></mt-swipe-item>
 				</mt-swipe>
-				<div class="cover"></div>
+				<div class="cover">
+					<div class="cate" >
+						<span class="small" @click="allHotel">
+							<i class="iconfont icon-sousuo"></i>
+						</span>
+						<p>全部酒店</p>
+					</div>
+					<div class="cate" >
+						<span class="small" @click="search">
+							<i class="iconfont icon-jiudian"></i>
+						</span>
+						<p>搜索</p>
+					</div>
+				</div>
 			</div>
 			<div class="index_main">
 				<div class="recommend">
@@ -19,7 +32,7 @@
 					<div class="detail" v-for="item in dataset"
 						 v-if="item.hot == 1" @click="toDetail(item.id)" :id="item.id">
 						<div class="pic">
-							<img :src="item.image1" />
+							<img  v-lazy="item.image1" />
 						</div>
 						<div class="describe">
 							<div class="left">
@@ -43,8 +56,10 @@
         
 	import "./index.scss";
 	import http from "../../http/baseUrl";
+	import {Lazylaod} from "mint-ui";
 	import footernav from "../footernav/footernav.vue";
-
+	
+	
 	export default{
 		components:{
 			footernav
@@ -52,6 +67,7 @@
 		data(){
 			return{
 				dataset:[]
+				
 			}
 		},
 		beforeMount(){
@@ -62,6 +78,12 @@
 		methods:{
 			toDetail(_id){
 				this.$router.push({path:"/detail",query:{id:_id}});
+			},
+			allHotel(){
+				this.$router.push({path:"/listPage"});
+			},
+			search(){
+				this.$router.push({path:"/search"})
 			}
 		}
 	}
@@ -70,3 +92,11 @@
 
 
 </script>
+<style>	
+/*image[lazy=loading] {
+  width: 40px;
+  height: 300px;
+  margin: auto;
+}*/
+
+</style>
