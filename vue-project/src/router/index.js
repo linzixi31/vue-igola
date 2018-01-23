@@ -102,11 +102,11 @@ var router  = new VueRouter({
             component:ChoiceComponent
         },
         {
-<<<<<<< HEAD
+
             path:'/feedback',
             component:feedback
-        }
-=======
+        },
+        {
             path:'/paySuccess',
             component:paySuccess
         },
@@ -133,7 +133,7 @@ var router  = new VueRouter({
 			component:ChoiceComponent
 		}
 
->>>>>>> d4533d70e6f008ffbfd999e1a06b5bdd5810bad0
+
     ]
 })
 

@@ -13,8 +13,8 @@
                 
             </div>
             <div class="list">
-                <div class="waiteGo">待出行 <br/> <i>0</i></div>
-                <div class="waiteGo" @click="get_order">我的订单 <br/><i>0</i></div>
+                <div class="waiteGo" @click="waitGo">待出行 <br/> <i>{{noTravel}}</i></div>
+                <div class="waiteGo" @click="get_order">我的订单 <br/><i>{{orderTotal}}</i></div>
                 <div class="waiteGo">优惠券 <br/> <i>0</i></div>
                 <div class="waiteGo">旅客 <br/>  <i>0</i></div>
             </div>      
@@ -78,7 +78,8 @@
    
        
     import footernav from '../footernav/footernav';
-    
+    import http from '../../http/baseUrl.js'
+   
        
         export default{
             data(){
@@ -86,7 +87,9 @@
                     judge:Boolean(window.localStorage.username),
                     username:window.localStorage.username,
                     popupVisible:false,
-                    i_popupShow:false
+                    i_popupShow:false,
+                    orderTotal:0,
+                    noTravel:0
                 }
             },
             components:{
@@ -119,6 +122,9 @@
                 },
                 get_order:function(){
                     location.href="#/order"
+                },
+                waitGo:function(){
+                    location.href="#/order?selected=2"
                 }
             },
             mounted:function(){
@@ -136,6 +142,26 @@
                 document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
                 // console.log(333)
                 next()
+            },
+            beforeMount:function(){
+                var self=this;
+                this.axios.get(http.url+'/userHotelStatus?num=0&username='+self.username).then((response) => {
+                        console.log(response.data)
+                        var _data=response.data.data.results[0];
+                         console.log(_data['count(*)'])
+                });
+                this.axios.get(http.url+'/userHotelStatus?num=1&username='+self.username).then((response) => {
+                        console.log(response.data)
+                        var _data=response.data.data.results[0];
+                        console.log(_data['count(*)']);
+                        self.noTravel=_data['count(*)']
+                })
+                this.axios.get(http.url+'/userHotelStatus?username='+self.username).then((response) => {
+                        
+                        var _data=response.data.data.results[0];
+                        console.log(_data['count(*)'])
+                        self.orderTotal=_data['count(*)']
+                })
             }
             
 
