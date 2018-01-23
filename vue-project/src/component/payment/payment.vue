@@ -72,8 +72,8 @@
         },
         methods:{
             payment(){
-                var Id = this.paydata[0].orderId
-                console.log(this.paydata[0].orderId)
+                var Id = this.paydata.orderId
+                console.log(this.paydata.orderId)
                 this.axios.post(http.url+'/changeStatus',{orderId:Id}).then((res)=>{
                     console.log(res)
                     if(res.data.status){

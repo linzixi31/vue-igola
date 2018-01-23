@@ -24,6 +24,14 @@
             background-size: 100% 100%;
         }
     }
+    p{
+        position: absolute;
+        top: 1.8rem;
+        left: 1.66rem;
+        font-size: 24px;
+        color: #000000;
+        z-index: 200000;
+    }
     h1{
         width: 100%;
         height: auto;
@@ -32,6 +40,7 @@
         top: 2.64rem;
         z-index: 100000;
         text-align: center;
+        color: #000000;
     }
 }
 .search_main{

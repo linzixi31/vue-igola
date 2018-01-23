@@ -5,12 +5,9 @@ input{border:none;outline: none;color:#9D9B9E;}
 #app{height:100%;}
 body,html{height:100%;}
 .login{height:100%;background:url('../../assets/img/timg.jpg') no-repeat;}
-.l_head{display:flex;padding: 0.133333rem 0.4rem;height:1.106667rem;color:#fff;}
-.l_head>p{flex:1;}
-.l_head>p>span{font-size:0.453333rem;line-height:1.106667rem;}
-.l_head>p:nth-child(2){text-align:center;}
-.l_head>p:nth-child(3){text-align:right;}
-.l_head>p:nth-child(3)>span{font-size:0.333333rem;}
+#l_head{height:1.106667rem;color:#fff;background:rgba(0,0,0,0);font-size:0.4333rem;}
+#l_head .mint-button-icon .mintui{font-size:0.5rem;}
+
 .l_main{padding-top:3.066667rem;} 
 .l_main>p{text-align:center;}
 .l_main>p>input{height:1.6rem;width:8.453333rem;border-bottom:0.026667rem solid #fff;padding:0.56rem 0;background:rgba(0,0,0,0);margin:0 auto;color:#fff;font-size:0.466667rem;}

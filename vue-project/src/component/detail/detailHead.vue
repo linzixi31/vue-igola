@@ -1,10 +1,13 @@
 //详情页头部组件(头部和标题部分)
 <template>
+	 <!-- @click ="$router.push({path:'/listPage'} )-->
 	<div>
 		<section class="hotelImg">
-			<img :src="imgurl">
-			<a class="backToList" href="#/listPage"><i class="glyphicon glyphicon-menu-left"></i></a>
-			<div class="hotelImgNum"><span>32</span>张</div>
+			<img :src="imgurl ? imgurl : './src/assets/img/timg.gif'" @click="toPicList">
+			<a class="backToList" @click="$router.go(-1)"><i class="glyphicon glyphicon-menu-left"></i></a>
+			<div class="hotelDes">
+				<span v-for="val in kindDescription">{{val}}</span>
+			</div>
 		</section>
 		<section class="hotelInfor">
 			<p class="hotelTitle">
@@ -26,6 +29,16 @@
 				
 			}
 		},
-		props:['hotelName','addr','stars','imgurl','enghotelName']
+		props:['hotelName','addr','stars','imgurl','enghotelName','hotelId','kindDescription'],
+		methods:{
+			toPicList:function(){
+
+				this.$router.push({path:'/piclist',query:{hotelId:this.hotelId}})
+			}
+		}
 	}
 </script>
+
+<style type="text/css">
+
+</style>

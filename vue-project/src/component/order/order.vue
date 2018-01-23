@@ -98,10 +98,10 @@
     export default  {
         mounted(){
             var name = localStorage.getItem("username")
-            console.log(name)
+            //console.log(name)
             this.axios.post(http.url+'/order',{name:name}).then((response) => {
                 this.dataset = response.data.data.results;
-              console.log(response.data.data.results)
+              //console.log(response.data.data.results)
               this.switchShow = false;
             })
         },

@@ -60,9 +60,9 @@
             <footernav></footernav>
         </div>
         <mt-popup   v-model="popupVisible"  position="bottom" id="my_popup">
-            <div><i class="glyphicon glyphicon-phone-alt"></i> <br />热线电话</div>
-            <div><i class="glyphicon glyphicon-comment"></i> <br />在线客服</div>
-            <div><i class="glyphicon glyphicon-envelope"></i> <br />邮件反馈</div>
+            <div><i class="glyphicon glyphicon-phone-alt"></i style="color:#fff;"> <br />热线电话</div>
+            <div><i class="glyphicon glyphicon-comment"></i style="color:#fff;"> <br />在线客服</div>
+            <div><i class="glyphicon glyphicon-envelope"></i style="color:#fff;"> <br />邮件反馈</div>
         </mt-popup>    
         <mt-popup   v-model="i_popupShow"  position="right" id="my_rightPop">
             <div><i class="glyphicon glyphicon-info-sign"></i> </div>
@@ -144,24 +144,28 @@
                 next()
             },
             beforeMount:function(){
-                var self=this;
-                this.axios.get(http.url+'/userHotelStatus?num=0&username='+self.username).then((response) => {
-                        console.log(response.data)
+                 var self=this;
+                if(self.username){
+                    this.axios.get(http.url+'/userHotelStatus?num=0&username='+self.username).then((response) => {
+                        // console.log(response.data)
                         var _data=response.data.data.results[0];
-                         console.log(_data['count(*)'])
-                });
-                this.axios.get(http.url+'/userHotelStatus?num=1&username='+self.username).then((response) => {
-                        console.log(response.data)
+                         // console.log(_data['count(*)'])
+                    });
+                    this.axios.get(http.url+'/userHotelStatus?num=1&username='+self.username).then((response) => {
+                        // console.log(response.data)
                         var _data=response.data.data.results[0];
-                        console.log(_data['count(*)']);
+                        // console.log(_data['count(*)']);
                         self.noTravel=_data['count(*)']
-                })
-                this.axios.get(http.url+'/userHotelStatus?username='+self.username).then((response) => {
+                    })
+                    this.axios.get(http.url+'/userHotelStatus?username='+self.username).then((response) => {
                         
                         var _data=response.data.data.results[0];
-                        console.log(_data['count(*)'])
+                        // console.log(_data['count(*)'])
                         self.orderTotal=_data['count(*)']
-                })
+                    })
+                }
+               
+                
             }
             
 
