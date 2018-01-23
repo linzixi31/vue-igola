@@ -1,11 +1,9 @@
 <template >
 	<div id="hotelBooking">
-		<detailHead :hotelName="hotelName" :addr="address" :stars="stars" :imgurl="imgUrl" :enghotelName="enghotelName"></detailHead>
+		<detailHead :hotelName="hotelName" :addr="address" :stars="stars" :imgurl="imgUrl" :enghotelName="enghotelName" :hotelId="id" :kindDescription="kindDescription"></detailHead>
 		<detailDatePick></detailDatePick>
-		<section class="userChoose">
-			<span>含早</span><span>可取消</span>
-		</section>
-		<detailRoomList :roomList="dataset" :hotelId="id"></detailRoomList>
+		
+		<detailRoomList :roomList="dataset" :hotelId="id" :loading="loading" @changeRoomList="changeRoom"></detailRoomList>
 		<aboutIgola></aboutIgola>
 	</div>
 </template>
@@ -28,13 +26,15 @@
 	export default {
 		data(){
 			return {
-				dataset:[],
+				loading:true,
 				address:'',
 				hotelName:'',
 				enghotelName:'',
 				stars:0,
 				imgUrl:'',
 				id:'',
+				kindDescription:[],
+				dataset:[]
 			}
 		},
 		components:{
@@ -46,10 +46,11 @@
 		methods:{
 			detailAjax:function(id){
 				//请求当前酒店信息
-				this.axios.get( http.url + '/getHotelRoom',{params:{hotelId:id}}).then(function(res){
+				this.axios.get( http.url + '/getHotel',{params:{hotelId:id}}).then(function(res){
 					this.dataset = res.data.data.results;
+					this.loading = false;
 					this.hotelInfor(this.dataset);
-//					console.log(this.dataset)
+
 				}.bind(this));
 			},
 			hotelInfor:function(res){
@@ -59,7 +60,12 @@
 				this.stars = res[0].stars;
 				this.imgUrl = res[0].image1;
 				this.enghotelName = res[0].enghotelName;
+				this.kindDescription = res[0].kindDescription.split('，');
+			},
+			changeRoom:function(newList){
+				this.dataset = newList;
 			}
+			
 		},
 		mounted:function(){
 			var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
@@ -67,10 +73,7 @@
             		var scale = 1/window.devicePixelRatio;
             		var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
             		document.getElementById("vp").content = mstr;
-			this.detailAjax();	
-			
-//			console.log(this.$route.query.id);
-            		console.log(this.$route.query.id)
+
             		this.id = this.$route.query.id;
 			this.detailAjax(this.id);	
 		},

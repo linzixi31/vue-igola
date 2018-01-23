@@ -1,6 +1,7 @@
 <template>
 	<div id="search_page">
 		<div class="search_header">
+			<p @click="back"> < </p>
 			<h1>酒店</h1>
 			<mt-swipe :auto="3000" class="choice_carousel">
 				<mt-swipe-item class="carouselItem"></mt-swipe-item>
@@ -44,8 +45,10 @@
 		},
 		methods:{
 			search(){
-//				console.log(this.add,this.hotelName);	
 				this.$router.push({path:"/listPage",query:{add:this.add,hotelName:this.hotelName}})
+			},
+			back(){
+				this.$router.push({path:"/index"});
 			}
 		}
 	}
