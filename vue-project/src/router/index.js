@@ -21,6 +21,7 @@ import detail from '../component/detail/detail.vue';
 import orderInput from '../component/detail/orderInput.vue'
 
 import payment from '../component/payment/payment.vue';
+import feedback from '../component/my/feedback.vue'
 
 
 Vue.use(VueRouter);
@@ -89,6 +90,10 @@ var router  = new VueRouter({
         {
             path:'/choice',
             component:ChoiceComponent
+        },
+        {
+            path:'/feedback',
+            component:feedback
         }
     ]
 })

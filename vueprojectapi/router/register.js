@@ -5,7 +5,7 @@ module.exports = {
         app.get('/register',function(req, res){
             var data=req.query;
           console.log(data);
-           var sql = `INSERT INTO user (telephone,password) VALUES (${data.telephone},${data.password})`;
+           var sql = "INSERT INTO user (telephone,password) VALUES ('"+data.telephone+"','"+data.password+"')";
             db.select(sql,function(result){
                 if(result.status){
                     console.log(666)

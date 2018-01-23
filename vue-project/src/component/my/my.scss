@@ -7,7 +7,7 @@ body,html{height:100%;}
 .ls_head .box .box1{height:1.626667rem;padding-left:0.533333rem;flex:3;}
 .ls_head .box .box1 .usershow{width:1.626667rem;height:1.626667rem;border:0.0216rem solid #fff;border-radius:50%;background:white;padding:0.04rem;}
 .ls_head .box .box1 .usershow>span{display:inline-block;width:1.5rem;height:1.5rem;background:#DCDCDC;border-radius:50%;font-size:0.5rem;text-align:center;line-height:1.5rem;}
-.ls_head .box .box1 .usershow>span>img{width:1.5rem;height:1.5rem;border-radius:50%;text-align:center;line-height:1.5rem;}
+.ls_head .box .box1 .usershow>span>img{width:1.5rem;height:1.5rem;border-radius:50%;text-align:center;line-height:1.5rem;vertical-align:baseline;}
 .ls_head .box .box2{height:1.626667rem;flex:7;padding-right:0.533333rem;}
 .ls_head .box .box2>.username_box{text-align:right;font-size:0.4rem;color:#fff;}
 .ls_head .box .box2>.username_box>span{display:inline-block;width:2.0rem;height:0.626667rem;border:1px solid #fff;border-radius:0.3133335rem;font-size:0.346667rem;text-align:center;line-height:0.626667rem;}
@@ -32,4 +32,17 @@ body,html{height:100%;}
 .m_content .main li>.iconfont{font-size:0.4rem;}
 .m_content .main li>.gt{float:right;}
 
+#my_popup{width:100%;display:flex;height:3.666667rem;}
+#my_popup>div{flex:1;text-align:center;font-size:0.3rem;padding-top:1rem;}
+#my_popup>div>i{display:inline-block;width:1rem;height:1rem;border-radius:50%;font-size:0.5rem;line-height:1rem;text-align:center;color:#ccc;}
+#my_popup>div:nth-child(1)>i{background:#265CFF;color:#fff;}
+#my_popup>div:nth-child(2)>i{background:#40FF00;color:#fff;}
+#my_popup>div:nth-child(3)>i{background:#006DD9;color:#fff;}
 
+#my_rightPop{width:100%;height:100%;background:#000;padding-top:6rem;}
+#my_rightPop div{text-align:center;}
+#my_rightPop>div:nth-child(1){font-size:2rem;color:#006DD9;}
+#my_rightPop>div:nth-child(2){font-size:0.4rem;color:#fff;line-height:1rem;}
+#my_rightPop>div:nth-child(3){margin-top:1rem;}
+#my_rightPop>div:nth-child(3)>span{display:inline-block;width:4rem;height:1rem;border:1px solid #fff;border-radius:0.5rem;text-align:center;line-height:1rem;font-size:0.4rem;color:#fff;}
+#my_rightPop>div:nth-child(3)>span:nth-child(2){background:#006DD9;}
