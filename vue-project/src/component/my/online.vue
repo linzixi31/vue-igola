@@ -40,7 +40,6 @@
 
 
  <style type="text/css">
-    body,html{height:100%;font-size:75px !important;}
     #app{height:100%;}
     .online{height:100%;display:flex;flex-direction:column;}
     #online_head{height:1.933333rem;font-size:0.4533333rem;background:#0096FF;color:white;}
