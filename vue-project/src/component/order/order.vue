@@ -91,7 +91,9 @@
     import http from '../../http/baseUrl.js'
     export default  {
         mounted(){
-            this.axios.get(http.url+'/order').then((response) => {
+            var name = localStorage.getItem("username")
+            console.log(name)
+            this.axios.post(http.url+'/order',{name:name}).then((response) => {
                 this.dataset = response.data.data.results;
               console.log(response.data.data.results)
 
@@ -113,7 +115,7 @@
             },
             pay(item){
               if(item.status=='0'){
-                    this.$router.push({path:'/payment',query:{id:item.id}})
+                    this.$router.push({path:'/payment',query:{id:item.orderId}})
               }else{
                 return false
               }

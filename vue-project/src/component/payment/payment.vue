@@ -1,7 +1,7 @@
 <template>
 <div >
         <mt-header title="支付" id='payment_zx'>
-          <router-link to="/" slot="left">
+          <router-link to="/order" slot="left">
             <mt-button>稍后支付</mt-button>
           </router-link>
           <mt-button icon="more" slot="right"></mt-button>
@@ -21,7 +21,7 @@
         </mt-checklist>
         <div id="pay_footer">
             <div class='totalPrice'><span>合计</span><br /><span class='price'>￥{{paydata[0].totalPrice}}</span></div>
-            <div class="pay"><mt-button size="small" style="color:#fff;background:#F5B23D;text-align:center" @click='payment'>支付</mt-button></div>
+            <div class="pay"><mt-button size="small" style="color:#fff;background:#F5B23D;text-align:center" @click='payment(event)'>支付</mt-button></div>
         </div>
 </div>
 </template>
@@ -30,6 +30,7 @@
 <script type="text/javascript">
 
     import http from '../../http/baseUrl.js'
+    import { Toast } from 'mint-ui'
     import './payment.scss'
     export default {
         data(){
@@ -59,16 +60,31 @@
             //console.log(this.$route.query)
             var Id = this.$route.query.id
             this.axios.post(http.url + '/payment',{id: Id}).then((response) => {
-                            console.log(333)
-                            console.log(response.data.data.results)
+                            //console.log(333)
+                            //console.log(response.data.data.results)
                             this.paydata = response.data.data.results
 
                         })
         },
-        method:{
+        methods:{
             payment(){
-                this.axios.post(http.url+'/changeStatus',{id:Id}).then((res)=>{
+                var Id = this.paydata[0].orderId
+                console.log(this.paydata[0].orderId)
+                this.axios.post(http.url+'/changeStatus',{orderId:Id}).then((res)=>{
                     console.log(res)
+                    if(res.data.status){
+                        Toast({
+                              message: '支付成功',
+                              iconClass: 'glyphicon glyphicon-ok'
+                            });
+                        this.$router.push({path:'/paySuccess',query:{orderId:Id}});
+                            
+                    }else{
+                        Toast({
+                              message: '支付失败',
+                              iconClass: 'glyphicon glyphicon-remove'
+                            });
+                    }
                 })
             }
         }

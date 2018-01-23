@@ -1,4 +1,91 @@
-#search{
+#search_page{
     width: 100%;
+}
+.search_header{
+    width: 100%;
+    height: 14.4rem;
+    .choice_carousel{
+        width: 100%;
+        height: 14.4rem;
+        .carouselItem{
+            width: 100%;
+            height: 100%;
+        }
+        .carouselItem:nth-child(1){
+            background: url(../../assets/img/c1.jpg);
+            background-size: 100% 100%;
+        }
+        .carouselItem:nth-child(2){
+            background: url(../../assets/img/c2.jpg);
+            background-size: 100% 100%;
+        }
+        .carouselItem:nth-child(3){
+            background: url(../../assets/img/c3.jpg);
+            background-size: 100% 100%;
+        }
+    }
+    h1{
+        width: 100%;
+        height: auto;
+        color: #FFFFFF;
+        position: absolute;
+        top: 2.64rem;
+        z-index: 100000;
+        text-align: center;
+    }
+}
+.search_main{
+    width: 100%;
+    padding-bottom: 0.8rem;
+    .hotelMeg{
+        width: auto;
+        height: 4.8rem;
+        padding: 0 1.2rem;
+        border-bottom: 1px solid #DCDCDC;
+        i{
+            display: block;
+            width: 1.44rem;
+            height: 4.8rem;
+            line-height: 4.8rem;
+            color: #646464;
+            float: left;
+            font-size: 26px;
+        }
+        input{
+            padding: 0;
+            border: none;
+            outline: none;
+            width: 90%;
+            height: 100%;
+            font-size: 16px;
+            float: right;
+        }
+        input::-webkit-input-placeholder{
+            color: #8C8C8C;
+        }
+    }
+    .btn{
+        width: 100%;
+        #btnSearch{
+            width: 80%;
+            height: 4rem;
+            background: #149696;
+            border: 1px solid #149696;
+            border-radius: 2.66rem;
+            color: #FFFFFF;
+            margin-top: 0.8rem; 
+        }
+    }
+
+}
+.search_foot{
+    width: 100%;
+    height: 20rem;
     background: #F0F0F0;
+    padding-top: 0.8rem;
+    p{
+        width: 100%;
+        text-align: center;
+        color: #979797;
+    }
 }

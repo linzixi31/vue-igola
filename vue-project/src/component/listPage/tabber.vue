@@ -63,6 +63,7 @@
 	        	this.shaixuanVisible = true;
 	        },
 	        send:function(msg){
+	        	console.log(msg);
 	        	this.$emit('sendNew',msg);
 	        	this.sortVisible = false;
 	          	this.startVisible = false;
