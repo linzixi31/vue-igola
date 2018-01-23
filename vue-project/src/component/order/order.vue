@@ -40,7 +40,7 @@
           </mt-tab-container-item>
           <mt-tab-container-item id="2" v-show="!switchShow">
             <ul class='order_list' >
-                <li class='line1' v-for='(item,idx) in dataset' :key="idx" v-if='item.status== 1'>
+                <li class='line1' v-for='(item,idx) in dataset' :key="idx" v-if='item.status== 1' @click='pay(item)'>
                   <div>
                     <img slot="icon" src="../../assets/img/hotel.png" style='width:2rem'>
                   </div>
@@ -62,7 +62,7 @@
           </mt-tab-container-item>
           <mt-tab-container-item id="3" v-show="!switchShow">
             <ul class='order_list' >
-                <li class='line1' v-for='(item,idx) in dataset' :key="idx" v-if='item.status== 2'>
+                <li class='line1' v-for='(item,idx) in dataset' :key="idx" v-if='item.status== 2' @click='pay(item)'>
                   <div>
                     <img slot="icon" src="../../assets/img/hotel.png" style='width:2rem'>
                   </div>
@@ -124,7 +124,7 @@
               if(item.status=='0'){
                     this.$router.push({path:'/payment',query:{id:item.orderId}})
               }else{
-                return false
+                this.$router.push({path:'/paySuccess',query:{orderId:item.orderId}})
               }
             },
 
