@@ -3,17 +3,17 @@
 		<div class="score">
 			<p>评分</p>
 			<div class="scoreList">
-				<mt-button size="small" v-for="item in scoreSet" @click="selected(item.value)" :class="{active:activeName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
+				<mt-button size="small" v-for="(item,idx) in scoreSet" :key="item.idx" @click="selected(item.value)" :class="{active:activeName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
 			</div>
 		</div>
 		<div>
 			<p>酒店设施</p>
 			<div class="equipList">
-				<mt-button size="small" v-for="item in equipment" @click="find(item.value)" :class="{active:EactiveName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
+				<mt-button size="small" v-for="(item,idx) in equipment" :key="item.idx" @click="find(item.value)" :class="{active:EactiveName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
 			</div>
 		</div>
-		<mt-button type="default" size="large" class="clear">清除</mt-button>
-		<mt-button type="primary" size="large" @click = 'send'>确认</mt-button>
+		<mt-button type="default" size="large" class="clear" @click='clear'>清除</mt-button>
+		<mt-button type="primary" size="large" @click ='send'>确认</mt-button>
 	</div>
 </template>
 
@@ -50,6 +50,10 @@
 			},
 			find:function(equipmentName){
 				this.EactiveName = equipmentName;
+			},
+			clear:function(){
+				this.EactiveName = false;
+				this.activeName = false;
 			},
 			send:function(){
 				this.msg = [{type:"shaixuan"},{params:{score:this.activeName,equipment:this.EactiveName}}];
