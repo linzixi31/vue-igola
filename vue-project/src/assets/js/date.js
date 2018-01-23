@@ -2,8 +2,6 @@
 
 import store from '../../vuex/store.js';
 
-
-
 // 日期选择插件(自定义)
 
 var date = function ($) {
@@ -18,8 +16,8 @@ var date = function ($) {
 
     // 初始化模板
     function initTemplate() {
-      var entertime = $('.entertime').val();
-      var leavetime = $('.leavetime').val();
+      var entertime = $('.entertime').text();
+      var leavetime = $('.leavetime').text();
       var listIndex = 0;
       $('body').css({
         overflow: 'hidden'
@@ -74,26 +72,23 @@ var date = function ($) {
         enterMonth.length === 1 ? enterMonth = '0' + enterMonth : false;
         var enterDay = $('.enter').text();
         enterDay.length === 1 ? enterDay = '0' + enterDay : false;
-        var enterTime = enterMonth + '月' + enterDay + '日';
+        var enterTime = enterMonth + '/' + enterDay;
         // 获取离开时间
         var leaveYear = $('.enter').parents('.day').siblings('.title').find('.y').text();
         var leaveMonth = $('.leave').parents('.day').siblings('.title').find('.m').text();
         leaveMonth.length === 1 ? leaveMonth = '0' + leaveMonth : false;
         var leaveDay = $('.leave').text();
         leaveDay.length === 1 ? leaveDay = '0' + leaveDay : false;
-        var leaveTime = leaveMonth + '月' + leaveDay + '日';
+        var leaveTime = leaveMonth + '/' + leaveDay;
         var night = Number($('.leave').attr('index')) - Number($('.enter').attr('index'));
         $('.date').remove(); // 移除插件
         $('body').css({ overflow: 'auto' });
-
 
         store.state.orderDate = {
           night:'共' + night + '晚',
           dateIn:enterTime,
           dateOut:leaveTime
         };
-
-
 
         $('.entertime').text(enterTime); // 显示
         $('.leavetime').text(leaveTime);
@@ -178,22 +173,22 @@ var date = function ($) {
       enterMonth.length === 1 ? enterMonth = '0' + enterMonth : false;
       var enterDay = String(nowdate.getDate());
       enterDay.length === 1 ? enterDay = '0' + enterDay : false;
-      var enterTime = enterMonth + '月' + enterDay + '日';
+      var enterTime = enterMonth + '/' + enterDay;
       // 获取离开时间
       var leaveYear = String(nowdate.getFullYear());
       var leaveMonth = String(nowdate.getMonth() + 1);
       leaveMonth.length === 1 ? leaveMonth = '0' + leaveMonth : false;
       var leaveDay = String(nowdate.getDate() + 1);
       leaveDay.length === 1 ? leaveDay = '0' + leaveDay : false;
-      var leaveTime = leaveMonth + '月' + leaveDay + '日';
+      var leaveTime = leaveMonth + '/' + leaveDay;
 
+     store.state.orderDate = {
+              night:'共1晚',
+              dateIn:enterTime,
+              dateOut:leaveTime
+      };
 
-    store.state.orderDate = {
-            night:'共1晚',
-            dateIn:enterTime,
-            dateOut:leaveTime
-    };
-
+      
       $('.entertime').text(enterTime); // 显示
       $('.leavetime').text(leaveTime);
       $('.input-enter').val(enterYear + '/' + enterTime);
@@ -201,9 +196,6 @@ var date = function ($) {
     }
 
     getDate(6); // 获取数据 参数: 拿6个月的数据
-
     initDay(); // 初始化入住和离店时间
-
-   
   };
 }(jQuery);

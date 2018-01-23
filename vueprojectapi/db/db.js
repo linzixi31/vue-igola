@@ -38,22 +38,41 @@ module.exports = {
                 }
         })
     },
-    getHotelRoom:function(_data,_cb){
-            //获取当前id的酒店信息
+    getHotel:function(_data,_cb){
+            //获取当前id的酒店房间信息
             var id = _data.hotelId;
-            var sql = `SELECT a.hotelName,
+            var sql = `
+                                 SELECT a.hotelName,
                                 a.stars,
                                 a.address,
                                 a.enghotelName,
                                 a.hasbreakfast,
                                 a.image1,
+                                a.kindDescription,
                                 b.id,
                                 b.type,
                                 b.znePrice,
                                 b.availablePerson,
+                                b.cancelAllow,
                                 b.bedScale
                                 FROM hotel AS a,room AS b 
-                                where a.id=b.hotelId and a.id=${id}` ;
+                                where a.id=b.hotelId and a.id=${id}`;
+
+            db.query(sql,function(err,results,fields){
+                    if(err){
+                            _cb({status:false,error:err});
+                    }else{
+                                // console.log(results);
+                             _cb({status:true,data:{results}});
+                    }
+            })
+    },
+    getHotelRoom:function(_data,_cb){
+            console.log(_data);
+            //获取当前id的酒店信息
+            var id = _data.hotelId;
+            var cancel = _data.cancelAllow;
+            var sql = `SELECT id,type,znePrice,availablePerson,cancelAllow,bedScale FROM room where room.hotelId = ${id} and room.cancelAllow = ${cancel}`;
             
             db.query(sql,function(err,results,fields){
                 if(err){
@@ -80,29 +99,37 @@ module.exports = {
             })
     },
     createOrder:function(_data,_cb){
-        //生成订单号
-        var orderId = _data.orderTime + _data.startTime + _data.room_id + _data.hotel_id;
-        var order_id = '';
-        for(var val of orderId){
-            if(!isNaN(val * 1) && val != ' '){
-                    order_id  += val;
-            }
-        };
+            //生成订单号
+            var orderId = _data.orderTime + _data.startTime + _data.room_id + _data.hotel_id;
+            var order_id = '';
+            for(var val of orderId){
+                if(!isNaN(val * 1) && val != ' '){
+                        order_id  += val;
+                }
+            };
 
-        // 生成订单
-        var sql = `
-                INSERT INTO  db_hotel.order 
-                ( hotelId,  linkman, telephone, totalPrice, roomId, startTime, endTime, orderId, livingPeriod,loginname) 
-                VALUES (${_data.hotel_id},${_data.linkman}, ${_data.telephone},${_data.price}, ${_data.room_id}, ${_data.startTime}', '${_data.endTime}', '${order_id}','${_data.night},${_data.loginer})
-         `;
-        
-         db.query(sql,function(err,results,fields){
+            // 生成订单
+            var sql = `
+                    INSERT INTO  db_hotel.order 
+                    ( hotelId,  linkman, telephone, totalPrice, roomId, startTime, endTime, orderId, livingPeriod,loginname) 
+                    VALUES (${_data.hotel_id},'${_data.linkman}','${_data.telephone}','${_data.price}', '${_data.room_id}', '${_data.startTime}', '${_data.endTime}', '${order_id}','${_data.night}','${_data.loginer}')`;
+            
+             db.query(sql,function(err,results,fields){
+                    if(err){
+                            _cb({status:false,error:err});
+                    }else{
+                             _cb({status:true,data:{results},orderId:order_id});
+                    }
+                })
+    },
+    getHotelPic:function(_data,_cb){
+        var sql = `select * from hotel where id= ${_data.hotelId}`;
+        db.query(sql,function(err,results,fields){
                 if(err){
                         _cb({status:false,error:err});
                 }else{
-                         _cb({status:true,data:{results},orderId:order_id});
+                         _cb({status:true,data:{results}});
                 }
             })
-        
     }
 }

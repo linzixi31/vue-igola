@@ -1,11 +1,16 @@
 <template>
 
     <div class="login">
-        <header class="l_head">
-            <p><span class="iconfont icon-fanhui"></span></p>
-            <p><span class="lg">登录</span></p>
-            <p><span class="d_login">动态码登录</span></p>
-        </header>
+
+        
+        <mt-header title="登录" id="l_head">
+            <router-link to="/my" slot="left">
+                <mt-button icon="back">返回</mt-button>
+            </router-link>
+            <mt-button icon="more" slot="right"></mt-button>
+        </mt-header>
+
+
         <section class="l_main">
             <p> 
                 <input type="text" placeholder="手机号码/电子邮箱" class="tel"/> 
@@ -30,15 +35,7 @@
 
   
 </template>
-<script type="text/javascript">
-var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
-  //物理像素*设备像素比=真实像素
-  document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
-  // 把屏幕的倍率缩小到N分之一（N是window.devicePixelRatio）
-  var scale = 1/window.devicePixelRatio;
-  var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
-  document.getElementById("vp").content = mstr;
-</script>
+
 <script>
 
 import footernav from '../footernav/footernav';

@@ -18,8 +18,8 @@ import SearchComponent from "../component/search/search.vue";
 import ordercomponent from '../component/order/order.vue';
 
 import detail from '../component/detail/detail.vue';
-
 import orderInput from '../component/detail/orderInput.vue'
+import picList from '../component/detail/picList.vue';
 
 import payment from '../component/payment/payment.vue';
 import feedback from '../component/my/feedback.vue'
@@ -108,8 +108,6 @@ var router  = new VueRouter({
         {
             path:'/paySuccess',
             component:paySuccess
-
-
         },
         {
 
@@ -123,8 +121,15 @@ var router  = new VueRouter({
         {
         	path:'/publicSearch',
         	component:publicSearch
-		}
-
+	},
+	{
+		path:'/choice',
+		component:ChoiceComponent
+	},
+        {
+            path:'/piclist',
+            component:picList
+        }
 
     ]
 })

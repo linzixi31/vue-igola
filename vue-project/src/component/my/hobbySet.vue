@@ -43,8 +43,7 @@
 </script>
 
 <style type="text/css">
-	body,html{height:100%;font-size:75px !important;}
-    .clearfix::after{content:"";display:block;height:0;clear:both;overflow:hidden;visibility:hidden;zoom:1;}
+	    .clearfix::after{content:"";display:block;height:0;clear:both;overflow:hidden;visibility:hidden;zoom:1;}
         ul,li{list-style:none;padding:0;}
     #app{height:100%;}
     .hobbySet{height:100%;display:flex;flex-direction:column;}
