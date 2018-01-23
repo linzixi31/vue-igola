@@ -44,15 +44,9 @@
 		},
 		methods:{  
         check: function(){  
-	           console.log(this.value,this.type);
 	           if(this.value){
-	           		this.axios.get('http://127.0.0.1:88/sort',{params:{order:this.value}}).then(response => {
-						this.msg = response.data.data.results;
-						this.$emit('e1',this.msg);
-					}).catch(function (error) {
-					    console.log(error);
-					    console.log(222);
-					});
+	           		this.msg = [{type:"sort"},{params:{order:this.value}}];
+	           		this.$emit('e1',this.msg);
 	           }
 	       	}  
 	  	}

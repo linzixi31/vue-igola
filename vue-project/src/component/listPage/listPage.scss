@@ -19,6 +19,9 @@ body,html{
         div:nth-child(2){
             font-size:28px;line-height:70px;text-indent:30px;
         }
+        a{
+            color:#A0A0A0;
+        }
     }
 }
 .top{
@@ -26,6 +29,9 @@ body,html{
 }
 #datagrid{
     overflow:auto;flex:1;height:1200px;
+    .mint-spinner-triple-bounce{
+        width:100px;height:100px;margin: 200px auto;
+    }
     li{
         display:flex;padding:10px;box-sizing: border-box;height:222px;
         img:nth-child(1){
