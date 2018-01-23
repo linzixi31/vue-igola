@@ -1,10 +1,18 @@
 <template>
    <div class="register">
-        <header class="r_head">
-            <p><span class="iconfont icon-fanhui"></span></p>
+        <!-- <header class="r_head">
+            <p><span class="">&gt;</span></p>
             <p><span class="lg">注册</span></p>
             <p><span class="d_login"></span></p>
-        </header>
+        </header> -->
+
+        <mt-header title="注册" id="r_head">
+            <router-link to="/my" slot="left">
+                <mt-button icon="back">返回</mt-button>
+            </router-link>
+            <mt-button icon="more" slot="right"></mt-button>
+        </mt-header>
+
         <section class="r_main">
             <p> 
                 <input type="text" placeholder="手机号码/电子邮箱" class='tel'/> 
