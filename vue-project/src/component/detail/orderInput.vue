@@ -1,8 +1,8 @@
 <template>
 	<div class="orderCom">
 		<mt-header title="预订">
-			<router-link :to="backUrl" slot="left">
-			    	<mt-button icon="back"></mt-button>
+			<router-link to="/" slot="left">
+			    	<mt-button icon="back" @click="$router.go(-1)"></mt-button>
 			</router-link>
 		</mt-header>
 		<div class="orderBody">
@@ -150,7 +150,6 @@
 						startTime:this.data.data.dateIn,
 						endTime:this.data.data.dateOut,
 						orderTime:new Date().toLocaleString(),
-						roomNumer:1,
 						price:this.data.price * this.nightNum,
 						hint:this.hint
 					};
@@ -158,6 +157,7 @@
 					this.axios.get(http.url + '/createOrder',{params:newOrder}).then(function(result){
 						if(result.status){
 							var order_id = result.data.orderId;
+							console.log(order_id)
 							this.$router.push({path:'/payment',query:{id:order_id}});
 						};
 					}.bind(this))

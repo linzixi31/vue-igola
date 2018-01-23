@@ -52,7 +52,7 @@
       }
 
       .date h4{
-        font-size:0.48rem; text-align: center;
+        font-size:0.48rem; text-align: center;line-height: 1rem;
       }
 
 

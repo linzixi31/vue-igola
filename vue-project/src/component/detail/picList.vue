@@ -1,8 +1,8 @@
 <template>
 	<div id="picList">
 		<mt-header :title="imgNumber">
-			<router-link :to="backDetail" slot="left">
-			    	<mt-button icon="back"></mt-button>
+			<router-link to="/" slot="left">
+			    	<mt-button icon="back" @click="$router.go(-1)"></mt-button>
 			</router-link>
 		</mt-header>
 		<div id="hotelPicList">

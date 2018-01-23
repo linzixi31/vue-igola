@@ -5,7 +5,7 @@
 				<h1>优选</h1>
 			</div>
 			<div class="choice_main">
-				<div class="item_detail" v-for="item in hotHotel" v-if="item.hot == 1" @click="toDetail">
+				<div class="item_detail" v-for="item in hotHotel" v-if="item.hot == 1" @click="toDetail(item.id)">
 					<div class="pic">
 						<img :src= "item.image1" />
 					</div>
@@ -45,9 +45,11 @@
 			})
 		},
 		methods:{
-			toDetail(){
-				console.log(this)
-				// this.$router.push(path:"/")/
+
+			toDetail(_id){
+
+				this.$router.push({path:"/detail",query:{id:_id}})
+
 			}
 		}
 	}

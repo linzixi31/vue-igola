@@ -23,6 +23,7 @@ module.exports = {
 		_app.get('/createOrder',function(req,res){
 			//生成订单写入数据库
 			db.createOrder(req.query,function(result){
+				console.log(result)
 				res.send(result);
 			})
 		});

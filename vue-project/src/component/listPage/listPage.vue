@@ -2,7 +2,7 @@
 	<div id="listPage">
 		<search></search>
 		<div class="top"></div>
-		<datagrid :dataUp="newData"></datagrid>
+		<datagrid></datagrid>
 		<tabber @sendNew="renew"></tabber>
 	</div>
 </template>
@@ -18,15 +18,25 @@
 		components:{datagrid,search,tabber},
 		data(){
 			return{
-				newData:[]
+				
 			}
 		},
 		methods: {
 	        renew:function(msg){
-	        	this.newData=msg
-	        	console.log(msg);
-	        	console.log(this.newData);
-	        	this.$children[1].dataset = this.newData;
+	        	this.$children[1].switchShow = true;
+	        	var data;
+        		this.axios.get('http://127.0.0.1:88/' + msg[0].type,msg[1]).then(response => {
+					data= response.data.data.results;
+					console.log(data);
+				}).catch(function (error) {
+				    console.log(error);
+				});
+        		window.setTimeout(()=>{
+        			console.log(this);
+	        		this.newData=data;
+	        		this.$children[1].dataset = this.newData;
+	        		this.$children[1].switchShow = false;
+	        	},500)
 	        }
 	  	},
 	  	mounted:function(){
@@ -35,6 +45,8 @@
             var scale = 1/window.devicePixelRatio;
             var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
             document.getElementById("vp").content = mstr;	
+            
+//          console.log(this.$route.query.add,this.$route.query.hotelName);
 		},
 		beforeRouteLeave(to,from,next){
 			document.getElementById("vp").content = ''
