@@ -42,10 +42,13 @@
 			if(this.$route.query.add){
 				var add = this.$route.query.add;
 				var hotelName = this.$route.query.hotelName;
+				console.log(add,hotelName);
 				this.axios.get('http://127.0.0.1:88/listPageReceive',{params:{add:add,hotelName:hotelName}}).then(response => {
 					console.log(1);
+					console.log(response.data);
 					window.setTimeout(()=>{
 						this.switchShow = false;
+						console.log(response.data);
 						this.dataset = response.data.data.results;
 					},500)
 				}).catch(function (error) {
