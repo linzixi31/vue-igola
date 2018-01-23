@@ -100,8 +100,16 @@ var router  = new VueRouter({
             component:ChoiceComponent
         },
         {
+
+
             path:'/feedback',
             component:feedback
+        },
+        {
+            path:'/paySuccess',
+            component:paySuccess
+
+
         },
         {
 
@@ -116,6 +124,7 @@ var router  = new VueRouter({
         	path:'/publicSearch',
         	component:publicSearch
 		}
+
 
     ]
 })

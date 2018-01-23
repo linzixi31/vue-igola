@@ -17,6 +17,7 @@ var order = require('./order')
 var detail = require('./detail');
 var hotHotel = require("./hotHotel");
 var payment = require('./payment')
+var userHotelStatus=require('./userHotelStatus')
 
 module.exports = {
     start: function(_port){
@@ -43,7 +44,8 @@ module.exports = {
         order.register(app);
         detail.register(app);
         hotHotel.register(app);
-        payment.reg(app)
+        payment.reg(app);
+        userHotelStatus.getUserStatus(app);
         
         app.listen(_port);
     }

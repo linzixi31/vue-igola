@@ -93,7 +93,7 @@ module.exports = {
         var sql = `
                 INSERT INTO  db_hotel.order 
                 ( hotelId,  linkman, telephone, totalPrice, roomId, startTime, endTime, orderId, livingPeriod,loginname) 
-                VALUES ('${_data.hotel_id}','${_data.linkman}', '${_data.telephone}','${_data.price}', '${_data.room_id}', '${_data.startTime}', '${_data.endTime}', '${order_id}','${_data.night}','${_data.loginer}')
+                VALUES (${_data.hotel_id},${_data.linkman}, ${_data.telephone},${_data.price}, ${_data.room_id}, ${_data.startTime}', '${_data.endTime}', '${order_id}','${_data.night},${_data.loginer})
          `;
         
          db.query(sql,function(err,results,fields){
