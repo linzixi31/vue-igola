@@ -5,7 +5,7 @@
 		<ul v-show="!switchShow">
 			<li v-for="(obj,index) in dataset">
 				<router-link :to="{path:'/detail',query: {id: obj.id}}">
-				<img :src="obj.image2" height="200px"/>
+				<img :src="obj.image2" height="200px" width="300px"/>
 				<div style="display:inline-block" class="description">
 					<h3>{{obj.hotelName}}</h3>
 					<p>{{obj.enghotelName}}</p>
