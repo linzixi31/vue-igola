@@ -13,13 +13,13 @@
 						<span class="small" @click="allHotel">
 							<i class="iconfont icon-sousuo"></i>
 						</span>
-						<p>全部酒店</p>
+						<p>搜索</p>
 					</div>
 					<div class="cate" >
 						<span class="small" @click="search">
 							<i class="iconfont icon-jiudian"></i>
 						</span>
-						<p>搜索</p>
+						<p>全部酒店</p>
 					</div>
 				</div>
 			</div>
@@ -83,8 +83,21 @@
 				this.$router.push({path:"/listPage"});
 			},
 			search(){
-				this.$router.push({path:"/search"})
+				this.$router.push({path:"/search"});
+			},
+			handleScroll(){
+				var scrollTop = window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop;
+				if(scrollTop >= 400){
+					$(".cover").css({"position":"fixed","top":"0","opacity":"1","height":"40"});
+					$(".cate .small").css({"height":"30","width":"30","line-height":"2"});
+					$(".cate .small")[0].style.marginTop='5px';
+					$(".cate .small")[1].style.marginTop='5px';
+					$(".cate p").hide();
+				}
 			}
+		},
+		mounted(){
+			window.addEventListener("scroll",this.handleScroll)
 		}
 	}
 	
