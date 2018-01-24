@@ -11,13 +11,13 @@
 				<div class="cover">
 					<div class="cate" >
 						<span class="small" @click="allHotel">
-							<i class="iconfont icon-sousuo"></i>
+							<i class="iconfont icon-jiudian "></i>
 						</span>
 						<p>全部酒店</p>
 					</div>
 					<div class="cate" >
 						<span class="small" @click="search">
-							<i class="iconfont icon-jiudian"></i>
+							<i class="iconfont icon-sousuo"></i>
 						</span>
 						<p>搜索</p>
 					</div>
@@ -53,11 +53,11 @@
 
 <script>
 
-        
+    
 	import "./index.scss";
 	import http from "../../http/baseUrl";
-	import {Lazylaod} from "mint-ui";
 	import footernav from "../footernav/footernav.vue";
+	import Vue from 'vue';
 	
 	
 	export default{
@@ -83,8 +83,23 @@
 				this.$router.push({path:"/listPage"});
 			},
 			search(){
-				this.$router.push({path:"/search"})
+				this.$router.push({path:"/search"});
+			},
+			handleScroll(){
+				var scrollTop = window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop;
+				if(scrollTop >= 400){
+					$(".cover").removeClass("cover").addClass("fix");
+					$(".cate .small").removeClass("small").addClass("small_action");
+					$(".cate p").hide();					
+				}else if(scrollTop < 400 ){
+					$(".fix").removeClass("fix").addClass("cover");
+					$(".cate .small_action").removeClass("small_action").addClass("small");
+					$(".cate p").show();
+				}
 			}
+		},
+		mounted(){
+			window.addEventListener("scroll",this.handleScroll);
 		}
 	}
 	
@@ -92,11 +107,14 @@
 
 
 </script>
+
+
 <style>	
-/*image[lazy=loading] {
-  width: 40px;
-  height: 300px;
-  margin: auto;
-}*/
+	.index_main .content .detail .pic img[lazy=loading] {
+	  width: 40px;
+	  height: 40px;
+	  display: block;
+	  margin: 0 auto;
+	}
 
 </style>

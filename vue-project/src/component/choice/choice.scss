@@ -48,8 +48,12 @@
 .left{
     width: 16.53rem;
     height: 2.66rem;
-    font-size: 12px;
+    font-size: 14px;
     float: left;
+    .enName{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 }
 .right{
     width: 8rem;

@@ -7,7 +7,7 @@
 			<div class="choice_main">
 				<div class="item_detail" v-for="item in hotHotel" v-if="item.hot == 1" @click="toDetail(item.id)">
 					<div class="pic">
-						<img :src= "item.image1" />
+						<img v-lazy= "item.image1" />
 					</div>
 					<div class="bottom">
 						<div class="left">
@@ -29,6 +29,7 @@
 	import "./choice.scss";
 	import footernav from "../footernav/footernav.vue";
 	import http from "../../http/baseUrl.js";
+	
 	export default {
 		data(){
 			return {
@@ -55,3 +56,13 @@
 	}
 	
 </script>
+
+<style>	
+	.pic img[lazy=loading] {
+	  width: 40px;
+	  height: 40px;
+	  display: block;
+	  margin: 0 auto;
+	}
+
+</style>

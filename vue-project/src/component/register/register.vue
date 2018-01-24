@@ -18,7 +18,7 @@
                 <input type="text" placeholder="手机号码/电子邮箱" class='tel'/> 
             </p>
             <p> 
-                <input type="text" placeholder="密码" class="password"/> 
+                <input type="password" placeholder="密码" class="password"/> 
             </p>
             <p>点击"注册"即视为同意iGola的<a href="#">服务条款</a></p>
             <p> 
@@ -31,7 +31,7 @@
                 </router-link>  
             </p>
             <p>通过以下第三方注册</p>
-            <p><i class="iconfont icon-weixin"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="iconfont icon-qq"></i></p>
+            <p><i class="iconfont icon-wechat"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="iconfont icon-qq"></i></p>
             <p><i>微信</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>QQ</i></p>
         </section>
     </div>
@@ -90,7 +90,7 @@
                         console.log(num)
                         if(num===_data.length){
 
-                                    self.axios.get('http://localhost:88/register',{params:{'telephone':$tel,'password':$pass}}).then((response) => {
+                                    self.axios.get(http.url+'/register',{params:{'telephone':$tel,'password':$pass}}).then((response) => {
                                         console.log(response.data,223);
                                         var res_msg=response.data;
                                         if(res_msg==='sucess'){

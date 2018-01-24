@@ -1,6 +1,6 @@
 <template>
 	<div class="online">
-        <!-- <header class="online_head"></header> -->
+        
         <mt-header title="在线值机" id="online_head">
             <router-link to="/my" slot="left">
                 <mt-button icon="back">返回</mt-button>
@@ -39,13 +39,13 @@
 </script>
 
 
- <style type="text/css">
+<style type="text/css">
     #app{height:100%;}
     .online{height:100%;display:flex;flex-direction:column;}
     #online_head{height:1.933333rem;font-size:0.4533333rem;background:#0096FF;color:white;}
+    #online_head>.mint-header-button a button{height:0.7rem;}
     #online_head .mint-button-icon .mintui{font-size:0.5rem;}
     .online_main{flex:1;text-align:center;}
     .online_main>div{margin-top:50%;font-size:0.4533333rem;color:#666;}
-        
-            
+                 
 </style>
