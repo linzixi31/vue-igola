@@ -13,6 +13,7 @@
 	import tabber from './tabber.vue';
 	import baseCss from './base.css';
 	import listPage from './listPage.scss';
+	import http from '../../http/baseUrl.js'
 	export default{
 		name:'app',
 		components:{datagrid,search,tabber},
@@ -25,9 +26,8 @@
 	        renew:function(msg){
 	        	this.$children[1].switchShow = true;
 	        	var data;
-        		this.axios.get('http://127.0.0.1:88/' + msg[0].type,msg[1]).then(response => {
+        		this.axios.get(http.url + msg[0].type,msg[1]).then(response => {
 					data= response.data.data.results;
-					console.log(data);
 				}).catch(function (error) {
 				    console.log(error);
 				});
@@ -38,19 +38,19 @@
 	        		this.$children[1].switchShow = false;
 	        	},500)
 	        }
-	  	},
-	  	mounted:function(){
-			var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
-            document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
-            var scale = 1/window.devicePixelRatio;
-            var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
-            document.getElementById("vp").content = mstr;	
-		},
-		beforeRouteLeave(to,from,next){
-			document.getElementById("vp").content = ''
-			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
-			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
-			next()
-		}
+	  	}
+//	  	mounted:function(){
+//			var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+//          document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+//          var scale = 1/window.devicePixelRatio;
+//          var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+//          document.getElementById("vp").content = mstr;	
+//		},
+//		beforeRouteLeave(to,from,next){
+//			document.getElementById("vp").content = ''
+//			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
+//			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
+//			next()
+//		}
 	}
 </script>

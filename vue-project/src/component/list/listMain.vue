@@ -1,22 +1,28 @@
 <template>
-	<div id="datagrid">
+	<main id="main">
 		<mt-spinner type="triple-bounce" :size="80" v-show="switchShow">
 		</mt-spinner>
-		<ul v-show="!switchShow">
-			<li v-for="(obj,index) in dataset" :id="obj.id" @click='saveHistory(obj.id,obj.hotelName)'>
-				
-				<img class="goodImg" :src="obj.image1"/>
-				<div style="display:inline-block" class="description">
-					<h3>{{obj.hotelName}}</h3>
-					<p>{{obj.enghotelName}}</p>
-					<p><img v-for="(item,index) in stars" :src="item.img" v-if="index<obj.stars"> {{obj.score}} , 神享受</p>
-					<p>{{obj.address}}</p>
-					<p>￥ <span>{{obj.minPrice}}</span> 起</p>
+		<ul>
+			<li v-for="(item,idx) in $store.state.listData" :key="item.idx" @click = "saveHistory(item.id,item.hotelName)">
+				<div class="hotelNews">
+					<div class="hotelNewsLeft">
+						<img class="hotelImgurl1" :src=item.image1>
+					</div>
+					<div class="hotelNewsRight">
+						<h3 class="hotelName">
+							{{item.hotelName}}
+						</h3>
+						<p class="enName">
+							{{item.enghotelName}}
+						</p>
+						<p class="socre"><img class="starImg" v-for="(obj,index) in stars" :src="obj.img" v-if="index<item.stars"> {{item.score}} , 神享受</p>
+						<p class="address">{{item.address}}</p>
+						<p class="price">￥<span>{{item.minPrice}}</span>起</p>
+					</div>
 				</div>
-	
 			</li>
 		</ul>
-	</div>
+	</main>
 </template>
 
 <script>
@@ -37,7 +43,6 @@
 				]
 			}
 		},
-		prop:['dataUp'],
 		methods:{
 			saveHistory:function(_id,_hotelName){
 		        var now = new Date();
@@ -70,6 +75,7 @@
 						document.cookie = "localHistory=" + JSON.stringify(arrAll) + ';expires=' + now.toUTCString();
 					}
 				}
+				console.log(111);
 				this.$router.push({ path: '/detail', query: { id: _id }});
 			}
 		},
@@ -78,10 +84,8 @@
 				var add = this.$route.query.add;
 				var hotelName = this.$route.query.hotelName;
 				this.axios.get(http.url+'/listPageReceive',{params:{add:add,hotelName:hotelName}}).then(response => {
-					window.setTimeout(()=>{
-						this.switchShow = false;
-						this.dataset = response.data.data.results;
-					},500)
+					this.switchShow = false;
+					this.$store.state.listData = response.data.data.results;
 				}).catch(function (error) {
 				    console.log(error);
 				})
@@ -89,7 +93,8 @@
 				this.axios.get(http.url + '/listPage').then(response => {
 					window.setTimeout(()=>{
 						this.switchShow = false;
-						this.dataset = response.data.data.results;
+						this.$store.state.listData = response.data.data.results;
+						console.log(this.dataset);
 					},500)
 				}).catch(function (error) {
 				    console.log(error);

@@ -1,6 +1,6 @@
 <template>
-	<mt-popup class="shaixuan" v-model="shaixuanVisible" position="bottom" modal=false>
-		<div id="shaixuan">
+	<mt-popup class="shaixuan" v-model="$store.state.showScreen" position="bottom" modal=false>
+		<div id="screen">
 			<div class="score">
 				<p>评分</p>
 				<div class="scoreList">
@@ -14,7 +14,7 @@
 				</div>
 			</div>
 			<mt-button type="default" size="large" class="clear" @click='clear'>清除</mt-button>
-			<mt-button type="primary" size="large" @click ='send'>确认</mt-button>
+			<mt-button type="primary" size="large" @click = "send">确认</mt-button>
 		</div>
 	</mt-popup>
 </template>
@@ -58,8 +58,9 @@
 				this.activeName = false;
 			},
 			send:function(){
+				this.$store.state.showScreen = false;
 				this.msg = [{type:"shaixuan"},{params:{score:this.activeName,equipment:this.EactiveName}}];
-				this.$emit('e1',this.msg);
+				this.$store.commit('listDataLoad',this.msg);
 			}
 		}
 	}
