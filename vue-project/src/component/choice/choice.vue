@@ -1,5 +1,7 @@
 <template>
 	<div>
+		<mt-spinner type="triple-bounce" :size="60" v-show="$store.state.switchShow"  color="#26a2ff" class="order_spinner">
+        </mt-spinner>
 		<div id="choice">
 			<div class="choice_header">
 				<h1>优选</h1>
@@ -42,7 +44,9 @@
 		beforeMount(){
 			this.axios.get(http.url + "/hotHotel").then(res =>{
 				this.hotHotel = res.data.data.results;
-				
+				if(this.hotHotel.length!=0){
+						this.$store.state.switchShow=false;
+				}
 			})
 		},
 		methods:{

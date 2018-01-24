@@ -12,8 +12,9 @@
          <div  v-if='this.dataset.length==0' class='order_containter' v-show="!switchShow" >
             
             <img src="src/assets/img/cute.svg" alt="" />
-            <router-link to='/login'>
-              <mt-button >请登录</mt-button>
+            <p style='line-height:3rem;margin-bottom:2rem'>您暂时没有订单哦</p>
+            <router-link to='/list'>
+              <mt-button >找酒店</mt-button>
             </router-link>  
            
           </div>

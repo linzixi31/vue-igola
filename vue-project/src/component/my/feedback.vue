@@ -52,6 +52,7 @@
     #app{height:100%;}
     .feedback{height:100%;display:flex;flex-direction: column;}
     #feedback_head{height:1.933333rem;font-size:0.4rem;background:#0096FF;color:#fff;}
+    #feedback_head>.mint-header-button a button{height:0.7rem;}
     #feedback_head .mint-button-icon .mintui{font-size:0.5rem;}
     .feedback>.feedback_main{flex:1;background:#F5F5F5;overflow-x: hidden;}
     .feedback>.feedback_main>p{height: 1.2rem;font-size:0.36rem;line-height:1.2rem;text-indent:20px;}

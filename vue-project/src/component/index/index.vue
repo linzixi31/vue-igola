@@ -1,6 +1,7 @@
 <template>
 	<div>
-
+		  <mt-spinner type="triple-bounce" :size="60" v-show="$store.state.switchShow"  color="#26a2ff" class="order_spinner">
+        </mt-spinner>
 		<div id="index">
 			<div class="index_header">
 				<mt-swipe :auto="4000" class="swipe">
@@ -29,10 +30,10 @@
 					<p>精品推荐</p>
 					<span>▼</span>
 				</div>
-				<div class="content">
+				<div class="content" v-show="!$store.state.switchShow">
 					<div class="detail" v-for="item in dataset"
 						 v-if="item.hot == 1" @click="toDetail(item.id)" :id="item.id">
-						<div class="pic">
+						<div class="pic" >
 							<img  v-lazy="item.image1" />
 						</div>
 						<div class="describe">
@@ -74,6 +75,9 @@
 		beforeMount(){
 			this.axios.get(http.url + "/homepage").then(res =>{
 				this.dataset = res.data.data.results;
+				if(this.dataset.length!=0){
+						this.$store.state.switchShow=false;
+				}
 			})
 		},
 		methods:{
@@ -81,7 +85,7 @@
 				this.$router.push({path:"/detail",query:{id:_id}});
 			},
 			allHotel(){
-				this.$router.push({path:"/listPage"});
+				this.$router.push({path:"/list"});
 			},
 			search(){
 				this.$router.push({path:"/search"});
