@@ -4,7 +4,7 @@
 	<div>
 		<section class="hotelImg">
 			<img :src="imgurl ? imgurl : './src/assets/img/timg.gif'" @click="toPicList">
-			<a class="backToList" @click="$router.go(-1)"><i class="glyphicon glyphicon-menu-left"></i></a>
+			<a class="backToList" @click="$router.go(-1)"><i class="iconfont icon-fanhui"></i></a>
 			<div class="hotelDes">
 				<span v-for="val in kindDescription">{{val}}</span>
 			</div>
@@ -12,8 +12,8 @@
 		<section class="hotelInfor">
 			<p class="hotelTitle">
 				<span >{{hotelName}}</span>
-				<span class="hotelStar">
-					<i class="glyphicon glyphicon-star" v-for="value in stars"></i>
+				<span id="hotelStar">
+					<i class="iconfont icon-shoucang" v-for="value in stars"></i>
 				</span>
 			</p>
 			<p class="hotelEngName">{{enghotelName}}</p>

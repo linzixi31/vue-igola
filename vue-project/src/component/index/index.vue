@@ -80,7 +80,7 @@
 				this.$router.push({path:"/detail",query:{id:_id}});
 			},
 			allHotel(){
-				this.$router.push({path:"/listPage"});
+				this.$router.push({path:"/list"});
 			},
 			search(){
 				this.$router.push({path:"/search"});

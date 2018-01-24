@@ -48,7 +48,7 @@
 		},
 		methods:{
 			search(){
-				this.$router.push({path:"/listPage",
+				this.$router.push({path:"/list",
 					query:{
 						add:this.add,
 						hotelName:this.hotelName,

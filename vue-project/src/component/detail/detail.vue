@@ -3,7 +3,7 @@
 		<detailHead :hotelName="hotelName" :addr="address" :stars="stars" :imgurl="imgUrl" :enghotelName="enghotelName" :hotelId="id" :kindDescription="kindDescription"></detailHead>
 		<detailDatePick></detailDatePick>
 		
-		<detailRoomList :roomList="dataset" :hotelId="id" :loading="loading" @changeRoomList="changeRoom"></detailRoomList>
+		<detailRoomList :roomList="dataset" :hotelId="id" :loading="loading" :stars="stars" @changeRoomList="changeRoom"></detailRoomList>
 		<aboutIgola></aboutIgola>
 	</div>
 </template>
