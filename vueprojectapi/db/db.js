@@ -53,9 +53,10 @@ module.exports = {
                                 b.type,
                                 b.znePrice,
                                 b.availablePerson,
+                                b.cancelAllow,
                                 b.bedScale
                                 FROM hotel AS a,room AS b 
-                                where a.id=b.hotelId and a.id=${id} and b.cancelAllow = 0`;
+                                where a.id=b.hotelId and a.id=${id}`;
 
             db.query(sql,function(err,results,fields){
                     if(err){
@@ -71,7 +72,7 @@ module.exports = {
             //获取当前id的酒店信息
             var id = _data.hotelId;
             var cancel = _data.cancelAllow;
-            var sql = `SELECT id,type,znePrice,availablePerson,bedScale FROM room where room.hotelId = ${id} and room.cancelAllow = ${cancel}`;
+            var sql = `SELECT id,type,znePrice,availablePerson,cancelAllow,bedScale FROM room where room.hotelId = ${id} and room.cancelAllow = ${cancel}`;
             
             db.query(sql,function(err,results,fields){
                 if(err){

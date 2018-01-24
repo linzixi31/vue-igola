@@ -13,8 +13,8 @@
 					<div>
 						<p class="roomTitle">{{item.type}}</p>
 						<p class="roomDescribe"><span>{{item.bedScale}}</span>|<span>可住{{item.availablePerson}}人</span>|<span>无早餐</span></p>
-						<p class="roomDescribe" v-if="cancelAllow == 0">不可取消</p>
-						<p class="roomDescribe" v-else>可取消</p>
+						<p class="roomDescribe" v-if="item.cancelAllow == 0">不可取消</p>
+						<p class="roomDescribe" v-if="item.cancelAllow == 1">可取消</p>
 					</div>
 					<div>
 						<span class="hotelPrice">￥{{item.znePrice}}</span>

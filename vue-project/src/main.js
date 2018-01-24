@@ -10,9 +10,15 @@ import Mint from 'mint-ui';
 import axios from 'axios'
 import VueAxios from 'vue-axios';
 
-import store from './vuex/store'
-
-
+import store from './vuex/store';
+import {Lazyload} from "mint-ui";
+Vue.use(Lazyload, {
+	  preLoad: 2,
+	  loading: './src/assets/img/loading.gif',
+	  attempt: 1,
+	  width:10,
+	  height:10
+	})
 Vue.use(VueAxios, axios)
 Vue.use(Mint);
 new Vue({
