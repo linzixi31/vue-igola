@@ -12,13 +12,13 @@
 				</mt-swipe>
 				<div class="cover">
 					<div class="cate" >
-						<span class="small" @touchstart="allHotel">
+						<span class="small" @click="allHotel">
 							<i class="iconfont icon-jiudian "></i>
 						</span>
 						<p>全部酒店</p>
 					</div>
 					<div class="cate" >
-						<span class="small" @touchstart="search">
+						<span class="small" @click="search">
 							<i class="iconfont icon-sousuo"></i>
 						</span>
 						<p>搜索</p>
