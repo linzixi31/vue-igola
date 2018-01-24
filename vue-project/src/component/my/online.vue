@@ -1,6 +1,6 @@
 <template>
 	<div class="online">
-        <!-- <header class="online_head"></header> -->
+        
         <mt-header title="在线值机" id="online_head">
             <router-link to="/my" slot="left">
                 <mt-button icon="back">返回</mt-button>

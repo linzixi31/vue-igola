@@ -60,12 +60,12 @@
             <footernav></footernav>
         </div>
         <mt-popup   v-model="popupVisible"  position="bottom" id="my_popup">
-            <div><i class="glyphicon glyphicon-phone-alt"></i style="color:#fff;"> <br />热线电话</div>
-            <div><i class="glyphicon glyphicon-comment"></i style="color:#fff;"> <br />在线客服</div>
-            <div><i class="glyphicon glyphicon-envelope"></i style="color:#fff;"> <br />邮件反馈</div>
+            <div><i class="iconfont icon-dianhua"></i style="color:#fff;"> <br />热线电话</div>
+            <div><i class="iconfont icon-xinxi"></i style="color:#fff;"> <br />在线客服</div>
+            <div><i class="iconfont icon-msnui-email"></i style="color:#fff;"> <br />邮件反馈</div>
         </mt-popup>    
         <mt-popup   v-model="i_popupShow"  position="right" id="my_rightPop">
-            <div><i class="glyphicon glyphicon-info-sign"></i> </div>
+            <div><i class="iconfont icon-gantanhao"></i> </div>
             <div>缓存即将被清理</div>
             <div><span @click="clear">取消</span><span @click="clear">继续</span></div>
         </mt-popup>    

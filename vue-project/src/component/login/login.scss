@@ -4,12 +4,12 @@ input{border:none;outline: none;color:#9D9B9E;}
 *{margin:0;padding:0;}
 #app{height:100%;}
 body,html{height:100%;}
-.login{display:flex;flex-direction:column;background:url('../../assets/img/timg.jpg') no-repeat;background-size:cover;}
+.login{height:100%;display:flex;flex-direction:column;background:url('../../assets/img/timg.jpg') no-repeat;background-size:cover;}
 #l_head{height:1.106667rem;color:#fff;background:rgba(0,0,0,0);font-size:0.4333rem;}
 #l_head>.mint-header-button a button{height:0.7rem;}
 #l_head .mint-button-icon .mintui{font-size:0.4333rem;}
 
-.l_main{padding-top:3.066667rem;flex:1;overflow-x:hidden;} 
+.l_main{padding-top:2rem;flex:1;overflow-x:hidden;} 
 .l_main>p{text-align:center;}
 .l_main>p>input{height:1.6rem;width:8.453333rem;border-bottom:0.026667rem solid #fff;padding:0.56rem 0;background:rgba(0,0,0,0);margin:0 auto;color:#fff;font-size:0.466667rem;}
 .l_main>p:nth-child(3){padding-top:1.48rem;}
