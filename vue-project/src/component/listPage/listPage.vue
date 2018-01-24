@@ -47,7 +47,6 @@
             var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
             document.getElementById("vp").content = mstr;	
             
-//          console.log(this.$route.query.add,this.$route.query.hotelName);
 		},
 		beforeRouteLeave(to,from,next){
 			document.getElementById("vp").content = ''

@@ -13,6 +13,7 @@
           <div id="pay_container" >
               <h1>您的订单已经提交</h1>
               <p>你的订单号为<span style='color:#478D95'>{{paydata.orderId}}</span></p>
+                <p>倒计时:{{time}}</p>
               <p>为了您能顺利完成预定，请尽快支付</p>
               <mt-button style='margin-top:2.1875rem' @click='paySuccess'>查看我的订单</mt-button>
           </div>
@@ -35,11 +36,15 @@
     import http from '../../http/baseUrl.js'
     import { Toast } from 'mint-ui'
     import './payment.scss'
+    import Vue from 'vue';
+    var count = 100;
+
     export default {
         data(){
             return{
                 paydata:{},
                 value:[],
+                time:count,
                 options : [
                   {
                     label: '支付宝支付',
@@ -59,7 +64,19 @@
                 
             }
         },
+        created(){
+             var self=this;
+              var time =setInterval(function () {
+                self.time=count
+                Vue.set([self.time],'time',count)
+                count--
+                if(count<=0){
+                    count=0
+                }
+              },1000)
+        },
         mounted(){
+
             var Id = this.$route.query.id
             this.axios.post(http.url + '/payment',{id: Id}).then((response) => {
                             //console.log(333)
@@ -67,6 +84,7 @@
                             this.paydata = response.data.data.results[0]
                             this.$store.state.switchShow = false
                         })
+
         },
         methods:{
             payment(){
@@ -83,8 +101,8 @@
                             
                     }else{
                         Toast({
-                              message: '支付失败',
-                              iconClass: 'glyphicon glyphicon-remove'
+                              message:'支付失败',
+                              iconClass:'iconfont icon-zhengquequeding'
                             });
                     }
                 })
@@ -93,6 +111,8 @@
               var Id = this.$route.query.id
                 this.$router.push({path:'/paySuccess',query:{orderId:Id}})
             }
+           
+             
         }
     }
     

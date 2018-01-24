@@ -9,7 +9,7 @@
           <mt-tab-item ><a @click ='xue' id="2">待出行</a></mt-tab-item>
           <mt-tab-item ><a @click ='xue' id="3">已完成</a></mt-tab-item>
         </mt-navbar>
-         <div  v-if='this.dataset.length==0' class='order_containter' >
+         <div  v-if='this.dataset.length==0' class='order_containter' v-show="!switchShow" >
             
             <img src="src/assets/img/cute.svg" alt="" />
             <router-link to='/login'>
@@ -107,8 +107,10 @@
             var name = localStorage.getItem("username")
             this.axios.post(http.url+'/order',{name:name}).then((response) => {
                 this.dataset = response.data.data.results;
-              //console.log(response.data.data.results)
               this.switchShow = false;
+              if(this.dataset.length==0){
+                this.switchShow = false;
+              }
             })
 
         },
