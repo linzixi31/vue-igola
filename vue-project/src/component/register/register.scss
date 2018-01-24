@@ -2,15 +2,16 @@
 input{border:none;outline: none;color:#9D9B9E;}
 *{margin:0;padding:0;}
 body,html{height:100%;}
-.register{height:100%;background:url('../../assets/img/timg.jpg') no-repeat;background-size:cover;}
+.register{display:flex;flex-direction:column;background:url('../../assets/img/timg.jpg') no-repeat center center;background-size:cover;height:100%;}
 #r_head{height:1.106667rem;color:#fff;background:rgba(0,0,0,0);font-size:0.43333rem;}
+#r_head>.mint-header-button a button{height:0.7rem;}
 #r_head .mint-button-icon .mintui{font-size:0.5rem;}
 
-.r_main{padding-top:3.066667rem;} 
+.r_main{padding-top:2rem;flex:1;overflow-x:hidden;} 
 .r_main>p{text-align:center;}     
 .r_main>p>input{height:1.6rem;width:8.453333rem;border-bottom:0.026667rem solid #fff;padding:0.56rem 0;background:rgba(0,0,0,0);margin:0 auto;color:#fff;font-size:0.466667rem;}
 .r_main>p:nth-child(3){text-align:center;font-size:0.36rem;color:#fff;line-height:1.426667rem;}
-.r_main>p:nth-child(5){padding-top:0.786667rem;}
+.r_main>p:nth-child(5){padding-top:0.7rem;}
 .r_main>p:nth-child(6){font-size:0.346667rem;line-height:0.92rem;color:#767982;padding-top:1.12rem;}
 .r_main>p:nth-child(7)>i{display:inline-block;width:1.2rem;height:1.2rem;border-radius:50%;text-align:center;line-height:1.2rem;background:#fff;font-size:1.066667rem;}
 .r_main>p:nth-child(8)>i{color:#fff;font-size:0.4rem;font-style:normal;}

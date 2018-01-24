@@ -1,7 +1,7 @@
 export default {
 
 
-    url:'http://10.3.136.56:88'
+    url:'http://10.3.136.148:88'
 
 
 }

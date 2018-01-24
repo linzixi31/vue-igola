@@ -18,9 +18,9 @@
 
             <ul class="list">
                 <li>当前版本    <i >3.16.17</i></li>
-                <li>关注我们    <i class="glyphicon glyphicon-chevron-right"></i></li>
-                <li>去评分 <i class="glyphicon glyphicon-chevron-right"></i></li>
-                <li>条款和条件   <i class="glyphicon glyphicon-chevron-right"></i></li>
+                <li>关注我们    <i class="iconfont icon-arrow-right-copy"></i></li>
+                <li>去评分 <i class="iconfont icon-arrow-right-copy"></i></li>
+                <li>条款和条件   <i class="iconfont icon-arrow-right-copy"></i></li>
             </ul>  
 
         </section>
@@ -60,13 +60,14 @@
         
         .about{height:100%;display:flex;flex-direction:column;}
         #about_head{height:1.933333rem;font-size:0.4533333rem;background:#0096FF;color:white;}
+        #about_head>.mint-header-button a button{height:0.7rem;}
         #about_head .mint-button-icon .mintui{font-size:0.5rem;}
         .about_main{flex:1;text-align:center;}
         .about_main .logo{height:5.786667rem;text-align:center;line-height:5.786667rem;}
         .about_main .logo img{width:6.826667rem;height:2.56rem;}
         .about_main .content{padding:0 0.746667rem;text-align:left;font-size:0.28rem;height:4.226667rem;}
         .about_main .list li{height:1.066667rem;padding:0 0.546667rem;padding-left:0.5rem;line-height:1.066667rem;font-size:0.4rem;border-bottom:0.013333rem solid #ccc;text-align:left;}  
-        .about_main .list li>i{float:right;line-height:1.066667rem;}
+        .about_main .list li>i{float:right;line-height:1.066667rem;font-size:0.4rem;}
 
 
  </style>

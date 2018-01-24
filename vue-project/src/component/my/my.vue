@@ -48,12 +48,12 @@
 
         <div class="m_content">
             <ul class="main">
-                <li @click="get_online" ><span class="iconfont icon-msnui-state-online"></span>&nbsp;在线值机<span class="gt">&gt;</span></li>
-                <li @click="show"><span class="iconfont icon-xiazai46"></span>&nbsp;客服<span class="gt">&gt;</span></li>
-                <li @click="get_hobbySet">偏好设置<span class="gt">&gt;</span></li>
-                <li @click="my_popupShow">清理缓存<span class="gt">&gt;</span></li>
-                <li @click="get_feedback">意见与反馈<span class="gt">&gt;</span></li>
-                <li @click="get_about">关于iGola<span class="gt">&gt;</span></li>
+                <li @click="get_online" ><span class="iconfont icon-msnui-state-online"></span>&nbsp;在线值机<span class="iconfont icon-arrow-right-copy"></span></li>
+                <li @click="show"><span class="iconfont icon-xiazai46"></span>&nbsp;客服<span class="iconfont icon-arrow-right-copy"></span></li>
+                <li @click="get_hobbySet">偏好设置<span class="iconfont icon-arrow-right-copy"></span></li>
+                <li @click="my_popupShow">清理缓存<span class="iconfont icon-arrow-right-copy"></span></li>
+                <li @click="get_feedback">意见与反馈<span class="iconfont icon-arrow-right-copy"></span></li>
+                <li @click="get_about">关于iGola<span class="iconfont icon-arrow-right-copy"></span></li>
             </ul>
         </div>
         <div id="registerFoot">
