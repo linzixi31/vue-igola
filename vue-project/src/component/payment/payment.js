@@ -6,16 +6,21 @@ const state = {
 
 const mutations = {
     refresh(_data, _data2){
-         console.log(arguments)
         state.orderdataset = _data2;
     }
 }
 
 const actions = {
+
     refresh(context, _params){
-        axios.post(http.url+_params.api, {id: _params.data.id}).then(response => {
-            context.commit('refresh', response.data.data.results);
-        })   
+       new Promise(function(resolve, reject) {
+            axios.post(http.url+_params.api, {id: _params.data.id}).then(response => {
+                context.commit('refresh', response.data.data.results);
+            }).catch(function (error) {
+                console.log(error);
+                reject(error)
+              }); 
+        })  
     }
 }
 

@@ -4,12 +4,16 @@ import payment from '../component/payment/payment.js'
 Vue.use(VueX)
 
 const state = {
-    orderDate:{}
+    orderDate:{},
+    switchShow:true
 }
 
 const mutations ={
     change(res){
         state.orderDate = res;
+    },
+    changeSwitchShow(){
+        state.switchShow = false;
     }
 }
 

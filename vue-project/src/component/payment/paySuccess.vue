@@ -1,7 +1,7 @@
 <template>
     
     <div id='paySuc' >
-         <mt-spinner type="triple-bounce" :size="60" v-show="switchShow"  color="#26a2ff" class="order_spinner">
+         <mt-spinner type="triple-bounce" :size="60" v-show="$store.state.switchShow"  color="#26a2ff" class="order_spinner">
         </mt-spinner>
         <mt-header fixed title="订单详情" id='paySuc_zx'>
                 <router-link to='/order' slot='left'>
@@ -9,7 +9,7 @@
                 </router-link>
               <mt-button icon="more" slot="right"></mt-button>
         </mt-header>
-        <div v-show="!switchShow">
+        <div v-show="!$store.state.switchShow">
             <div id="container_paysus" :style="{backgroundImage: 'url(' +
             this.paySucdata.image1  + ')'} ">
                 <div class='container_pay_h'>
@@ -41,7 +41,7 @@
                 </li>
                 <li class="paySuc_list">
                     <div class='paySuc_title'>
-                        <i></i><span>入住人</span>
+                        <span><i class="iconfont icon-lianxirenxuanzhong"></i>入住人</span>
                     </div>
                     <div class="paySuc_list_con">
                         <div class='paySuc_left'>
@@ -55,7 +55,7 @@
                 </li>
                 <li class="paySuc_list">
                     <div class='paySuc_title'>
-                        <i></i><span>联系人</span>
+                        <span><i class="iconfont icon-lianxirenqunzu"></i> 联系人</span>
                     </div>
                     <div class="paySuc_list_con">
                         <div class='paySuc_left'>
@@ -87,35 +87,38 @@
 //返回数据时不要写双花括号【0】的格式，不然会报警告
 import './paySuccess.scss'
 import http from '../../http/baseUrl.js'
-
     export default {
-        data(){
-            return{
-                switchShow:true,
-                paySucdata:{}
+      
+        //vueX返回的数据要computed属性检测变化，data 中内容依赖变更时，data 属性不会变更（它的设计目标就是保存组件的局部状态数据而已）。而 computed 则是通过【依赖追踪】实现的，在 computed 求值时引用的 Vue 变量变化时，会触发对 computed 的重新计算
+        //而data中的orderdataset，仅仅是对this.$store.state.payment.orderdataset[0]的一个引用
+        
+        computed:{
+                paySucdata(){
+                    return this.$store.state.payment.orderdataset[0] || {}
+                } 
+            },
+        updated(){
+
+            if(this.$store.state.payment.orderdataset[0]){
+
+                this.$store.state.switchShow = false;
+
             }
         },
-        mounted(){
+        beforeMount(){
             var Id = this.$route.query.orderId
+            console.log(Id)
             var params = {
                 api: '/payment',
                 data: {
                     id: Id 
                 }
             }
+
             this.$store.dispatch('refresh',params)
-            this.paySucdata.image1 ? this.paySucdata.image1 : './src/assets/img/timg.gif'
-            if(this.$store.state.payment.orderdataset[0]){
-                this.paySucdata = this.$store.state.payment.orderdataset[0]
-                this.switchShow = false;
 
-            }
 
-        },
-        methods: {
-            refresh(){
-                      
-            }
+
         }
     }
 </script>

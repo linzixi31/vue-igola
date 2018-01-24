@@ -2,16 +2,23 @@
     <div>
        
         <mt-header fixed title="订单页面" id='order_zx'></mt-header>
-        <mt-spinner type="triple-bounce" :size="60" v-show="switchShow"  color="#26a2ff" class="order_spinner">
+        <mt-spinner type="triple-bounce" :size="60" v-if='this.dataset.length==0' v-show="switchShow"  color="#26a2ff" class="order_spinner">
         </mt-spinner>
         <mt-navbar  fixed style='margin-top:40px; border-bottom:1px solid #eee; color:#000;'>
           <mt-tab-item ><a @click ='xue' id="1">全部</a></mt-tab-item>
           <mt-tab-item ><a @click ='xue' id="2">待出行</a></mt-tab-item>
           <mt-tab-item ><a @click ='xue' id="3">已完成</a></mt-tab-item>
         </mt-navbar>
-        
+         <div  v-if='this.dataset.length==0' class='order_containter' >
+            
+            <img src="src/assets/img/cute.svg" alt="" />
+            <router-link to='/login'>
+              <mt-button >请登录</mt-button>
+            </router-link>  
+           
+          </div>
         <mt-tab-container v-model="selected" :swipeable='swipeable' >
-
+         
           <mt-tab-container-item id="1" v-show="!switchShow" >
             <ul class='order_list' >
              
@@ -98,12 +105,12 @@
     export default  {
         mounted(){
             var name = localStorage.getItem("username")
-            //console.log(name)
             this.axios.post(http.url+'/order',{name:name}).then((response) => {
                 this.dataset = response.data.data.results;
               //console.log(response.data.data.results)
               this.switchShow = false;
             })
+
         },
         components:{
             footernav
