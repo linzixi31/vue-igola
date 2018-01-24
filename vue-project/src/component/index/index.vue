@@ -12,13 +12,13 @@
 				</mt-swipe>
 				<div class="cover">
 					<div class="cate" >
-						<span class="small" @click="allHotel">
+						<span class="small" @touchstart="allHotel">
 							<i class="iconfont icon-jiudian "></i>
 						</span>
 						<p>全部酒店</p>
 					</div>
 					<div class="cate" >
-						<span class="small" @click="search">
+						<span class="small" @touchstart="search">
 							<i class="iconfont icon-sousuo"></i>
 						</span>
 						<p>搜索</p>
@@ -75,9 +75,8 @@
 		beforeMount(){
 			this.axios.get(http.url + "/homepage").then(res =>{
 				this.dataset = res.data.data.results;
-				if(this.dataset.length!=0){
-						this.$store.state.switchShow=false;
-				}
+				this.$store.state.switchShow=false;
+				
 			})
 		},
 		methods:{

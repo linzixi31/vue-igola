@@ -6,7 +6,7 @@
 			<div class="choice_header">
 				<h1>优选</h1>
 			</div>
-			<div class="choice_main">
+			<div class="choice_main" v-show="!$store.state.switchShow">
 				<div class="item_detail" v-for="item in hotHotel" v-if="item.hot == 1" @click="toDetail(item.id)">
 					<div class="pic">
 						<img v-lazy= "item.image1" />
@@ -44,9 +44,8 @@
 		beforeMount(){
 			this.axios.get(http.url + "/hotHotel").then(res =>{
 				this.hotHotel = res.data.data.results;
-				if(this.hotHotel.length!=0){
-						this.$store.state.switchShow=false;
-				}
+				this.$store.state.switchShow=false;
+				
 			})
 		},
 		methods:{

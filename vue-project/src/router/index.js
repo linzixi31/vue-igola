@@ -10,8 +10,7 @@ import hobbySet from '../component/my/hobbySet.vue'
 import i from '../component/loginSucess/i.vue'
 import about from '../component/my/about.vue'
 
-import listPage from '../component/listPage/listPage.vue';
-
+import list from '../component/list/list.vue';
 import IndexComponent from "../component/index/index.vue";
 import ChoiceComponent from "../component/choice/choice.vue";
 import SearchComponent from "../component/search/search.vue";
@@ -70,11 +69,6 @@ var router  = new VueRouter({
             component:about
         },
         {
-        	path:'/listPage',
-        	component:listPage
-            
-        },
-        {
         	path:"/index",
         	component:IndexComponent
         },
@@ -129,6 +123,10 @@ var router  = new VueRouter({
         {
             path:'/piclist',
             component:picList
+        },
+        {
+        	path:'/list',
+        	component:list
         }
 
     ]

@@ -1,25 +1,27 @@
 <template>
-	<div id="star">
-		<p>星级</p>
-		<div class="startList">
-			<mt-button size="small" v-for="item in starset" @click="selected(item.value)" :class="{active:activeName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
-		</div>
-		<p>价格</p>
-		<div class="price">
-			<mt-range
-			  v-model="rangeValue"
-			  :min="0"
-			  :max="2000"
-			  :step="500"
-			  :bar-height="5">
-			</mt-range>
-			<div class="rangeList">
-				<span v-for="obj in rangeList">￥{{obj.text}}</span>
+	<mt-popup class="start" v-model="$store.state.showStar" position="bottom" modal=false>
+		<div id="star">
+			<p>星级</p>
+			<div class="startList">
+				<mt-button size="small" v-for="(item,idx) in starset" :key="item.idx" @click="selected(item.value)" :class="{active:activeName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
 			</div>
+			<p>价格</p>
+			<div class="price">
+				<mt-range
+				  v-model="rangeValue"
+				  :min="0"
+				  :max="2000"
+				  :step="500"
+				  :bar-height="5">
+				</mt-range>
+				<div class="rangeList">
+					<span v-for="obj in rangeList">￥{{obj.text}}</span>
+				</div>
+			</div>
+			<mt-button type="default" size="large" class="clear" @click="clearAll">清除</mt-button>
+			<mt-button type="primary" size="large" @click="send">确认</mt-button>
 		</div>
-		<mt-button type="default" size="large" class="clear" @click="clearAll">清除</mt-button>
-		<mt-button type="primary" size="large" @click="send">确认</mt-button>
-	</div>
+	</mt-popup>
 </template>
 
 <script>
@@ -56,14 +58,10 @@
 				this.rangeValue=500;
 			},
 			send:function(){
+				this.$store.state.showStar = false;
 				this.msg = [{type:"upDataList"},{params:{stars:this.activeName,price:this.rangeValue}}];
-				this.$emit('e1',this.msg);
+				this.$store.commit('listDataLoad',this.msg);
 			}
   		}
 	}
 </script>
-
-<style>
-	
-
-</style>
