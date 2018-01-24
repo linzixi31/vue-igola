@@ -19,10 +19,11 @@
 					<div>
 						<span class="hotelPrice">￥{{item.znePrice}}</span>
 						<div class="hotelBookBtn">
-							<router-link :to="{name:'orderCom', params:{ hotelId:hotelId,id: item.id,data:orderInfor,price:item.znePrice}}">预订</router-link>
+							<router-link :to="{name:'orderCom', params:{ hotelId:hotelId,id: item.id,data:orderInfor,price:item.znePrice,stars:stars}}">预订</router-link>
 						</div>
 					</div>
 				</li>
+				<li v-if="roomList.length == 0" class="noRoom">没有找到合适的房间哦！<img src="https://content.igola.com/static/WEB/images/other/room-invalid.png" alt=""></li>
 			</ul>
 		</section>
 	</div>
@@ -45,7 +46,7 @@
 				return store.state.orderDate;
 			},
 		},
-		props:['hotelId','loading','roomList'],
+		props:['hotelId','loading','roomList','stars'],
 		methods:{
 			filterRoom:function(){
 				if(this.cancelAllow == 0){

@@ -7,8 +7,13 @@
 		</mt-header>
 		<div class="orderBody">
 			<div class="hotelInformation">
-				<p class="hotelName">{{hotelName}}</p>
+				<p class="hotelName">
+					<i class="iconfont icon-shoucang"></i>
+					{{hotelName}}
+					<span class="starsNum">{{stars}}</span>
+				</p>
 				<p class="hotelAddr">{{addr}}</p>
+
 			</div>
 			<div class="roomInformation">
 				<p>房型：<span>{{type}}</span></p>
@@ -30,7 +35,7 @@
 			</div>
 			<div class="userInfor"> 
 				<div class="userinformation">
-					<div><i class="glyphicon glyphicon-user"></i><span >入住人</span><span class="content"></span></div>
+					<div><i class="iconfont icon-lianxirenxuanzhong"></i><span >入住人</span><span class="content"></span></div>
 					<div class="addInfor">添加&nbsp;&nbsp;&gt;</div>
 				</div>
 				<div class="userInput">
@@ -40,7 +45,7 @@
 				</div>
 				
 				<div class="userinformation">
-					<div><i class="glyphicon glyphicon-phone"></i><span >联系电话</span><span class="content"></span></div>
+					<div><i class="iconfont icon-lianxirenqunzu"></i><span >联系电话</span><span class="content"></span></div>
 					<div class="addInfor">添加&nbsp;&nbsp;&gt;</div>
 				</div>
 				<div class="userInput">
@@ -49,7 +54,7 @@
 					<button type="button" class="btn btn-info">确定</button>
 				</div>
 				<div class="userinformation">
-					<div><i class="glyphicon glyphicon-bullhorn"></i><span>住客偏好</span><span class="content"></span></div>
+					<div><i class="iconfont icon-rili"></i><span>住客偏好</span><span class="content"></span></div>
 					<div class="addInfor">添加&nbsp;&nbsp;&gt;</div>
 				</div>
 				<div class="userInput">
@@ -119,6 +124,9 @@
 			},
 			backUrl:function(){
 				return '/detail/?id=' + this.$route.params.hotelId;
+			},
+			stars:function(){
+				return this.$route.params.stars;
 			}
 		},
 		methods:{
@@ -140,6 +148,11 @@
 					return;
 				}else{
 					//生成订单信息
+					//生成订单的时间
+					var createOrderTime = new Date();
+					//订单失效时间(15分钟后过期)
+					var failureTime = new Date(createOrderTime.getTime() + 900000).toLocaleString();
+					
 					var newOrder = {
 						loginer:userName,
 						room_id:this.roomId,
@@ -149,7 +162,8 @@
 						telephone:this.tel,
 						startTime:this.data.data.dateIn,
 						endTime:this.data.data.dateOut,
-						orderTime:new Date().toLocaleString(),
+						orderTime:createOrderTime.toLocaleString(),
+						failureTime:failureTime,
 						price:this.data.price * this.nightNum,
 						hint:this.hint
 					};

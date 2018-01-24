@@ -2,12 +2,10 @@
 <template>
 	<section class="aboutHotel">
 		<ul @click="showIgola">
-			<li id="aboutHotel" class="aboutHotelLink"><span>酒店简介</span><span><i class="glyphicon glyphicon-menu-right"></i></span></li>
-			<li id="hotel_policy" class="aboutHotelLink"><span>酒店政策</span><span><i class="glyphicon glyphicon-menu-right"></i></span></li>
-			<li id="hotel_equip" class="aboutHotelLink"><span>酒店设施</span><span><i class="glyphicon glyphicon-menu-right"></i></span></li>
-			<li id="igolaServerTele"><span>iGola服务热线：</span><span class="igolaTel"><i class="glyphicon glyphicon-phone-alt" aria-hidden="true"></i>{{igolaTele}}</span></li>
-			<li id="aaa">iGola服务时间：7 &times; 24h</li>
-			<li id="aaa" class="aboutHotelLink"><span>iGola酒店问答</span><span><i class="glyphicon glyphicon-menu-right"></i></span></li>
+			<li v-for="(val,idx) in aboutIgola" :id="idx" class="aboutHotelLink"><span>{{val}}</span><span><i class="iconfont icon-arrow-right-copy"></i></span></li>
+			<li id="igolaServerTele"><span>iGola服务热线：</span><span class="igolaTel"><i class="iconfont icon-dingwei" aria-hidden="true"></i>{{igolaTele}}</span></li>
+			<li>iGola服务时间：7 &times; 24h</li>
+			<li class="aboutHotelLink"><span>iGola酒店问答</span><span><i class="iconfont icon-arrow-right-copy"></i></span></li>
 		</ul>
 		<mt-popup v-model="show" position="right" >
 		 	<div class="aboutHotelContent" v-for="(val,key) in IgolaData"  @click="hideIgola">
@@ -28,6 +26,11 @@
 				show:false,
 				IgolaData:{},
 				igolaTele:'400-900-7280',
+				aboutIgola:{
+					aboutHotel:'酒店简介',
+					hotel_policy:'酒店政策',
+					hotel_equip:'酒店设施'
+				},
 				aboutHotel:{
 					'酒店位置':'酒店位置在广州珠江新城的广州威珀斯酒店，您将很靠近广州大剧院和琶洲展馆。 该 4.5 星级酒店紧邻广东省博物馆及花城广场。',
 					'客房':'客房 有 680 间客房提供迷你吧和平板电视；您定能在旅途中找到家的舒适。免费的有线和无线上网帮助您与朋友保持联系；此外客房还提供有线节目，以满足您的娱乐需求。配备淋浴设施的独立浴室提供免费洗浴用品和拖鞋。',
