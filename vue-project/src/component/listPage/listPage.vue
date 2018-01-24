@@ -13,6 +13,7 @@
 	import tabber from './tabber.vue';
 	import baseCss from './base.css';
 	import listPage from './listPage.scss';
+	import http from '../../http/baseUrl.js'
 	export default{
 		name:'app',
 		components:{datagrid,search,tabber},
@@ -25,7 +26,7 @@
 	        renew:function(msg){
 	        	this.$children[1].switchShow = true;
 	        	var data;
-        		this.axios.get('http://127.0.0.1:88/' + msg[0].type,msg[1]).then(response => {
+        		this.axios.get(http.url + msg[0].type,msg[1]).then(response => {
 					data= response.data.data.results;
 					console.log(data);
 				}).catch(function (error) {

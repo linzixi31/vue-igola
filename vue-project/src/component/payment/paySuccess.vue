@@ -11,7 +11,7 @@
         </mt-header>
         <div v-show="!switchShow">
             <div id="container_paysus" :style="{backgroundImage: 'url(' +
-            this.paySucdata.image1 + ')'}">
+            this.paySucdata.image1  + ')'} ">
                 <div class='container_pay_h'>
                     
                 </div>
@@ -104,10 +104,11 @@ import http from '../../http/baseUrl.js'
                 }
             }
             this.$store.dispatch('refresh',params)
-            
+            this.paySucdata.image1 ? this.paySucdata.image1 : './src/assets/img/timg.gif'
             if(this.$store.state.payment.orderdataset[0]){
                 this.paySucdata = this.$store.state.payment.orderdataset[0]
                 this.switchShow = false;
+
             }
 
         },
@@ -118,3 +119,4 @@ import http from '../../http/baseUrl.js'
         }
     }
 </script>
+

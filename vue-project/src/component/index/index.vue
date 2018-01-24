@@ -54,11 +54,11 @@
 
 <script>
 
-        
+    
 	import "./index.scss";
 	import http from "../../http/baseUrl";
-	import {Lazylaod} from "mint-ui";
 	import footernav from "../footernav/footernav.vue";
+	import Vue from 'vue';
 	
 	
 	export default{
@@ -93,11 +93,11 @@
 
 
 </script>
+
+
 <style>	
-/*image[lazy=loading] {
-  width: 40px;
-  height: 300px;
-  margin: auto;
-}*/
+	.index_main .content .detail .pic img[lazy=loading] {
+ 		background-size: cover;
+	}
 
 </style>

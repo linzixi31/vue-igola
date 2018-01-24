@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import http from '../../http/baseUrl.js'
 	export default{
 		data(){
 			return {
@@ -43,7 +44,7 @@
 				var add = this.$route.query.add;
 				var hotelName = this.$route.query.hotelName;
 				console.log(add,hotelName);
-				this.axios.get('http://127.0.0.1:88/listPageReceive',{params:{add:add,hotelName:hotelName}}).then(response => {
+				this.axios.get(http.url+'/listPageReceive',{params:{add:add,hotelName:hotelName}}).then(response => {
 					console.log(1);
 					console.log(response.data);
 					window.setTimeout(()=>{
@@ -53,14 +54,13 @@
 					},500)
 				}).catch(function (error) {
 				    console.log(error);
+				    alert(error);
 				})
 			}else{
-				this.axios.get('http://127.0.0.1:88/listPage').then(response => {
-					console.log(2)
-					window.setTimeout(()=>{
-						this.switchShow = false;
-						this.dataset = response.data.data.results;
-					},500)
+				this.axios.get(http.url+'/listPage').then(response => {
+					console.log(response);
+					this.switchShow = false;
+					this.dataset = response.data.data.results;
 				}).catch(function (error) {
 				    console.log(error);
 				});

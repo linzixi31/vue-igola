@@ -1,7 +1,9 @@
 <template>
 	<div id="search_page">
 		<div class="search_header">
-			<p @click="back"> < </p>
+			<p @click="back">
+				<i class="iconfont icon-fanhui"></i>
+			</p>
 			<h1>酒店</h1>
 			<mt-swipe :auto="3000" class="choice_carousel">
 				<mt-swipe-item class="carouselItem"></mt-swipe-item>

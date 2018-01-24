@@ -47,10 +47,7 @@
 </script>
 
  <style type="text/css">
-<<<<<<< HEAD
-=======
-    
->>>>>>> b5749a39a72329426e5104fd7c151bdd37b8ead8
+
     *{margin:0;padding:0;}
     #app{height:100%;}
     .feedback{height:100%;display:flex;flex-direction: column;}
