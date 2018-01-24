@@ -11,6 +11,7 @@ module.exports = {
             }else{
                 sql = "select count(*)  from `order` where loginname="+req.query.username;
             }
+
             
             db.select(sql, function(data){
                    console.log(data)
@@ -19,6 +20,24 @@ module.exports = {
                 
                 
             })
+        });
+        app.get('/userDetails', function(req, res){
+
+            console.log(res)
+            var sql="select *  from `user` where telephone="+req.query.username;
+
+            db.select(sql, function(data){
+                   console.log(data)
+                   res.send(data);
+                
+                
+                
+            })
         })
-    }
+
+
+
+
+    },
+   
 }

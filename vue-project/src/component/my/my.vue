@@ -48,24 +48,24 @@
 
         <div class="m_content">
             <ul class="main">
-                <li @click="get_online" ><span class="iconfont icon-msnui-state-online"></span>&nbsp;在线值机<span class="gt">&gt;</span></li>
-                <li @click="show"><span class="iconfont icon-xiazai46"></span>&nbsp;客服<span class="gt">&gt;</span></li>
-                <li @click="get_hobbySet">偏好设置<span class="gt">&gt;</span></li>
-                <li @click="my_popupShow">清理缓存<span class="gt">&gt;</span></li>
-                <li @click="get_feedback">意见与反馈<span class="gt">&gt;</span></li>
-                <li @click="get_about">关于iGola<span class="gt">&gt;</span></li>
+                <li @click="get_online" ><span class="iconfont icon-msnui-state-online"></span>&nbsp;在线值机<span class="iconfont icon-arrow-right-copy"></span></li>
+                <li @click="show"><span class="iconfont icon-xiazai46"></span>&nbsp;客服<span class="iconfont icon-arrow-right-copy"></span></li>
+                <li @click="get_hobbySet">偏好设置<span class="iconfont icon-arrow-right-copy"></span></li>
+                <li @click="my_popupShow">清理缓存<span class="iconfont icon-arrow-right-copy"></span></li>
+                <li @click="get_feedback">意见与反馈<span class="iconfont icon-arrow-right-copy"></span></li>
+                <li @click="get_about">关于iGola<span class="iconfont icon-arrow-right-copy"></span></li>
             </ul>
         </div>
         <div id="registerFoot">
             <footernav></footernav>
         </div>
         <mt-popup   v-model="popupVisible"  position="bottom" id="my_popup">
-            <div><i class="glyphicon glyphicon-phone-alt"></i style="color:#fff;"> <br />热线电话</div>
-            <div><i class="glyphicon glyphicon-comment"></i style="color:#fff;"> <br />在线客服</div>
-            <div><i class="glyphicon glyphicon-envelope"></i style="color:#fff;"> <br />邮件反馈</div>
+            <div><i class="iconfont icon-dianhua"></i style="color:#fff;"> <br />热线电话</div>
+            <div><i class="iconfont icon-xinxi"></i style="color:#fff;"> <br />在线客服</div>
+            <div><i class="iconfont icon-msnui-email"></i style="color:#fff;"> <br />邮件反馈</div>
         </mt-popup>    
         <mt-popup   v-model="i_popupShow"  position="right" id="my_rightPop">
-            <div><i class="glyphicon glyphicon-info-sign"></i> </div>
+            <div><i class="iconfont icon-gantanhao"></i> </div>
             <div>缓存即将被清理</div>
             <div><span @click="clear">取消</span><span @click="clear">继续</span></div>
         </mt-popup>    

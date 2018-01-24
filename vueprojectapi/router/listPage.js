@@ -49,6 +49,7 @@ module.exports = {
         app.get('/sort',function(request,response){
         	var value = request.query.order;
         	var sql = '';
+        	console.log(value);
         	if(value == 'priceUp'){
         		sql = `select * from hotel order by minPrice asc`;
         	}else if(value == 'priceDown'){

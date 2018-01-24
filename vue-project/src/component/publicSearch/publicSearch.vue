@@ -7,9 +7,17 @@
 			</div>
 			<span @click='returnHistory1' class="fr">取消</span>	
 		</div>
+		<p v-if="watchEnter">{{value}}</p>
+		<p>
+			最近搜索: 
+		</p>
+		<p>
+			<span v-for = "(obj,index) in historyHotel" :key="obj.index" v-if="index<2">{{obj.hName}}</span>
+		</p>
 		<ul>
-			<li v-if="watchEnter">{{value}}</li>
-			<li v-for="(obj,index) in searchList" v-heightLight="{index:index}"><router-link :to="{path:'/detail',query: {id: obj.id}}">{{obj.hotelName}}</router-link></li>
+			<li v-for="(obj,index) in searchList" v-heightLight="{index:index}" @click='sendNew(obj.id)' class="res">
+				{{obj.hotelName}}
+			</li>
 		</ul>
 		<div class="mask" v-if="searchSwitch"></div>
 	</div>
@@ -18,11 +26,13 @@
 <script>
 	import publicSearch from './publicSearch.scss';
 	import baseCss from '../listPage/base.css';
+	import http from '../../http/baseUrl.js';
 	export default{
 		data(){
 			return{
 				searchSwitch:false,
 				value:'',
+				historyHotel:[],
 				searchList:[],
 				watchEnter:false
 			}
@@ -50,10 +60,13 @@
 			popDown:function(){
 				this.searchSwitch = false;
 			},
+			sendNew:function(_id){
+				this.$router.push({ path: '/detail', query: { id: _id }});
+			},
 			searchHotel:function(){
 				this.watchEnter = true;
 				if(this.value != ''){
-					this.axios.get('http://127.0.0.1:88/publicSearch',{params:{data:this.value}}).then(response =>{
+					this.axios.get( http.url + '/publicSearch',{params:{data:this.value}}).then(response =>{
 						this.res = response.data.data.results;
 						console.log(this.res);
 						this.searchList = this.res;
@@ -62,6 +75,25 @@
 					})
 				}
 			}
+		},
+		beforeMount(){
+			var arrAll = [];
+			if(window.localStorage.username){
+				
+			}else{
+				if(document.cookie){
+					var cookie = document.cookie;
+					cookie = cookie.split('; ');
+			        cookie.forEach(function(item){
+			            let arr = item.split('=');
+			            if(arr[0]=='localHistory'){
+			                arrAll = JSON.parse(arr[1]);
+			            }
+			        })
+			        this.historyHotel = arrAll;
+				}
+			}
+			
 		},
 		mounted:function(){
 			var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;

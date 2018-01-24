@@ -18,6 +18,8 @@ var detail = require('./detail');
 var hotHotel = require("./hotHotel");
 var payment = require('./payment')
 var userHotelStatus=require('./userHotelStatus')
+var userHistory = require("./userHistory");
+
 
 module.exports = {
     start: function(_port){
@@ -37,7 +39,7 @@ module.exports = {
         rooms.register(app);
         login.register(app);
         reg.reg(app);
-        
+        userHistory.insert(app);
         listPage.select(app);
         
         homepage.register(app);
@@ -46,6 +48,7 @@ module.exports = {
         hotHotel.register(app);
         payment.reg(app);
         userHotelStatus.getUserStatus(app);
+        
         
         app.listen(_port);
     }
