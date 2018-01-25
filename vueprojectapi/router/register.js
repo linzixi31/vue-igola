@@ -7,9 +7,9 @@ module.exports = {
           console.log(data);
            var sql = "INSERT INTO user (telephone,password) VALUES ('"+data.telephone+"','"+data.password+"')";
             db.select(sql,function(result){
-                console.log(result)
+                //console.log(result)
                 if(result.status){
-                    console.log(666)
+                    //console.log(666)
                     res.send('sucess');
                 }else{
                     res.send('fail');

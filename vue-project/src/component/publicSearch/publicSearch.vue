@@ -25,8 +25,7 @@
 
 <script>
 	import publicSearch from './publicSearch.scss';
-	import baseCss from '../listPage/base.css';
-	import http from '../../http/baseUrl.js';
+	import http from '../../http/baseUrl.js'
 	export default{
 		data(){
 			return{
@@ -36,9 +35,6 @@
 				searchList:[],
 				watchEnter:false
 			}
-		},
-		components:{
-			baseCss
 		},
 		directives:{
 			heightLight:{
@@ -66,6 +62,7 @@
 			searchHotel:function(){
 				this.watchEnter = true;
 				if(this.value != ''){
+
 					this.axios.get( http.url + '/publicSearch',{params:{data:this.value}}).then(response =>{
 						this.res = response.data.data.results;
 						console.log(this.res);
