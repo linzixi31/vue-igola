@@ -17,11 +17,11 @@
               <p>为了您能顺利完成预定，请尽快支付</p>
               <mt-button style='margin-top:2.1875rem' @click='paySuccess'>查看我的订单</mt-button>
           </div>
-          <mt-checklist
+          <mt-radio
                 align="right"
                 v-model="value"
                 :options="options">
-          </mt-checklist>
+          </mt-radio>
           <div id="pay_footer">
               <div class='totalPrice'><span>合计</span><br /><span class='price'>￥{{paydata.totalPrice}}</span></div>
               <div class="pay"><mt-button size="small" style="color:#fff;background:#F5B23D;text-align:center" @click='payment()'>支付</mt-button></div>
@@ -43,7 +43,7 @@
         data(){
             return{
                 paydata:{},
-                value:[],
+                value:"",
                 time:count,
                 options : [
                   {

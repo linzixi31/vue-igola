@@ -1,13 +1,13 @@
 .searchLike{
     #publicSearch{
-        width:100%;display: flex;
+        width:100%;display: flex;flex-direction:row;justify-content:space-around;margin:1.6rem 0;
         .searchLeft{
             flex: 1;
         }
         .search{
             flex:20;background: #ccc;border-radius:1.06rem;height:3rem;
             span{
-                line-height: 3rem;
+                line-height: 3rem;text-indent: 0.6rem;
             }
             input{
                background: #ccc;margin-left:1rem;line-height: 3rem;
@@ -18,7 +18,16 @@
         }
     }
     .searchBottom{
-        width:100%;padding:0 1.2rem;
+        width:100%;padding:0 1.2rem;font-size:1.6rem;
+        .historySearch{
+            height:6rem;line-height: 2rem;
+            span{padding:0 1rem;}
+        }
+        .jiudian{
+            li{
+                text-indent: 0.8rem;
+            }
+        }
     }
 }
 
