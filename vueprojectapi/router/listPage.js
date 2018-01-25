@@ -18,7 +18,7 @@ module.exports = {
         	console.log(add,hotelName);
         	var sql = `select * from hotel where address like "%${add}%" and hotelName like "%${hotelName}%"`;
         	db.select(sql,function(data){
-        		console.log(data);
+        		//console.log(data);
         		if(data.status){
         			response.send(data);
         		}else{

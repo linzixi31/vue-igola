@@ -43,8 +43,17 @@
 </script>
 
 <style type="text/css">
+<<<<<<< HEAD
+<<<<<<< HEAD
+    .clearfix::after{content:"";display:block;height:0;clear:both;overflow:hidden;visibility:hidden;zoom:1;}
+=======
+	    .clearfix::after{content:"";display:block;height:0;clear:both;overflow:hidden;visibility:hidden;zoom:1;}
+>>>>>>> b5749a39a72329426e5104fd7c151bdd37b8ead8
+        ul,li{list-style:none;padding:0;}
+=======
 	.clearfix::after{content:"";display:block;height:0;clear:both;overflow:hidden;visibility:hidden;zoom:1;}
     ul,li{list-style:none;padding:0;}
+>>>>>>> 278c0eb03eec5c6a071aca54d07adebd13953d3e
     #app{height:100%;}
     .hobbySet{height:100%;display:flex;flex-direction:column;}
     #hobby_head{height:1.933333rem;font-size:0.4533333rem;background:#0096FF;color:white;}

@@ -1,6 +1,6 @@
 <template>
 	<main id="main">
-		<mt-spinner type="triple-bounce" :size="80" v-show="switchShow">
+		<mt-spinner type="triple-bounce" :size="60" v-show="switchShow" class='order_containter'>
 		</mt-spinner>
 		<ul>
 			<li v-for="(item,idx) in $store.state.listData" :key="item.idx" @click = "saveHistory(item.id,item.hotelName)">
@@ -83,18 +83,18 @@
 				var add = this.$route.query.add;
 				var hotelName = this.$route.query.hotelName;
 				this.axios.get(http.url+'/listPageReceive',{params:{add:add,hotelName:hotelName}}).then(response => {
-					this.switchShow = false;
 					this.$store.state.listData = response.data.data.results;
+					this.switchShow = false;
 				}).catch(function (error) {
 				    console.log(error);
 				})
 			}else{
 				this.axios.get(http.url + '/listPage').then(response => {
-					window.setTimeout(()=>{
-						this.switchShow = false;
+					
+						
 						this.$store.state.listData = response.data.data.results;
-						console.log(this.dataset);
-					},500)
+						this.switchShow = false;
+					
 				}).catch(function (error) {
 				    console.log(error);
 				});

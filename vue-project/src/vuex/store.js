@@ -1,17 +1,19 @@
 import Vue from 'vue';
 import VueX from 'vuex';
+
+import payment from '../component/payment/payment.js'
+
 import http from '../http/baseUrl.js';
 import axios from 'axios';
 Vue.use(VueX)
-
 const state = {
 	orderDate:{},
 	showSort:false,
 	showStar:false,
 	showScreen:false,
+    switchShow:true,
 	listData:[]
 };
-
 const mutations ={
 	change(res){
 		state.orderDate = res;
@@ -37,14 +39,15 @@ const mutations ={
 		    console.log(error);
 		});
 	}
-}
 
+}
 const store = new VueX.Store({
     modules:{
-
+        payment
     },
     state,
     mutations
+ 
 })
 
 export default store

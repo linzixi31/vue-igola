@@ -14,10 +14,8 @@ import store from './vuex/store';
 import {Lazyload} from "mint-ui";
 Vue.use(Lazyload, {
 	  preLoad: 2,
-	  loading: './src/assets/img/loading.gif',
+	  loading: './src/assets/img/timg.gif',
 	  attempt: 1,
-	  width:10,
-	  height:10
 	})
 Vue.use(VueAxios, axios)
 Vue.use(Mint);

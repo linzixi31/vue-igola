@@ -1,10 +1,12 @@
 <template>
 	<div>
+		<mt-spinner type="triple-bounce" :size="60" v-show="$store.state.switchShow"  color="#26a2ff" class="order_spinner">
+        </mt-spinner>
 		<div id="choice">
 			<div class="choice_header">
 				<h1>优选</h1>
 			</div>
-			<div class="choice_main">
+			<div class="choice_main" v-show="!$store.state.switchShow">
 				<div class="item_detail" v-for="item in hotHotel" v-if="item.hot == 1" @click="toDetail(item.id)">
 					<div class="pic">
 						<img v-lazy= "item.image1" />
@@ -42,6 +44,7 @@
 		beforeMount(){
 			this.axios.get(http.url + "/hotHotel").then(res =>{
 				this.hotHotel = res.data.data.results;
+				this.$store.state.switchShow=false;
 				
 			})
 		},
@@ -59,10 +62,7 @@
 
 <style>	
 	.pic img[lazy=loading] {
-	  width: 40px;
-	  height: 40px;
-	  display: block;
-	  margin: 0 auto;
+	 background-size: cover;
 	}
 
 </style>
