@@ -9,13 +9,13 @@
 					<mt-swipe-item class="swipeItem-4"></mt-swipe-item>
 				</mt-swipe>
 				<div class="cover">
-					<div class="cate" >
+					<div class="cate" @click="top" >
 						<span class="small" @click="allHotel">
 							<i class="iconfont icon-jiudian "></i>
 						</span>
 						<p>全部酒店</p>
 					</div>
-					<div class="cate" >
+					<div class="cate" @click="top" >
 						<span class="small" @click="search">
 							<i class="iconfont icon-sousuo"></i>
 						</span>
@@ -95,6 +95,11 @@
 					$(".fix").removeClass("fix").addClass("cover");
 					$(".cate .small_action").removeClass("small_action").addClass("small");
 					$(".cate p").show();
+				}
+			},
+			top(){
+				if(window.pageYOffset > 400){
+					$('html').animate({scrollTop:0},500);
 				}
 			}
 		},
