@@ -18,12 +18,10 @@ var detail = require('./detail');
 var hotHotel = require("./hotHotel");
 var payment = require('./payment')
 var userHotelStatus=require('./userHotelStatus')
-var userHistory = require("./userHistory");
 
 
 module.exports = {
     start: function(_port){
-
         app.all('*', function(req, res, next) {
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
@@ -39,9 +37,7 @@ module.exports = {
         rooms.register(app);
         login.register(app);
         reg.reg(app);
-        userHistory.insert(app);
-        listPage.select(app);
-        
+        listPage.select(app); 
         homepage.register(app);
         order.register(app);
         detail.register(app);
