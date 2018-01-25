@@ -6,7 +6,7 @@
 			</router-link>
 		</mt-header>
 		<div id="hotelPicList">
-			<img v-for="val in imgUrls" :src="val" >
+			<img v-for="val in imgUrls"  v-lazy="val">
 		</div>
 	</div>
 </template>
@@ -22,10 +22,6 @@
 			}
 		},
 		computed:{
-			backDetail:function(){
-				
-				return  '/detail/?id=' + this.$route.query.hotelId;
-			},
 			imgNumber:function(){
 				return '共' + this.imgUrls.length + '张';
 			}
