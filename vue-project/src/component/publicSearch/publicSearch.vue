@@ -3,8 +3,8 @@
 		<div id="publicSearch" class="clearfix">
 			<div class="searchLeft"></div>
 			<div class="search fl">
-				<span class="iconfont icon-sousuo fl"></span>
-				<input class="fl" v-model="value" placeholder="搜索酒店名、关键字、地标" @focus="popUp" @blur="popDown" v-on:input="searchHotel">
+				<span class="fl"></span>
+				<input class="fl" v-model="value" placeholder="搜索酒店名、关键字、地标" v-on:input="searchHotel">
 			</div>
 			<span @click='returnHistory1' class="fr can">取消</span>	
 		</div>
@@ -16,6 +16,7 @@
 			<p>
 				<span v-for = "(obj,index) in historyHotel" :key="obj.index" v-if="index<2">{{obj.hName}}</span>
 			</p>
+
 			<ul>
 				<li v-for="(obj,index) in searchList" v-heightLight="{index:index}" @click='sendNew(obj.id)' class="res">
 					{{obj.hotelName}}
@@ -27,20 +28,16 @@
 
 <script>
 	import publicSearch from './publicSearch.scss';
-	import baseCss from '../listPage/base.css';
+//	import baseCss from '../listPage/base.css';
 	import http from '../../http/baseUrl.js';
 	export default{
 		data(){
 			return{
-				searchSwitch:false,
 				value:'',
 				historyHotel:[],
 				searchList:[],
 				watchEnter:false
 			}
-		},
-		components:{
-			baseCss
 		},
 		directives:{
 			heightLight:{
@@ -55,12 +52,6 @@
 		methods:{
 			returnHistory1:function(){
 				this.$router.go(-1);
-			},
-			popUp:function(){
-				this.searchSwitch = true;
-			},
-			popDown:function(){
-				this.searchSwitch = false;
 			},
 			sendNew:function(_id){
 				this.$router.push({ path: '/detail', query: { id: _id }});
@@ -81,7 +72,11 @@
 		beforeMount(){
 			var arrAll = [];
 			if(window.localStorage.username){
-				
+				var username = window.localStorage.username
+				this.axios.get('http://127.0.0.1:88/getHistory',{params:{username:username}}).then(response =>{
+					this.historyHotel = response.data.data.results;
+					console.log(this.historyHotel);
+				})
 			}else{
 				if(document.cookie){
 					var cookie = document.cookie;

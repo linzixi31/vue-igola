@@ -9,8 +9,6 @@ import online from '../component/my/online.vue'
 import hobbySet from '../component/my/hobbySet.vue'
 import i from '../component/loginSucess/i.vue'
 import about from '../component/my/about.vue'
-
-import listPage from '../component/listPage/listPage.vue';
 import list from '../component/list/list.vue';
 import IndexComponent from "../component/index/index.vue";
 import ChoiceComponent from "../component/choice/choice.vue";
@@ -68,11 +66,6 @@ var router  = new VueRouter({
         {
             path:'/about',
             component:about
-        },
-        {
-        	path:'/listPage',
-        	component:listPage
-            
         },
         {
         	path:"/index",

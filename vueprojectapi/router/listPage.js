@@ -112,6 +112,22 @@ module.exports = {
         			response.send(res);
         		}
         	})
-        })
+        }),
+        app.get('/userHistory',function(request,response){
+			var username = request.query.username;
+			var hName = request.query.hName;
+			var date = request.query.date;
+			console.log(request.query);
+			db.createHistory(request.query,function(data){
+				response.send(data);
+			})
+		}),
+		app.get('/getHistory',function(request,response){
+			var username = request.query.username;
+			console.log(username);
+			db.getHistory(request.query,function(data){
+				response.send(data);
+			})
+		})
     }
 }
