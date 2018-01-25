@@ -23,7 +23,7 @@
 				this.$router.go(-1)
 			},
 			goLikeSearch:function(){
-				this.$router.push({ path: '/detail'});
+				this.$router.push({ path: '/publicSearch'});
 			}
 		}
 	}

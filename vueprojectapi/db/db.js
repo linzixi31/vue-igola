@@ -132,5 +132,28 @@ module.exports = {
                          _cb({status:true,data:{results}});
                 }
             })
+    },
+    createHistory:function(_data,_cb){
+    	var sql = `
+	        INSERT INTO  db_hotel.userhistory 
+	        (username,hName) 
+	        VALUES ('${_data.username}','${_data.hName}')`;
+        db.query(sql,function(err,results,fields){
+            if(err){
+                _cb({status:false,error:err});
+            }else{
+                _cb({status:true,data:{results}});
+            }
+        })
+    },
+    getHistory:function(_data,_cb){
+    	var sql = `select * from userhistory where username = ${_data.username}`;
+    	db.query(sql,function(err,results,fields){
+    		if(err){
+    			_cb({status:false,error:err});
+    		}else{
+    			_cb({status:true,data:{results}});
+    		}
+    	})
     }
 }

@@ -1,35 +1,37 @@
 <template>
 	<div class="searchLike">
-		<div id="publicSearch">
+		<div id="publicSearch" class="clearfix">
+			<div class="searchLeft"></div>
 			<div class="search fl">
-				<span class="iconfont icon-sousuo fl"></span>
-				<input class="fl" v-model="value" placeholder="搜索酒店名、关键字、地标" @focus="popUp" @blur="popDown" v-on:input="searchHotel">
+				<span class="fl"></span>
+				<input class="fl" v-model="value" placeholder="搜索酒店名、关键字、地标" v-on:input="searchHotel">
 			</div>
-			<span @click='returnHistory1' class="fr">取消</span>	
+			<span @click='returnHistory1' class="fr can">取消</span>	
 		</div>
-		<p v-if="watchEnter">{{value}}</p>
-		<p>
-			最近搜索: 
-		</p>
-		<p>
-			<span v-for = "(obj,index) in historyHotel" :key="obj.index" v-if="index<2">{{obj.hName}}</span>
-		</p>
-		<ul>
-			<li v-for="(obj,index) in searchList" v-heightLight="{index:index}" @click='sendNew(obj.id)' class="res">
-				{{obj.hotelName}}
-			</li>
-		</ul>
-		<div class="mask" v-if="searchSwitch"></div>
+		<div class="searchBottom">
+			<p v-if="watchEnter">{{value}}</p>
+			<p>
+				最近搜索: 
+			</p>
+			<p>
+				<span v-for = "(obj,index) in historyHotel" :key="obj.index" v-if="index<2">{{obj.hName}}</span>
+			</p>
+
+			<ul>
+				<li v-for="(obj,index) in searchList" v-heightLight="{index:index}" @click='sendNew(obj.id)' class="res">
+					{{obj.hotelName}}
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
 <script>
 	import publicSearch from './publicSearch.scss';
-	import http from '../../http/baseUrl.js'
+	import http from '../../http/baseUrl.js';
 	export default{
 		data(){
 			return{
-				searchSwitch:false,
 				value:'',
 				historyHotel:[],
 				searchList:[],
@@ -49,12 +51,6 @@
 		methods:{
 			returnHistory1:function(){
 				this.$router.go(-1);
-			},
-			popUp:function(){
-				this.searchSwitch = true;
-			},
-			popDown:function(){
-				this.searchSwitch = false;
 			},
 			sendNew:function(_id){
 				this.$router.push({ path: '/detail', query: { id: _id }});
@@ -76,7 +72,11 @@
 		beforeMount(){
 			var arrAll = [];
 			if(window.localStorage.username){
-				
+				var username = window.localStorage.username
+				this.axios.get(http.url +'/getHistory',{params:{username:username}}).then(response =>{
+					this.historyHotel = response.data.data.results;
+					console.log(this.historyHotel);
+				})
 			}else{
 				if(document.cookie){
 					var cookie = document.cookie;
@@ -90,20 +90,6 @@
 			        this.historyHotel = arrAll;
 				}
 			}
-			
-		},
-		mounted:function(){
-			var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
-            document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
-            var scale = 1/window.devicePixelRatio;
-            var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
-            document.getElementById("vp").content = mstr;	
-		},
-		beforeRouteLeave(to,from,next){
-			document.getElementById("vp").content = ''
-			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
-			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
-			next()
 		}
 	}
 </script>

@@ -13,7 +13,7 @@
           <div id="pay_container" >
               <h1>您的订单已经提交</h1>
               <p>你的订单号为<span style='color:#478D95'>{{paydata.orderId}}</span></p>
-                <p>倒计时:{{time}}</p>
+                <p></p>
               <p>为了您能顺利完成预定，请尽快支付</p>
               <mt-button style='margin-top:2.1875rem' @click='paySuccess'>查看我的订单</mt-button>
           </div>

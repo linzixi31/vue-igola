@@ -46,12 +46,11 @@
 		methods:{
 			saveHistory:function(_id,_hotelName){
 		        var now = new Date();
-		        now.setDate(now.getDate()+7);
 		        var cookie = document.cookie;
 				var arrAll = [];
 				if(window.localStorage.username){
 					var username = window.localStorage.username
-					this.axios.get(http.url + '/userHistory',{id:_id}).then(response =>{
+					this.axios.get(http.url+'/userHistory',{params:{username:username,hName:_hotelName,date:now}}).then(response =>{
 						console.log(response);
 					}).catch(function(error){
 						console.log(error);
@@ -81,6 +80,7 @@
 		},
 		beforeMount(){
 			if(this.$route.query.add && this.$route.query.hotelName){
+				console.log(this.$route.query.enterTime,this.$route.query.leaveTime);
 				var add = this.$route.query.add;
 				var hotelName = this.$route.query.hotelName;
 				this.axios.get(http.url+'/listPageReceive',{params:{add:add,hotelName:hotelName}}).then(response => {
@@ -91,11 +91,10 @@
 				})
 			}else{
 				this.axios.get(http.url + '/listPage').then(response => {
-					
-						
+						console.log(this.$route.query.enterTime,this.$route.query.leaveTime);
 						this.$store.state.listData = response.data.data.results;
 						this.switchShow = false;
-					
+						
 				}).catch(function (error) {
 				    console.log(error);
 				});
