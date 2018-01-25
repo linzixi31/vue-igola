@@ -37,6 +37,10 @@ Vue.use(VueRouter);
 var router  = new VueRouter({
     routes : [
         {
+            path:'/',
+            redirect:'/index'
+        },
+        {
             path:"/login",
             component: Logincomponent
         },
@@ -70,7 +74,8 @@ var router  = new VueRouter({
         },
         {
         	path:"/index",
-        	component:IndexComponent
+        	component:IndexComponent,
+
         },
         {
             path:'/order',

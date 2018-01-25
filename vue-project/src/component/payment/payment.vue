@@ -95,7 +95,7 @@
                     if(res.data.status){
                         Toast({
                               message: '支付成功',
-                              iconClass: 'glyphicon glyphicon-ok'
+                              iconClass: 'iconfont icon-zhengquequeding'
                             });
                         this.$router.push({path:'/paySuccess',query:{orderId:Id}});
                             
