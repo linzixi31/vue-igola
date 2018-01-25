@@ -19,7 +19,6 @@ const mutations ={
 		state.orderDate = res;
 	},
 	changPopStatus(ordershow,show){
-		console.log(arguments)
 		if(show == 'showSort'){
 			state.showSort = true;
 		}else if(show == 'showStar'){

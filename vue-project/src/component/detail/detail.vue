@@ -1,9 +1,8 @@
 <template >
 	<div id="hotelBooking">
-		<detailHead :hotelName="hotelName" :addr="address" :stars="stars" :imgurl="imgUrl" :enghotelName="enghotelName" :hotelId="id" :kindDescription="kindDescription"></detailHead>
+		<detailHead ref="head" :hotelName="hotelName" :addr="address" :stars="stars" :imgurl="imgUrl" :enghotelName="enghotelName" :hotelId="id" :kindDescription="kindDescription"></detailHead>
 		<detailDatePick></detailDatePick>
-		
-		<detailRoomList :roomList="dataset" :hotelId="id" :loading="loading" :stars="stars" @changeRoomList="changeRoom"></detailRoomList>
+		<detailRoomList :roomList="dataset" :hotelId="id" :loading="loading" :stars="stars" :timer="timer"></detailRoomList>
 		<aboutIgola></aboutIgola>
 	</div>
 </template>
@@ -14,6 +13,8 @@
 
             //引入scss
 	require('./detail.scss');
+	import { MessageBox } from 'mint-ui';
+
 
 	//引入各组件
 	import  http from '../../http/baseUrl.js';
@@ -34,7 +35,8 @@
 				imgUrl:'',
 				id:'',
 				kindDescription:[],
-				dataset:[]
+				dataset:[],
+				timer:''
 			}
 		},
 		components:{
@@ -49,7 +51,7 @@
 				this.axios.get( http.url + '/getHotel',{params:{hotelId:id}}).then(function(res){
 					this.dataset = res.data.data.results;
 					this.loading = false;
-					// console.log(this.dataset);
+					console.log(this.dataset);
 					this.hotelInfor(this.dataset);
 
 				}.bind(this));
@@ -63,10 +65,25 @@
 				this.enghotelName = res[0].enghotelName;
 				this.kindDescription = res[0].kindDescription.split('，');
 			},
-			changeRoom:function(newList){
-
-				this.dataset = newList;
-				// console.log(this.dataset);
+			upDate:function(){
+				this.timer = setTimeout(function(){
+					MessageBox.confirm('页面长时间未刷新，房间可能会有变化，是否刷新？').then(action => {
+					 	this.detailAjax(this.id);
+					 	clearTimeout(this.timer);
+					 	this.upDate();
+					});
+				}.bind(this),5000)
+			},
+			toCeil:function(ele,height){
+				//酒店标题吸顶
+				var scrollTop = window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop;
+				if(scrollTop >= height){
+					
+					$(ele).addClass('hotelInforFixed');
+				}else if(scrollTop < height){
+					$(ele).removeClass('hotelInforFixed');
+				}
+				
 			}
 			
 		},
@@ -77,13 +94,24 @@
             		var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
             		document.getElementById("vp").content = mstr;
 
+            		//获取路由中的参数（酒店ID）
             		this.id = this.$route.query.id;
-			this.detailAjax(this.id);	
+			this.detailAjax(this.id);
+			
+			this.upDate();
+
+			var el = this.$refs.head.$el.lastChild;
+			var headTop = $(el).position().top;
+			//酒店标题吸顶
+			window.addEventListener('scroll',function(){
+				this.toCeil(el,headTop);
+			}.bind(this));
 		},
 		beforeRouteLeave(to,from,next){
 			document.getElementById("vp").content = ''
 			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
 			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
+			clearInterval(this.timer)
 			next()
 		}
 	}
