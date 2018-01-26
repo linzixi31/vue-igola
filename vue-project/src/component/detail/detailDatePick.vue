@@ -1,6 +1,7 @@
 //详情页日期选择组件
 <template>
-		<section class="checkInTime" id="datePick">
+
+		<section class="checkInTime" id="datepick">
 			<div class="row select-time">
 				<div>
 					<span class="time entertime"></span>
@@ -38,7 +39,7 @@
 
 <style type="text/css">
 
-	.date {
+	#datepick .date {
           position: fixed;
           top: 0;
           left: 0;
@@ -51,23 +52,23 @@
          
       }
 
-      .date h4{
+      #datepick .date h4{
         font-size:0.48rem; text-align: center;line-height: 1rem;
       }
 
 
-      .date .action {
+      #datepick .date .action {
           margin-top: 0.266667rem;
       }
-      .date .title{
+      #datepick .date .title{
         font-size:0.373333rem;line-height:0.8rem;
       }
 
-      .date .title div{
+      #datepick .date .title div{
          display: inline;
       }
 
-      .date ul li {
+      #datepick .date ul li {
           display: inline-block;
           font-size: 0.32rem;
           line-height: 0.666667rem;
@@ -75,25 +76,25 @@
           text-align: center;
       }
 
-      .week li {
+      #datepick .week li {
          background-color: #f1f1f1;
       }
 
-      .day .enter {
+      #datepick .day .enter {
           background-color: #3e93fa;
           color: #fff
       }
 
-      .day .leave {
+      #datepick .day .leave {
           background-color: salmon;
           color: #fff
       }
 
-      .day .disable {
+      #datepick .day .disable {
           background-color: #ccc
       }
 
-      .close-btn {
+     #datepick  .close-btn {
           position: fixed;
           font-size:0.426667rem;
           top: 0.266667rem;

@@ -11,13 +11,13 @@
 					<mt-swipe-item class="swipeItem-4"></mt-swipe-item>
 				</mt-swipe>
 				<div class="cover">
-					<div class="cate" @click="top" >
+					<div class="cate" @touchstart="top" >
 						<span class="small" @click="allHotel">
 							<i class="iconfont icon-jiudian "></i>
 						</span>
 						<p>全部酒店</p>
 					</div>
-					<div class="cate" @click="top" >
+					<div class="cate" @touchstart="top" >
 						<span class="small" @click="search">
 							<i class="iconfont icon-sousuo"></i>
 						</span>
@@ -102,7 +102,9 @@
 				}
 			},
 			top(){
+				// console.logs(666)
 				if(window.pageYOffset > 400){
+					$('html body').animate({scrollTop:0},500);
 					$('html').animate({scrollTop:0},500);
 				}
 			}

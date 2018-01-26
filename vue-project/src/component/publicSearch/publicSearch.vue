@@ -17,7 +17,7 @@
 					最近搜索: 
 				</p>
 				<p>
-					<span v-for = "(obj,index) in historyHotel" :key="obj.index" v-if="index<2" @click="RouteToDetail(obj.hName)">{{obj.hName}}</span>
+					<span v-for = "(obj,index) in historyHotel" :key="obj.index" v-if="index>=historyHotel.length-2" @click="RouteToDetail(obj.hName)">{{obj.hName}}</span>
 				</p>
 			</div>
 			<div class="jiudian">
@@ -64,7 +64,7 @@
 			RouteToDetail:function(oName){
 				this.axios.get( http.url +'/searchId',{params:{hotelName:oName}}).then(response =>{
 					var hId = response.data.data.results[0].id;
-					console.log(hId);
+					//console.log(hId);
 					this.$router.push({ path: '/detail', query: { id: hId }});
 				})
 				
@@ -74,7 +74,7 @@
 				if(this.value != ''){
 					this.axios.get( http.url + '/publicSearch',{params:{data:this.value}}).then(response =>{
 						this.res = response.data.data.results;
-						console.log(this.res);
+						//console.log(this.res);
 						this.searchList = this.res;
 					}).catch(function(error){
 						console.log(error)

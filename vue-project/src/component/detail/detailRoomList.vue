@@ -92,7 +92,6 @@
 				
 			},
 			goToPay:function(id,price){
-				
 				this.$router.push({
 					name:'orderCom', 
 					params:{

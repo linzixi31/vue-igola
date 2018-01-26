@@ -1,7 +1,7 @@
 <template>
 	<header id="header">
 		<div class="headerWrap">
-			<div class="headerLeft iconfont iconfont icon-rili" @click="returnBack"></div>
+			<div class="headerLeft iconfont icon-fanhui" @click="returnBack"></div>
 			<div class="headerCenter">
 				<div class="bookTime">
 					<p>住{{entertime.m}}月{{entertime.d}}日</p>

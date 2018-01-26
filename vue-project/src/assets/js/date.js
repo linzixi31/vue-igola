@@ -19,13 +19,13 @@ var date = function ($) {
       var entertime = $('.entertime').text();
       var leavetime = $('.leavetime').text();
       var listIndex = 0;
-      $('body').css({
+      $('.checkInTime').css({
         overflow: 'hidden'
       });
       // 主容器模板
       var dateTemplate = '\n        <div class =\'date container c-gray\'>\n          <h4 class="tac bold">\u8BF7\u9009\u62E9<span class=\'c-blue\'>\u5165\u4F4F</span>\u548C<span class=\'c-red\'>\u79BB\u5F00</span>\u65F6\u95F4</h4>\n          <div class=\'close-btn\'>\u786E\u5B9A</div>\n        </div>      \n      ';
 
-      $('body').append(dateTemplate); // 向body添加插件
+      $('.checkInTime').append(dateTemplate); // 向body添加插件
 
       // action容器模板
       dateArr.forEach(function (item, index) {
@@ -82,7 +82,7 @@ var date = function ($) {
         var leaveTime = leaveMonth + '/' + leaveDay;
         var night = Number($('.leave').attr('index')) - Number($('.enter').attr('index'));
         $('.date').remove(); // 移除插件
-        $('body').css({ overflow: 'auto' });
+        // $('body').css({ overflow: 'auto' });
 
         store.state.orderDate = {
           night:'共' + night + '晚',

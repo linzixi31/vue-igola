@@ -30,7 +30,7 @@
                   </div>
                   <div style='flex:0.8'>
                     <span class='black'>{{item.hotelName}}</span><br />
-                    <span>{{item.startTime}}至{{item.endTime}}</span><br />
+                    <span>2018-{{item.startTime}}至2018-{{item.endTime}}</span><br />
                     <span>{{item.livingPeriod}}晚，1间，Superior Room（East Wing）</span><br />  
                     <span class='name'>{{item.linkman}}</span>
                   </div>
@@ -54,7 +54,7 @@
                   </div>
                   <div style='flex:0.8'>
                     <span class='black'>{{item.hotelName}}</span><br />
-                    <span>{{item.startTime}}至{{item.endTime}}</span><br />
+                    <span>2018-{{item.startTime}}至2018-{{item.endTime}}</span><br />
                     <span>{{item.livingPeriod}}晚，1间，Superior Room（East Wing）</span><br />  
                     <span class='name'>{{item.linkman}}</span>
                   </div>
@@ -76,7 +76,7 @@
                   </div>
                   <div style='flex:0.8'>
                     <span class='black'>{{item.hotelName}}</span><br />
-                    <span>{{item.startTime}}至{{item.endTime}}</span><br />
+                    <span>2018-{{item.startTime}}至2018-{{item.endTime}}</span><br />
                     <span>{{item.livingPeriod}}晚，1间，Superior Room（East Wing）</span><br />  
                     <span class='name'>{{item.linkman}}</span>
                   </div>
