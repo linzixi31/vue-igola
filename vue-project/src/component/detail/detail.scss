@@ -28,6 +28,9 @@ p,ul {
     font-size: 0.48rem;
     top: 0.133333rem;
     left: 0;
+    i{
+       font-size:0.4rem;
+    }
   }
   .hotelDes {
     position: absolute;
@@ -45,8 +48,12 @@ p,ul {
     color: #000;
     line-height: 0.666667rem;
   }
-  .hotelStar {
+  #hotelStar {
     color: #ffa100;
+    i{
+       font-size:0.4rem;
+    }
+   
   }
   .hotelAdr {
     white-space: nowrap;
@@ -60,6 +67,7 @@ p,ul {
   line-height: 0.506667rem;
 }
 
+.hotelInforFixed{position:fixed;top:0;width:100%;}
 
 .checkInTime{
     margin-top: 0.133333rem;
@@ -161,6 +169,10 @@ p,ul {
         }
       }
     }
+    .noRoom{
+        font-size: 0.44rem;
+        img{height:0.8rem;}
+      }
   }
 }
 .aboutHotel {
@@ -171,6 +183,9 @@ p,ul {
     border-bottom: 0.013333rem solid #f1f1f1;
     line-height: 1.186667rem;
     padding-left: 0.133333rem;
+    i{
+       font-size:0.4rem;
+    }
   }
   .aboutHotelLink {
     display: flex;

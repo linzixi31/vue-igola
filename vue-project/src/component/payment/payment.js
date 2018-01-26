@@ -1,30 +1,27 @@
 import axios from 'axios'
+import http from '../../http/baseUrl'
 const state = {
-    dataset: [],
-    columns: [],
-    pagecount: 0,
-    page: 1,
+    orderdataset: [],
+    hh:[]
+
 }
 
 const mutations = {
     refresh(_data, _data2){
-        // console.log(arguments)
-        state.dataset = _data2;
-        // axios.get().then(res => {
-        //     state.dataset = []
-        // })
-        // console.log(123);
-        // state.dataset = [];
+        //mutation的两个形参第一个等于上面state；第二等于下面传参过来的参数
+        //console.log(arguments)
+        state.orderdataset = _data2;
     }
 }
 
 const actions = {
+
     refresh(context, _params){
-        axios.get(_params.api, {params: _params.data}).then(response => {
-            var rowscount = response.data.data.results[1][0]['rowscount'];
-            this.pagecount = Math.ceil(rowscount/this.limit);
-            context.commit('refresh', response.data.data.results[0]);
-        })   
+            axios.post(http.url+_params.api, {id: _params.data.id}).then(response => {
+                context.commit('refresh', response.data.data.results);
+            }).catch(function (error) {
+                console.log(error);
+            }); 
     }
 }
 

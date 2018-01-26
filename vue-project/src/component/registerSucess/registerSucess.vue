@@ -2,7 +2,7 @@
     <div class="registerSucess">
         <header class="reg_sh">注册</header>
         <section class="reg_ss">
-            <p class="glyphicon glyphicon-ok-sign"></p>
+            <p class="iconfont icon-zhengquequeding"></p>
             <p>你已经成为iGola的一员</p>
         </section>
         <footer class="reg_sf">

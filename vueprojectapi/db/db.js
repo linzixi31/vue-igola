@@ -111,8 +111,9 @@ module.exports = {
             // 生成订单
             var sql = `
                     INSERT INTO  db_hotel.order 
-                    ( hotelId,  linkman, telephone, totalPrice, roomId, startTime, endTime, orderId, livingPeriod,loginname) 
-                    VALUES (${_data.hotel_id},'${_data.linkman}','${_data.telephone}','${_data.price}', '${_data.room_id}', '${_data.startTime}', '${_data.endTime}', '${order_id}','${_data.night}','${_data.loginer}')`;
+                    ( hotelId,  linkman, telephone, totalPrice, roomId, startTime, endTime, orderId, livingPeriod,loginname,createTime,failureTime) 
+                    VALUES (${_data.hotel_id},'${_data.linkman}','${_data.telephone}','${_data.price}', '${_data.room_id}', '${_data.startTime}',
+                     '${_data.endTime}', '${order_id}','${_data.night}','${_data.loginer}','${_data.orderTime}','${_data.failureTime}')`;
             
              db.query(sql,function(err,results,fields){
                     if(err){
@@ -131,5 +132,38 @@ module.exports = {
                          _cb({status:true,data:{results}});
                 }
             })
+    },
+    createHistory:function(_data,_cb){
+    	var sql = `
+	        INSERT INTO  db_hotel.userhistory 
+	        (username,hName) 
+	        VALUES ('${_data.username}','${_data.hName}')`;
+        db.query(sql,function(err,results,fields){
+            if(err){
+                _cb({status:false,error:err});
+            }else{
+                _cb({status:true,data:{results}});
+            }
+        })
+    },
+    getHistory:function(_data,_cb){
+    	var sql = `select * from userhistory where username = ${_data.username}`;
+    	db.query(sql,function(err,results,fields){
+    		if(err){
+    			_cb({status:false,error:err});
+    		}else{
+    			_cb({status:true,data:{results}});
+    		}
+    	})
+    },
+    getId:function(_data,_cb){
+    	var sql = `select id from hotel where hotelName = "${_data.hotelName}"`;
+    	db.query(sql,function(err,results,field){
+    		if(err){
+    			_cb({status:false,error:err});
+    		}else{
+    			_cb({status:true,data:{results}});
+    		}
+    	})
     }
 }

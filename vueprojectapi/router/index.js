@@ -9,8 +9,7 @@ var rooms = require('./rooms')
 var login = require('./login')
 var reg = require('./register')
 
-var reg=require('./register')
-
+var jwt = require('jsonwebtoken');
 var listPage = require('./listPage')
 var homepage = require("./homepage")
 var order = require('./order')
@@ -19,9 +18,9 @@ var hotHotel = require("./hotHotel");
 var payment = require('./payment')
 var userHotelStatus=require('./userHotelStatus')
 
+
 module.exports = {
     start: function(_port){
-
         app.all('*', function(req, res, next) {
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
@@ -35,11 +34,9 @@ module.exports = {
         });          
 
         rooms.register(app);
-        login.register(app);
+        login.register(app,jwt);
         reg.reg(app);
-        
-        listPage.select(app);
-        
+        listPage.select(app); 
         homepage.register(app);
         order.register(app);
         detail.register(app);
