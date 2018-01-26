@@ -55,7 +55,7 @@
 				this.activeName = scoreName;
 			},
 			find:function(equipmentName){
-				console.log(equipmentName)
+				//console.log(equipmentName)
 				if(equipmentName.type == 0){
 					equipmentName.type = 1;
 				}else{

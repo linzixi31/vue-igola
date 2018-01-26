@@ -1,6 +1,6 @@
 //详情页日期选择组件
 <template>
-		<section class="checkInTime" >
+		<section class="checkInTime" id="datePick">
 			<div class="row select-time">
 				<div>
 					<span class="time entertime"></span>

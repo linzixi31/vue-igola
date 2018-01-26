@@ -94,7 +94,7 @@
 				this.axios.get(http.url + '/listPage').then(response => {
 						this.$store.state.listData = response.data.data.results;
 						this.switchShow = false;
-						console.log(response);
+						//console.log(response);
 				}).catch(function (error) {
 				    console.log(error);
 				});
