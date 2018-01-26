@@ -10,8 +10,8 @@
               <mt-button icon="more" slot="right"></mt-button>
         </mt-header>
         <div v-show="!$store.state.switchShow">
-            <div id="container_paysus" :style="{backgroundImage: 'url(' +
-            this.paySucdata.image1  + ')'} ">
+            <div id="container_paysus" >
+                <img v-lazy=this.paySucdata.image1 />
                 <div class='container_pay_h'>
                     
                 </div>

@@ -155,5 +155,15 @@ module.exports = {
     			_cb({status:true,data:{results}});
     		}
     	})
+    },
+    getId:function(_data,_cb){
+    	var sql = `select id from hotel where hotelName = "${_data.hotelName}"`;
+    	db.query(sql,function(err,results,field){
+    		if(err){
+    			_cb({status:false,error:err});
+    		}else{
+    			_cb({status:true,data:{results}});
+    		}
+    	})
     }
 }

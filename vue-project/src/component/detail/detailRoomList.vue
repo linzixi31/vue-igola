@@ -41,7 +41,7 @@
 	import http from '../../http/baseUrl.js';
 
 	export default {
-		props:['hotelId','loading','roomList','stars','timer'],
+		props:['hotelId','loading','roomList','stars'],
 		data(){
 			return {
 				cancelAllow:0,//0为不可取消
@@ -92,7 +92,6 @@
 				
 			},
 			goToPay:function(id,price){
-				clearTimeout(this.timer);
 				this.$router.push({
 					name:'orderCom', 
 					params:{

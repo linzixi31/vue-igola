@@ -2,7 +2,7 @@
 	<div id="hotelBooking">
 		<detailHead ref="head" :hotelName="hotelName" :addr="address" :stars="stars" :imgurl="imgUrl" :enghotelName="enghotelName" :hotelId="id" :kindDescription="kindDescription"></detailHead>
 		<detailDatePick></detailDatePick>
-		<detailRoomList :roomList="dataset" :hotelId="id" :loading="loading" :stars="stars" :timer="timer"></detailRoomList>
+		<detailRoomList :roomList="dataset" :hotelId="id" :loading="loading" :stars="stars"></detailRoomList>
 		<aboutIgola></aboutIgola>
 	</div>
 </template>
@@ -13,7 +13,7 @@
 
             //引入scss
 	require('./detail.scss');
-	import { MessageBox } from 'mint-ui';
+	// import { MessageBox } from 'mint-ui';
 
 
 	//引入各组件
@@ -37,7 +37,7 @@
 				id:'',
 				kindDescription:[],
 				dataset:[],
-				timer:''
+				// timer:''
 			}
 		},
 		components:{
@@ -105,6 +105,7 @@
 			document.getElementById("vp").content = ''
 			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
 			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
+			// clearInterval(this.timer)
 			next()
 		}
 	}

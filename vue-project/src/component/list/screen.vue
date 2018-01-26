@@ -10,7 +10,8 @@
 			<div>
 				<p>酒店设施</p>
 				<div class="equipList">
-					<mt-button size="small" v-for="(item,idx) in equipment" :key="item.idx" @click="find(item.value)" :class="{active:EactiveName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
+					<mt-button size="small" v-for="(item,idx) in equipment" v-if="idx < showNum" :key="item.idx" @click="find(item)" :class="{active:item.type == 1}" style="width:30%;float:left">{{item.text}}</mt-button>
+					<div @click="changeState" class="showtips">{{showTip}}</div>
 				</div>
 			</div>
 			<mt-button type="default" size="large" class="clear" @click='clear'>清除</mt-button>
@@ -30,20 +31,23 @@
 				],
 				activeName:'',
 				equipment:[
-					{text:'WiFi',value:'hasWifi'},
-					{text:'停车场',value:'hasParking'},
-					{text:'票务',value:'Ticket'},
-					{text:'餐厅',value:'Restaurant'},
-					{text:'洗衣间',value:'Laundry'},
-					{text:'游泳池',value:'swimming'},
-					{text:'Spa',value:'Spa'},
-					{text:'酒吧',value:'bar'},
-					{text:'健身设施',value:'fit'},
-					{text:'儿童看护',value:'children'},
-					{text:'电梯',value:'lift'},
-					{text:'',value:''}
+					{text:'WiFi',value:'hasWifi',type:0},
+					{text:'停车场',value:'hasParking',type:0},
+					{text:'票务',value:'Ticket',type:0},
+					{text:'餐厅',value:'Restaurant',type:0},
+					{text:'洗衣间',value:'Laundry',type:0},
+					{text:'游泳池',value:'swimming',type:0},
+					{text:'Spa',value:'Spa',type:0},
+					{text:'酒吧',value:'bar',type:0},
+					{text:'健身设施',value:'fit',type:0},
+					{text:'儿童看护',value:'children',type:0},
+					{text:'电梯',value:'lift',type:0},
+					{text:'',value:'',type:0}
 				],
-				EactiveName:''
+				EactiveName:'',
+				listStatus:false,
+				showNum:6,
+				showTip:'更多'
 			}
 		},
 		methods:{
@@ -51,16 +55,34 @@
 				this.activeName = scoreName;
 			},
 			find:function(equipmentName){
-				this.EactiveName = equipmentName;
+				console.log(equipmentName)
+				if(equipmentName.type == 0){
+					equipmentName.type = 1;
+				}else{
+					equipmentName.type = 0;
+				}
 			},
 			clear:function(){
-				this.EactiveName = false;
+				this.equipment.forEach(function(item){
+					item.type = 0;
+				})
 				this.activeName = false;
 			},
 			send:function(){
 				this.$store.state.showScreen = false;
-				this.msg = [{type:"shaixuan"},{params:{score:this.activeName,equipment:this.EactiveName}}];
+				this.msg = [{type:"shaixuan"},{params:{score:this.activeName,equipment:JSON.stringify(this.equipment)}}];
 				this.$store.commit('listDataLoad',this.msg);
+			},
+			changeState:function(){
+				if(this.listStatus == false){
+					this.listStatus = true;
+					this.showNum = 12;
+					this.showTip = '收起';
+				}else{
+					this.listStatus = false;
+					this.showNum = 6;
+					this.showTip = '更多';
+				}
 			}
 		}
 	}
