@@ -108,24 +108,40 @@ module.exports = {
         app.get('/shaixuan',function(request,response){
         	var sql = '';
         	var score = request.query.score;
-        	var equ = request.query.equipment;
-        	console.log(score,equ)
+        	var equ = JSON.parse(request.query.equipment);
+        	var condition = ''
+        	console.log(equ)
+//      	equ.forEach(function(item){
+//      		if(item.type == 1){
+//      			condition += item.value + '= 1 and';
+//      			console.log(111);
+//      		}
+//      	})
+        	for(var i=0; i<equ.length;i++){
+        		if(equ[i].type == 1){
+        			condition += equ[i].value + '= 1 and ';
+        			console.log(111);
+        		}
+        	}
+        	console.log(condition)
+        	condition = condition.slice(0,-4);
+        	console.log(condition)
         	var comment = `hotelName,stars,address,enghotelName,image1,id,score,minPrice`;
-        	if(!score){
+        	if(score == ''){
         		score = 'all';
         	};
-        	if(!equ){
-        		equ = 'all';
+        	if(condition == ''){
+        		condition = 'all';
         	};
-        	if((score == 'all') && (equ == 'all')){
+        	if((score == 'all') && (condition == 'all')){
         		sql = `select ${comment} from hotel`
-        	}else if(score == 'all' && (equ != 'all')){
-        		sql = `select ${comment} from hotel where ${equ} = 1`
-        	}else if(score != 'all' && (equ == 'all')){
+        	}else if(score == 'all' && (condition != 'all')){
+        		sql = `select ${comment} from hotel where ${condition}`
+        	}else if(score != 'all' && (condition == 'all')){
         		sql = `select ${comment} from hotel where score > ${score}`
         		console.log(score,'大于分数');
         	}else{
-        		sql = `select ${comment} from hotel where score > ${score} and ${equ} = 1`
+        		sql = `select ${comment} from hotel where score > ${score} and ${condition}`
         	}
         	console.log(sql);
         	db.select(sql,function(data){

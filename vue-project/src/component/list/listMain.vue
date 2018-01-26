@@ -74,7 +74,6 @@
 						document.cookie = "localHistory=" + JSON.stringify(arrAll) + ';expires=' + now.toUTCString();
 					}
 				}
-				console.log(111);
 				this.$router.push({ path: '/detail', query: { id: _id }});
 			}
 		},
