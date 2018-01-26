@@ -18,6 +18,7 @@
 
 	//引入各组件
 	import  http from '../../http/baseUrl.js';
+
 	import detailHead from './detailHead.vue';
 	import detailDatePick from './detailDatePick.vue';
 	import detailRoomList from './detailRoomList.vue';
@@ -65,16 +66,8 @@
 				this.enghotelName = res[0].enghotelName;
 				this.kindDescription = res[0].kindDescription.split('，');
 			},
-			upDate:function(){
-				this.timer = setTimeout(function(){
-					MessageBox.confirm('页面长时间未刷新，房间可能会有变化，是否刷新？').then(action => {
-					 	this.detailAjax(this.id);
-					 	clearTimeout(this.timer);
-					 	this.upDate();
-					});
-				}.bind(this),120000)
-			},
 			toCeil:function(ele,height){
+				
 				//酒店标题吸顶
 				var scrollTop = window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop;
 				if(scrollTop >= height){
@@ -98,9 +91,10 @@
             		this.id = this.$route.query.id;
 			this.detailAjax(this.id);
 			
-			this.upDate();
+			// this.upDate();
 
 			var el = this.$refs.head.$el.lastChild;
+
 			var headTop = $(el).position().top;
 			//酒店标题吸顶
 			window.addEventListener('scroll',function(){

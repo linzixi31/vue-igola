@@ -93,7 +93,7 @@
 			},
 			goToPay:function(id,price){
 				clearTimeout(this.timer);
-				this.$router.replace({
+				this.$router.push({
 					name:'orderCom', 
 					params:{
 					 	hotelId:this.hotelId,
