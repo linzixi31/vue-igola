@@ -17,7 +17,7 @@
 					最近搜索: 
 				</p>
 				<p>
-					<span v-for = "(obj,index) in historyHotel" :key="obj.index" v-if="index<2" @click="RouteToDetail(obj.hName)">{{obj.hName}}</span>
+					<span v-for = "(obj,index) in historyHotel" :key="obj.index" v-if="index>= (historyHotel.length-2) " @click="RouteToDetail(obj.hName)">{{obj.hName}}</span>
 				</p>
 			</div>
 			<div class="jiudian">
