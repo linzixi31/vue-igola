@@ -40,7 +40,7 @@
 	}
 	.select-time>div{
 		height: 100%;
-		line-height:50px;
+		line-height:4.5em;
 	}
 	.checkInTime .row>div span:nth-child(1){
 		font-size: 16px;
