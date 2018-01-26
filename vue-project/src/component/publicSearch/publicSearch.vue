@@ -86,7 +86,8 @@
 			var arrAll = [];
 			if(window.localStorage.username){
 				var username = window.localStorage.username
-				this.axios.get( http.url +'/getHistory',{params:{username:username}}).then(response =>{
+				this.axios.get(http.url +'/getHistory',{params:{username:username}}).then(response =>{
+
 					this.historyHotel = response.data.data.results;
 					console.log(this.historyHotel);
 				})

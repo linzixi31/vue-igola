@@ -2,7 +2,7 @@
 	<div id="hotelBooking">
 		<detailHead ref="head" :hotelName="hotelName" :addr="address" :stars="stars" :imgurl="imgUrl" :enghotelName="enghotelName" :hotelId="id" :kindDescription="kindDescription"></detailHead>
 		<detailDatePick></detailDatePick>
-		<detailRoomList :roomList="dataset" :hotelId="id" :loading="loading" :stars="stars" :timer="timer"></detailRoomList>
+		<detailRoomList :roomList="dataset" :hotelId="id" :loading="loading" :stars="stars"></detailRoomList>
 		<aboutIgola></aboutIgola>
 	</div>
 </template>
@@ -13,7 +13,7 @@
 
             //引入scss
 	require('./detail.scss');
-	import { MessageBox } from 'mint-ui';
+	// import { MessageBox } from 'mint-ui';
 
 
 	//引入各组件
@@ -36,7 +36,7 @@
 				id:'',
 				kindDescription:[],
 				dataset:[],
-				timer:''
+				// timer:''
 			}
 		},
 		components:{
@@ -65,15 +65,15 @@
 				this.enghotelName = res[0].enghotelName;
 				this.kindDescription = res[0].kindDescription.split('，');
 			},
-			upDate:function(){
-				this.timer = setTimeout(function(){
-					MessageBox.confirm('页面长时间未刷新，房间可能会有变化，是否刷新？').then(action => {
-					 	this.detailAjax(this.id);
-					 	clearTimeout(this.timer);
-					 	this.upDate();
-					});
-				}.bind(this),120000)
-			},
+			// upDate:function(){
+			// 	this.timer = setTimeout(function(){
+			// 		MessageBox.confirm('页面长时间未刷新，房间可能会有变化，是否刷新？').then(action => {
+			// 		 	this.detailAjax(this.id);
+			// 		 	clearTimeout(this.timer);
+			// 		 	this.upDate();
+			// 		});
+			// 	}.bind(this),5000)
+			// },
 			toCeil:function(ele,height){
 				//酒店标题吸顶
 				var scrollTop = window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop;
@@ -98,7 +98,7 @@
             		this.id = this.$route.query.id;
 			this.detailAjax(this.id);
 			
-			this.upDate();
+			// this.upDate();
 
 			var el = this.$refs.head.$el.lastChild;
 			var headTop = $(el).position().top;
@@ -111,6 +111,7 @@
 			document.getElementById("vp").content = ''
 			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
 			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
+			// clearInterval(this.timer)
 			next()
 		}
 	}

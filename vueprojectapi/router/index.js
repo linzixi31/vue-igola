@@ -10,7 +10,7 @@ var login = require('./login')
 var reg = require('./register')
 
 var reg=require('./register')
-
+var jwt = require('jsonwebtoken');
 var listPage = require('./listPage')
 var homepage = require("./homepage")
 var order = require('./order')
@@ -35,7 +35,7 @@ module.exports = {
         });          
 
         rooms.register(app);
-        login.register(app);
+        login.register(app,jwt);
         reg.reg(app);
         listPage.select(app); 
         homepage.register(app);
