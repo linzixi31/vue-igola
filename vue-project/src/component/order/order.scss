@@ -31,10 +31,12 @@
     top: 33%;
     left: 42%;
 }
+
 .mint-tab-container{
     margin-top: 90px;
     margin-bottom: 50px;
-
+    .logcontainer{ overflow: hidden; min-height: 100%; }
+    .loading-warp{ margin-top: -5rem; }
     .order_list{
         li{
           display:flex;

@@ -3,7 +3,7 @@
 		<mt-spinner type="triple-bounce" :size="60" v-show="switchShow" class='order_containter'>
 		</mt-spinner>
 		<ul>
-			<li v-for="(item,idx) in $store.state.listData" :key="item.idx" @click = "saveHistory(item.id)">
+			<li v-for="(item,idx) in $store.state.listData" :key="item.idx" @click = "routeToDetail(item.id)">
 				<div class="hotelNews">
 					<div class="hotelNewsLeft">
 						<img class="hotelImgurl1" v-lazy=item.image1>
@@ -15,9 +15,9 @@
 						<p class="enName">
 							{{item.enghotelName}}
 						</p>
-						<p class="socre"><img class="starImg" v-for="(obj,index) in stars" :src="obj.img" v-if="index<item.stars"> {{item.score}} , 神享受</p>
+						<p class="socre"><i class="iconfont icon-shoucang" v-for="value in item.stars"></i> {{item.score}} , 神享受</p>
 						<p class="address">{{item.address}}</p>
-						<p class="price">￥<span>{{item.minPrice}}</span>起</p>
+						<p class="price"><i>￥</i> <span>{{item.minPrice}}</span> <i>起</i></p>
 					</div>
 				</div>
 			</li>
@@ -34,17 +34,11 @@
 				id:'',
 				img:[],
 				switchShow:true,
-				stars:[
-					{img:'./src/assets/img/star.jpg'},
-					{img:'./src/assets/img/star.jpg'},
-					{img:'./src/assets/img/star.jpg'},
-					{img:'./src/assets/img/star.jpg'},
-					{img:'./src/assets/img/star.jpg'}
-				]
+				stars:[]
 			}
 		},
 		methods:{
-			saveHistory:function(_id){
+			routeToDetail:function(_id){
 				this.$router.push({ path: '/detail', query: { id: _id }});
 			}
 		},
