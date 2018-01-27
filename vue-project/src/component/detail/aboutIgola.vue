@@ -61,9 +61,6 @@
 					this.IgolaData = this.hotel_policy;
 				}else if(e.target.parentNode.id == 'hotel_equip'){
 					this.IgolaData = this.hotel_equip;
-				}else if(e.target.parentNode.id == 'igolaServerTele'){
-					MessageBox.confirm(this.igolaTele, '是否呼叫？');
-					this.show = false;
 				}else{
 					this.show = false;
 				}
