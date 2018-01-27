@@ -5,6 +5,7 @@
 		<detailRoomList :roomList="dataset" :hotelId="id" :loading="loading" :stars="stars"></detailRoomList>
 		<aboutIgola></aboutIgola>
 	</div>
+
 </template>
 
 

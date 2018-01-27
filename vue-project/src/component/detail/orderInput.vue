@@ -1,59 +1,57 @@
 <template>
-	<div class="orderCom">
-		<mt-header title="预订">
-			<router-link to="/" slot="left" >
-			    	<mt-button icon="back"  @click="$router.go(-1)"></mt-button>
-			</router-link>
-		</mt-header>
-		<div class="orderBody">
-			<div class="hotelInformation">
-				<p class="hotelName">
-					<i class="iconfont icon-shoucang"></i>
-					{{hotelName}}
-					<span class="starsNum">{{stars}}</span>
-				</p>
-				<p class="hotelAddr">{{addr}}</p>
+		<div class="orderCom">
+			<mt-header title="预订">
+				<router-link to="/" slot="left" >
+				    	<mt-button icon="back"  @click="$router.go(-1)"></mt-button>
+				</router-link>
+			</mt-header>
+			<div class="orderBody">
+				<div class="hotelInformation">
+					<p class="hotelName">
+						<i class="iconfont icon-shoucang"></i>
+						{{hotelName}}
+						<span class="starsNum">{{stars}}</span>
+					</p>
+					<p class="hotelAddr">{{addr}}</p>
 
+				</div>
+				<div class="roomInformation">
+					<p>房型：<span>{{type}}</span></p>
+					<p>床型：<span>{{bedScale}}</span></p>
+					<p>早餐：<span>含早餐</span></p>
+					<p class="totalNight">{{data.data.night}}</p>
+					<p>入住：<span>{{data.data.dateIn}}</span></p>
+					<p>退房：<span>{{data.data.dateOut}}</span></p>
+				</div>
+				<div class="roomInfor">
+					<div>
+						<p>房间数</p>
+						<p>1间</p>
+					</div>
+					<div>
+						<p>入住/退房</p>
+						<p>{{data.data.dateIn}}-{{data.data.dateOut}}</p>
+					</div>
+				</div>
+				<div class="userInfor"  > 
+					<div class="userinformation" v-for="(val,idx) in userinformation"  @click = "yourInfor(val,$event)">
+						<div><i :class="icon[idx]"></i><span >{{val}}</span></div>
+						<div class="addInfor" >添加&nbsp;&nbsp;&gt;</div>
+					</div>
+				</div>
+				
+				<p class="attention">备注&取消政策</p>
 			</div>
-			<div class="roomInformation">
-				<p>房型：<span>{{type}}</span></p>
-				<p>床型：<span>{{bedScale}}</span></p>
-				<p>早餐：<span>含早餐</span></p>
-				<p class="totalNight">{{data.data.night}}</p>
-				<p>入住：<span>{{data.data.dateIn}}</span></p>
-				<p>退房：<span>{{data.data.dateOut}}</span></p>
-			</div>
-			<div class="roomInfor">
-				<div>
-					<p>房间数</p>
-					<p>1间</p>
+			<div class="orderFoot">
+				<div >
+					<p>合计</p>
+					<p>￥{{data.price * nightNum}}</p>
 				</div>
 				<div>
-					<p>入住/退房</p>
-					<p>{{data.data.dateIn}}-{{data.data.dateOut}}</p>
+					<span class="toPay" @click="createOrder">去支付</span>
 				</div>
-			</div>
-			<div class="userInfor"  > 
-				<div class="userinformation" v-for="(val,idx) in userinformation"  @click = "yourInfor(val,$event)">
-					<div><i :class="icon[idx]"></i><span >{{val}}</span></div>
-					<div class="addInfor" >添加&nbsp;&nbsp;&gt;</div>
-				</div>
-			</div>
-			
-			<p class="attention">备注&取消政策</p>
+			</div>	
 		</div>
-		<div class="orderFoot">
-			<div >
-				<p>合计</p>
-				<p>￥{{data.price * nightNum}}</p>
-			</div>
-			<div>
-				<span class="toPay" @click="createOrder">去支付</span>
-			</div>
-		</div>
-		
-	</div>
-	
 </template>
 
 
@@ -221,6 +219,6 @@
 
 	.mint-msgbox-title,.mint-msgbox-message,.mint-msgbox-btn{font-size:1.6rem;}
 	.mint-msgbox-message,.mint-msgbox-btn{line-height: 3rem;}
-
+	.mint-msgbox .mint-msgbox-input input{height:3.8rem;font-size:1.6rem;}
 
 </style>

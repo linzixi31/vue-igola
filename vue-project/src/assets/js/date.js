@@ -81,9 +81,12 @@ var date = function ($) {
         leaveDay.length === 1 ? leaveDay = '0' + leaveDay : false;
         var leaveTime = leaveMonth + '/' + leaveDay;
         var night = Number($('.leave').attr('index')) - Number($('.enter').attr('index'));
-        $('.date').remove(); // 移除插件
+        $('.date').animate({height:0},function(){
+            $('.date').remove();
+        }); // 移除插件
         // $('body').css({ overflow: 'auto' });
-
+        
+        //选择时间时保存在vuex的orderDate中
         store.state.orderDate = {
           night:'共' + night + '晚',
           dateIn:enterTime,
@@ -181,6 +184,7 @@ var date = function ($) {
       leaveDay.length === 1 ? leaveDay = '0' + leaveDay : false;
       var leaveTime = leaveMonth + '/' + leaveDay;
 
+      //如果vuex中没有保存时间，则使用初始化得到的时间
       if(!store.state.orderDate.night){
          store.state.orderDate = {
                   night:'共1晚',
