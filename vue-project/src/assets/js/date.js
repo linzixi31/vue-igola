@@ -89,12 +89,11 @@ var date = function ($) {
           dateIn:enterTime,
           dateOut:leaveTime
         };
-
-        $('.entertime').text(enterTime); // 显示
-        $('.leavetime').text(leaveTime);
-        $('.input-enter').val(enterYear + '/' + enterTime);
-        $('.input-leave').val(leaveYear + '/' + leaveTime);
-        $('.night').text('共' + night + '晚');
+        console.log(store.state.orderDate);
+        $('.entertime').text(store.state.orderDate.dateIn); // 显示
+        $('.leavetime').text(store.state.orderDate.dateOut);
+        $('.night').text(store.state.orderDate.night);
+        
       });
 
       var num = 0;
@@ -182,20 +181,22 @@ var date = function ($) {
       leaveDay.length === 1 ? leaveDay = '0' + leaveDay : false;
       var leaveTime = leaveMonth + '/' + leaveDay;
 
-     store.state.orderDate = {
-              night:'共1晚',
-              dateIn:enterTime,
-              dateOut:leaveTime
-      };
+      if(!store.state.orderDate.night){
+         store.state.orderDate = {
+                  night:'共1晚',
+                  dateIn:enterTime,
+                  dateOut:leaveTime
+          };
+      }
+      console.log(store.state.orderDate);
+      $('.entertime').text(store.state.orderDate.dateIn); // 显示
+        $('.leavetime').text(store.state.orderDate.dateOut);
+        $('.night').text(store.state.orderDate.night);
+      }
+     
 
-      
-      $('.entertime').text(enterTime); // 显示
-      $('.leavetime').text(leaveTime);
-      $('.input-enter').val(enterYear + '/' + enterTime);
-      $('.input-leave').val(leaveYear + '/' + leaveTime);
-    }
+    getDate(3); // 获取数据 参数: 拿6个月的数据
 
-    getDate(6); // 获取数据 参数: 拿6个月的数据
-    initDay(); // 初始化入住和离店时间
+   initDay(); // 初始化入住和离店时间
   };
 }(jQuery);

@@ -1,24 +1,25 @@
 .searchLike{
+    font-size:1.4rem;
     #publicSearch{
-        width:100%;display: flex;flex-direction:row;justify-content:space-around;margin:1.6rem 0;
+        width:100%;display: flex;flex-direction:row;justify-content:space-around;margin-top:0.4rem;margin-bottom:1.6rem;justify-content:space-between
         .searchLeft{
-            flex: 1;
+            width:5%;
         }
         .search{
-            flex:20;background: #ccc;border-radius:1.06rem;height:3rem;
+            width:80%;background: #F1F1F1;border-radius:1.06rem;height:3rem;display: flex;
             span{
-                line-height: 3rem;text-indent: 0.6rem;
+                line-height: 3rem;text-indent: 0.6rem;flex:1
             }
             input{
-               background: #ccc;margin-left:1rem;line-height: 3rem;
+               background: #F1F1F1;margin-left:1rem;line-height: 3rem;flex:9;border-radius:1.06rem;
             }
         }
         .can{
-            flex:2;line-height: 3rem;
+            width:10%;line-height: 3rem;
         }
     }
     .searchBottom{
-        width:100%;padding:0 1.2rem;font-size:1.6rem;
+        width:100%;padding:0 1.2rem;
         .historySearch{
             height:6rem;line-height: 2rem;
             span{padding:0 1rem;}
