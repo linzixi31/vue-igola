@@ -177,7 +177,5 @@
 <style>
     @import './my.scss';
   
-   /* #registerFoot #footer .mint-tab-item-label a{padding:0.133333rem 0;line-height: 0.6rem;}
-    #registerFoot #footer>a>.mint-tab-item-label{font-size:0.402rem !important;}
-    #registerFoot #footer>a>.mint-tab-item-icon{width:0.64rem;height:0.64rem;margin-bottom:0.026667rem;} */
+   
 </style>
