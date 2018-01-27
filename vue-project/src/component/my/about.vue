@@ -1,5 +1,5 @@
 <template>
-	<div class="about">
+	<div id="about">
         <!-- <header class="about_head">关于iGola</header> -->
         <mt-header title="关于iGola" id="about_head">
             <router-link to="/my" slot="left">
@@ -58,16 +58,16 @@
  		#app{height:100%;}
         ul,li{list-style:none;padding:0;}
         
-        .about{height:100%;display:flex;flex-direction:column;}
+        #about{display:flex;flex-direction:column;overflow-x:hidden;}
         #about_head{height:1.933333rem;font-size:0.4533333rem;background:#0096FF;color:white;}
         #about_head>.mint-header-button a button{height:0.7rem;}
         #about_head .mint-button-icon .mintui{font-size:0.5rem;}
-        .about_main{flex:1;text-align:center;}
-        .about_main .logo{height:5.786667rem;text-align:center;line-height:5.786667rem;}
-        .about_main .logo img{width:6.826667rem;height:2.56rem;}
-        .about_main .content{padding:0 0.746667rem;text-align:left;font-size:0.28rem;height:4.226667rem;}
-        .about_main .list li{height:1.066667rem;padding:0 0.546667rem;padding-left:0.5rem;line-height:1.066667rem;font-size:0.4rem;border-bottom:0.013333rem solid #ccc;text-align:left;}  
-        .about_main .list li>i{float:right;line-height:1.066667rem;font-size:0.4rem;}
+        #about .about_main{flex:1;text-align:center;}
+        #about .about_main .logo{height:5.786667rem;text-align:center;line-height:5.786667rem;}
+        #about .about_main .logo img{width:6.826667rem;height:2.56rem;}
+        #about .about_main .content{padding:0 0.746667rem;text-align:left;font-size:0.28rem;height:4.226667rem;}
+        #about .about_main .list li{height:1.066667rem;padding:0 0.546667rem;padding-left:0.5rem;line-height:1.066667rem;font-size:0.4rem;border-bottom:0.013333rem solid #ccc;text-align:left;}  
+        #about .about_main .list li>i{float:right;line-height:1.066667rem;font-size:0.4rem;}
 
 
  </style>

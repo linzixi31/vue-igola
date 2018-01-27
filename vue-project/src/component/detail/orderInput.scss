@@ -1,3 +1,4 @@
+
 .orderCom {
   height: 100%;
   display: flex;
@@ -77,7 +78,7 @@
   .userinformation {
     display: flex;
     border-bottom: 0.1rem solid #cdcdcd;
-    padding: 0 1.0rem;
+    padding: 0  0.2rem;
     i{color:#159696;}
     span {
       padding-left: 1.0rem;
@@ -88,7 +89,7 @@
     }
     div {
       &:first-child {
-        flex: 2;
+        flex: 1;
       }
       a {
         display: block;
@@ -96,7 +97,11 @@
       }
       &:last-child {
         flex: 1;
+        padding:0 0.2rem 0 2rem;
+        white-space:nowrap;
         text-align: right;
+        overflow:hidden;
+        text-overflow:ellipsis;
       }
     }
   }

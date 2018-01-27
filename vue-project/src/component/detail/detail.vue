@@ -5,6 +5,7 @@
 		<detailRoomList :roomList="dataset" :hotelId="id" :loading="loading" :stars="stars"></detailRoomList>
 		<aboutIgola></aboutIgola>
 	</div>
+
 </template>
 
 
@@ -36,8 +37,7 @@
 				imgUrl:'',
 				id:'',
 				kindDescription:[],
-				dataset:[],
-				// timer:''
+				dataset:[]
 			}
 		},
 		components:{
@@ -103,7 +103,6 @@
             		this.id = this.$route.query.id;
 			this.detailAjax(this.id);
 			
-			// this.upDate();
 
 			var el = this.$refs.head.$el.lastChild;
 
@@ -117,7 +116,7 @@
 			document.getElementById("vp").content = ''
 			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
 			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
-			// clearInterval(this.timer)
+			
 			next()
 		}
 	}

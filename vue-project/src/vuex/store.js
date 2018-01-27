@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueX from 'vuex';
 
 import payment from '../component/payment/payment.js'
-
+import loginres from '../component/order/order.js'
 import http from '../http/baseUrl.js';
 import axios from 'axios';
 Vue.use(VueX)
@@ -12,9 +12,7 @@ const state = {
 	showStar:false,
 	showScreen:false,
     switchShow:true,
-	listData:[],
-	entertime:{m:'',d:''},
-	leavetime:{m:'',d:''}
+	listData:[]
 };
 const mutations ={
 	change(res){
@@ -79,7 +77,8 @@ const mutations ={
 }
 const store = new VueX.Store({
     modules:{
-        payment
+        payment,
+        loginres
     },
     state,
     mutations

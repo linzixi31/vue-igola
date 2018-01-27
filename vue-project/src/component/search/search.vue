@@ -51,9 +51,7 @@
 				this.$router.push({path:"/list",
 					query:{
 						add:this.add,
-						hotelName:this.hotelName,
-						enterTime:$(".entertime").text(),
-						leaveTime:$(".leavetime").text()
+						hotelName:this.hotelName
 					}
 				});
 			},
@@ -66,4 +64,3 @@
 		}
 	}
 </script>
-

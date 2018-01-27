@@ -4,8 +4,8 @@
 			<div class="headerLeft iconfont icon-fanhui" @click="returnBack"></div>
 			<div class="headerCenter">
 				<div class="bookTime">
-					<p>住{{$store.state.entertime.m}}月{{$store.state.entertime.d}}日</p>
-					<p>离{{$store.state.leavetime.m}}月{{$store.state.leavetime.d}}日</p>
+					<p>住{{$store.state.orderDate.dateIn}}</p>
+					<p>离{{$store.state.orderDate.dateOut}}</p>
 				</div>
 				<div class="searchWrap" @click="goLikeSearch">
 					酒店名/关键字
@@ -30,26 +30,18 @@
 			return{
 			}
 		},
+
 		beforeMount(){
-			if(this.$route.query.enterTime){
-				var enter = this.$route.query.enterTime.split('/');
-				var leave = this.$route.query.leaveTime.split('/');
-				for(var i = 0; i<enter.length ; i++){
-					if(i == 0){
-						this.$store.state.entertime.m = enter[i];
-						this.$store.state.leavetime.m = leave[i];
-					}
-					if(i == 1){
-						this.$store.state.entertime.d = enter [i];
-						this.$store.state.leavetime.d = leave [i];
-					}
-				}
-			}else{
+			//直接进入列表页计算默认入住和离店日期
+			if(!this.$store.state.orderDate.night){
 				var now = new Date();
-				this.$store.state.entertime.m = now.getMonth() + 1;
-				this.$store.state.entertime.d = now.getDate();
-				this.$store.state.leavetime.m = now.getMonth() + 1;
-				this.$store.state.leavetime.d = now.getDate()+1;
+				var tomorrow = new Date(now.getTime()+24*60*60*1000)
+				var m = now.getMonth() + 1;
+				var d = now.getDate();
+				var tM = tomorrow.getMonth() + 1;
+				var tD = tomorrow.getDate();
+				this.$store.state.orderDate.dateIn = m + '月' + d + '日'; 
+				this.$store.state.orderDate.dateOut = tM + '月' + tD + '日';
 			}
 		}
 	}

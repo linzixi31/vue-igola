@@ -12,14 +12,14 @@
 					<span>离店</span>
 				</div>
 				<div>
-					<span class="night">共1晚</span>
+					<span class="night"></span>
 				</div>
 			</div>
 		</section>
 </template>
 
 <script type="text/javascript">
-	import store from '../../vuex/store.js';
+	// import store from '../../vuex/store.js';
 
 	//加载日期选择插件
 	import "../../assets/js/date.js";
