@@ -1,5 +1,5 @@
 <template>
-	<section class="checkInTime" >
+	<section class="checkInTime" id="searchDatePick">
 		<div class="row select-time">
 			<div>
 				<span class="time entertime"></span>
@@ -30,30 +30,38 @@
 	
 </script>
 
-<style>
-	.checkInTime{
+<style >
+	#searchDatePick{
 		height: 100%;
-		width: 100%;
+		/*width: 100%;*/
 	}
-	.select-time{
+	#searchDatePick .select-time{
 		height: 100%;
+		display: flex;
+		padding-left:35px;
 	}
 	.select-time>div{
 		height: 100%;
 		line-height:4.5em;
 	}
-	.checkInTime .row>div span:nth-child(1){
+	.select-time>div{
+		flex:1;
+		line-height:50px;
+	}
+	#searchDatePick  .row>div span:nth-child(1){
 		font-size: 16px;
 	}
-	.checkInTime .row>div:nth-child(3){
-		text-align: right;
+	#searchDatePick .row>div:nth-child(3){
+		text-align: left;
 	}
-	.checkInTime .row>div:nth-child(3) .night{
+	#searchDatePick .row>div:nth-child(3) .night{
 		background: #FFFFFF;
 		color: #9D9D9D;
 	}
 	
-	.date {
+
+
+	#searchDatePick .date {
           position: fixed;
           top: 0;
           left: 0;
@@ -66,49 +74,51 @@
          
       }
 
-      .date h4{
-        font-size:1.48rem; text-align: center;line-height: 4rem;
+      #searchDatePick .date h4{
+        font-size:1.48rem; 
+        text-align:center;
+        line-height: 4rem;
       }
 
 
-      .date .action {
+      #searchDatePick .date .action {
           margin-top: 0.266667rem;
       }
-      .date .title{
+      #searchDatePick .date .title{
         font-size:0.373333rem;line-height:0.8rem;
       }
 
-      .date .title div{
+      #searchDatePick .date .title div{
          display: inline;
       }
 
-      .date ul li {
+      #searchDatePick .date ul li {
           display: inline-block;
           font-size: 1.32rem;
           line-height: 1.666667rem;
           width: 14.285%;
-          text-align: center;
+          text-align:center;
       }
 
-      .week li {
+      #searchDatePick .week li {
          background-color: #f1f1f1;
       }
 
-      .day .enter {
+      #searchDatePick .day .enter {
           background-color: #3e93fa;
           color: #fff
       }
 
-      .day .leave {
-          background-color: salmon;
+     #searchDatePick  .day .leave {
+          background-color:salmon;
           color: #fff
       }
 
-      .day .disable {
+      #searchDatePick .day .disable {
           background-color: #ccc
       }
 
-      .close-btn {
+      #searchDatePick .close-btn {
           position: fixed;
           font-size:1.426667rem;
           top: 0.266667rem;

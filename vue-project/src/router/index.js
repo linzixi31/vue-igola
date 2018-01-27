@@ -9,7 +9,6 @@ import online from '../component/my/online.vue'
 import hobbySet from '../component/my/hobbySet.vue'
 import i from '../component/loginSucess/i.vue'
 import about from '../component/my/about.vue'
-
 import list from '../component/list/list.vue';
 import IndexComponent from "../component/index/index.vue";
 import ChoiceComponent from "../component/choice/choice.vue";
@@ -26,7 +25,7 @@ import feedback from '../component/my/feedback.vue'
 
 import paySuccess from "../component/payment/paySuccess.vue";
 
-import test from "../component/test/test.vue";
+import test from "../component/search/addCustomer.vue";
 
 
 import publicSearch from '../component/publicSearch/publicSearch.vue';
@@ -36,6 +35,10 @@ Vue.use(VueRouter);
 
 var router  = new VueRouter({
     routes : [
+        {
+            path:'/',
+            redirect:'/index'
+        },
         {
             path:"/login",
             component: Logincomponent
@@ -70,7 +73,8 @@ var router  = new VueRouter({
         },
         {
         	path:"/index",
-        	component:IndexComponent
+        	component:IndexComponent,
+
         },
         {
             path:'/order',

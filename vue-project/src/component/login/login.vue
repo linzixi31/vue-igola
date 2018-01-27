@@ -13,13 +13,13 @@
 
         <section class="l_main">
             <p> 
-                <input type="text" placeholder="手机号码/电子邮箱" class="tel"/> 
+                <input type="text" placeholder="手机号码" class="tel"/> 
             </p>
             <p> 
                 <input type="password" placeholder="密码" class="password"/> 
             </p>
             <p> 
-                <button @click="submit">登录</button>
+                <button @click="checked">登录</button>
             </p>
             <p>     
                 <router-link to="/register">
@@ -52,38 +52,24 @@ export default{
         }
     },
     methods:{
-      submit:function(){
 
-        this.axios.get(http.url+'/login').then((response) => {
-            // console.log(response)
-            var _data=response.data.data.results;
-            // console.log(response.data.data.results)
-            var _tel=$('.tel').val();
-            var _pass=$('.password').val();
-            // console.log(_tel,_pass)
-            _data.map(function(item){
-                if(item.telephone===_tel && item.password===_pass){
-                    alert('登录成功');
-
-                    if(window.localStorage){
-                        var storage=window.localStorage;
-                        storage.username=_tel;
-                        storage.password=_pass;
-
-                    }else{
-                       
-                    }
-
-
-                    location.href="#/my";
-                    return;
-                }
-            })
-
-
+      checked(){
+        this.axios.post(http.url+'/login',{telephone:$('.tel').val(),password:$('.password').val()}).then((res)=>{
+            console.log(res);
+            if(res.data.data.results.length!=0){
+                localStorage.setItem('token',res.data.token);
+                var storage=window.localStorage;
+                storage.username=res.data.data.results[0].telephone;
+                storage.password=res.data.data.results[0].password;
+                location.href="#/my";
+            }else{
+                alert('密码错误')
+                return false
+            }
         })
       }
     },
+    
     mounted:function(){
             var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
                     document.getElementsByTagName("html")[0].style.fontSize = wd + "px";

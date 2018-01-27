@@ -24,6 +24,9 @@
 				<i class="iconfont iconfont icon-dingwei"></i>
 				<input type="text" placeholder="酒店名/关键字" v-model="hotelName" />
 			</div>
+			<div class="hotelMeg" @click='tcmethod'>
+				<detailMsg></detailMsg>
+			</div>
 			<div class="btn">
 				<input type="button" value="搜索酒店" id="btnSearch" @click="search"/>
 			</div>
@@ -31,6 +34,7 @@
 		<div class="search_foot">
 			<p>iGola&nbsp;&nbsp;酒店问答 ></p>
 		</div>
+		<addCustomer></addCustomer>
 	</div>
 </template>
 
@@ -38,7 +42,10 @@
 	import "./search.scss";
 	import "../../assets/font/iconfont.css";
 	import datePicker from  "./datePicker.vue";
-	
+	import detailMsg from "./detailMsg.vue";
+	import addCustomer from "./addCustomer.vue";
+	import {Popup} from "mint-ui";
+	import {PaletteButton} from "mint-ui";
 	export default {
 		data(){
 			return{
@@ -50,7 +57,7 @@
 			search(){
 				this.$router.push({path:"/list",
 					query:{
-						add:this.add,
+						add:this.add, 
 						hotelName:this.hotelName,
 						enterTime:$(".entertime").text(),
 						leaveTime:$(".leavetime").text()
@@ -59,10 +66,17 @@
 			},
 			back(){
 				this.$router.push({path:"/index"});
+			},
+			tcmethod(){
+//				console.log(111);
+//				console.log(this.$store)
+				this.$store.dispatch("tc");
 			}
 		},
 		components:{
-			datePicker
+			datePicker,
+			detailMsg,
+			addCustomer
 		}
 	}
 </script>

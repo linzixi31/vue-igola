@@ -53,6 +53,7 @@
     .enName{
         white-space: nowrap;
         text-overflow: ellipsis;
+        overflow: hidden;
     }
 }
 .right{

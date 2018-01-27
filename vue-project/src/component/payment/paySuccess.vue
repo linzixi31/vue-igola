@@ -10,8 +10,8 @@
               <mt-button icon="more" slot="right"></mt-button>
         </mt-header>
         <div v-show="!$store.state.switchShow">
-            <div id="container_paysus" :style="{backgroundImage: 'url(' +
-            this.paySucdata.image1  + ')'} ">
+            <div id="container_paysus" >
+                <img v-lazy=this.paySucdata.image1 />
                 <div class='container_pay_h'>
                     
                 </div>
@@ -36,7 +36,7 @@
                         <span v-else-if="this.paySucdata.status== 0" style='color:red'>等待支付</span>
                         <span v-else-if="this.paySucdata.status== 3">订单过期</span> 
                         <p>{{this.paySucdata.orderId}}</p>    
-                        <p>{{this.paySucdata.startTime}}</p>   
+                        <p>{{this.paySucdata.createTime}}</p>   
                     </div>
                 </li>
                 <li class="paySuc_list">

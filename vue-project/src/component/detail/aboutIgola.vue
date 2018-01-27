@@ -91,7 +91,4 @@
 		.mint-msgbox-message {
 		  line-height: 1.5rem;
 		}
-		// .mint-msgbox-btns {
-		//   height: 1.333333rem;
-		// }
 </style>

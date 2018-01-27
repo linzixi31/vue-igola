@@ -52,26 +52,30 @@ h1,p{
 }
 .index_header .fix{
     width: 100%;
-    height: 3rem;
+    height: 5rem;
     opacity: 1;
     background: #000000;
     position: fixed;
     top: 0;
     display: flex;
+    opacity: 0.8;
+    .cate{
+        flex: 1;
+    }
 }
 
 .index_header .fix .cate .small_action{
         display: block;
-        width: 2rem;
-        height: 2rem;
+        width: 2.7rem;
+        height: 2.7rem;
         border-radius: 50%;
         margin: 0 auto;       
         background: #067ED4;
         color: #FFFFFF;
-        line-height: 1rem;
+        line-height: 2rem;
         text-align: center;
-        margin: 0.5rem 7.2rem;
-    }
+        margin-top: 1.3rem;    
+}
     
 .swipe{
     color: #FFFFFF;
@@ -149,12 +153,17 @@ h1,p{
 }
 
 .index_main .content .detail .describe .left{
-    width: auto;
+    width: 16rem;
     height: 2.66rem;
     float: left;
 }
 .index_main .content .detail .describe .left p{
     font-size: 14px;
+}
+.index_main .content .detail .describe .left .enName{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .index_main .content .detail .describe .right{
     width: auto;
