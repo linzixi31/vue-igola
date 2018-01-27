@@ -3,7 +3,7 @@
 		<mt-spinner type="triple-bounce" :size="60" v-show="switchShow" class='order_containter'>
 		</mt-spinner>
 		<ul>
-			<li v-for="(item,idx) in $store.state.listData" :key="item.idx" @click = "saveHistory(item.id)">
+			<li v-for="(item,idx) in $store.state.listData" :key="item.idx" @click = "routeToDetail(item.id)">
 				<div class="hotelNews">
 					<div class="hotelNewsLeft">
 						<img class="hotelImgurl1" v-lazy=item.image1>
@@ -38,7 +38,7 @@
 			}
 		},
 		methods:{
-			saveHistory:function(_id){
+			routeToDetail:function(_id){
 				this.$router.push({ path: '/detail', query: { id: _id }});
 			}
 		},

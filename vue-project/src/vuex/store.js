@@ -12,7 +12,9 @@ const state = {
 	showStar:false,
 	showScreen:false,
     switchShow:true,
-	listData:[]
+	listData:[],
+	entertime:{m:'',d:''},
+	leavetime:{m:'',d:''}
 };
 const mutations ={
 	change(res){

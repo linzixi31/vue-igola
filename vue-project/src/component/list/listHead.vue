@@ -4,8 +4,8 @@
 			<div class="headerLeft iconfont icon-fanhui" @click="returnBack"></div>
 			<div class="headerCenter">
 				<div class="bookTime">
-					<p>住{{entertime.m}}月{{entertime.d}}日</p>
-					<p>离{{leavetime.m}}月{{leavetime.d}}日</p>
+					<p>住{{$store.state.entertime.m}}月{{$store.state.entertime.d}}日</p>
+					<p>离{{$store.state.leavetime.m}}月{{$store.state.leavetime.d}}日</p>
 				</div>
 				<div class="searchWrap" @click="goLikeSearch">
 					酒店名/关键字
@@ -28,8 +28,6 @@
 		},
 		data(){
 			return{
-				entertime:{},
-				leavetime:{}
 			}
 		},
 		beforeMount(){
@@ -38,20 +36,20 @@
 				var leave = this.$route.query.leaveTime.split('/');
 				for(var i = 0; i<enter.length ; i++){
 					if(i == 0){
-						this.entertime.m = enter[i];
-						this.leavetime.m = leave[i];
+						this.$store.state.entertime.m = enter[i];
+						this.$store.state.leavetime.m = leave[i];
 					}
 					if(i == 1){
-						this.entertime.d = enter [i];
-						this.leavetime.d = leave [i];
+						this.$store.state.entertime.d = enter [i];
+						this.$store.state.leavetime.d = leave [i];
 					}
 				}
 			}else{
 				var now = new Date();
-				this.entertime.m = now.getMonth() + 1;
-				this.entertime.d = now.getDate();
-				this.leavetime.m = now.getMonth() + 1;
-				this.leavetime.d = now.getDate();
+				this.$store.state.entertime.m = now.getMonth() + 1;
+				this.$store.state.entertime.d = now.getDate();
+				this.$store.state.leavetime.m = now.getMonth() + 1;
+				this.$store.state.leavetime.d = now.getDate()+1;
 			}
 		}
 	}
