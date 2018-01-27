@@ -3,7 +3,7 @@
 		<div id="star">
 			<p>星级</p>
 			<div class="startList">
-				<mt-button size="small" v-for="(item,idx) in starset" :key="item.idx" @click="selected(item.value)" :class="{active:activeName == item.value}" style="width:30%;float:left">{{item.text}}</mt-button>
+				<mt-button size="small" v-for="(item,idx) in starset" :key="item.idx" @click="selected(item.value)" :class="{active:activeName == item.value}">{{item.text}}</mt-button>
 			</div>
 			<p>价格</p>
 			<div class="price">
@@ -18,8 +18,10 @@
 					<span v-for="obj in rangeList">￥{{obj.text}}</span>
 				</div>
 			</div>
-			<mt-button type="default" size="large" class="clear" @click="clearAll">清除</mt-button>
-			<mt-button type="primary" size="large" @click="send">确认</mt-button>
+			<div class="sortBottom">
+				<mt-button type="default" size="large" class="clear" @click="clearAll">清除</mt-button>
+				<mt-button type="primary" size="large" @click="send">确认</mt-button>
+			</div>
 		</div>
 	</mt-popup>
 </template>

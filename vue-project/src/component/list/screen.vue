@@ -14,8 +14,10 @@
 					<div @click="changeState" class="showtips">{{showTip}}</div>
 				</div>
 			</div>
-			<mt-button type="default" size="large" class="clear" @click='clear'>清除</mt-button>
-			<mt-button type="primary" size="large" @click = "send">确认</mt-button>
+			<div class="sortBottom">
+				<mt-button type="default" size="large" class="clear" @click='clear'>清除</mt-button>
+				<mt-button type="primary" size="large" @click = "send">确认</mt-button>
+			</div>
 		</div>
 	</mt-popup>
 </template>
@@ -55,7 +57,7 @@
 				this.activeName = scoreName;
 			},
 			find:function(equipmentName){
-				console.log(equipmentName)
+				//console.log(equipmentName)
 				if(equipmentName.type == 0){
 					equipmentName.type = 1;
 				}else{

@@ -13,7 +13,7 @@
 
         <section class="l_main">
             <p> 
-                <input type="text" placeholder="手机号码/电子邮箱" class="tel"/> 
+                <input type="text" placeholder="手机号码" class="tel"/> 
             </p>
             <p> 
                 <input type="password" placeholder="密码" class="password"/> 
@@ -56,13 +56,15 @@ export default{
       checked(){
         this.axios.post(http.url+'/login',{telephone:$('.tel').val(),password:$('.password').val()}).then((res)=>{
             console.log(res);
-            if(res.data.status){
+            if(res.data.data.results.length!=0){
                 localStorage.setItem('token',res.data.token);
-                location.href="#/my";
                 var storage=window.localStorage;
-                        storage.username=res.data.data.results[0].telephone;
-                        storage.password=res.data.data.results[0].password;
-
+                storage.username=res.data.data.results[0].telephone;
+                storage.password=res.data.data.results[0].password;
+                location.href="#/my";
+            }else{
+                alert('密码错误')
+                return false
             }
         })
       }

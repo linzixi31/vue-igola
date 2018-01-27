@@ -49,7 +49,7 @@
 				inserted:function(element,binding){
 					console.log(binding.value);
 					if(binding.value.index %2 != 0){
-						element.style.background = "#ccc";
+						element.style.background = "#F1F1F1";
 					}
 				}
 			}
@@ -64,17 +64,15 @@
 			RouteToDetail:function(oName){
 				this.axios.get( http.url +'/searchId',{params:{hotelName:oName}}).then(response =>{
 					var hId = response.data.data.results[0].id;
-					console.log(hId);
+					//console.log(hId);
 					this.$router.push({ path: '/detail', query: { id: hId }});
 				})
-				
 			},
 			searchHotel:function(){
 				this.watchEnter = true;
 				if(this.value != ''){
 					this.axios.get( http.url + '/publicSearch',{params:{data:this.value}}).then(response =>{
 						this.res = response.data.data.results;
-						console.log(this.res);
 						this.searchList = this.res;
 					}).catch(function(error){
 						console.log(error)

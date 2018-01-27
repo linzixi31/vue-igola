@@ -15,7 +15,7 @@
 
         <section class="r_main">
             <p> 
-                <input type="text" placeholder="手机号码/电子邮箱" class='tel'/> 
+                <input type="text" placeholder="手机号码" class='tel'/> 
             </p>
             <p> 
                 <input type="password" placeholder="密码" class="password"/> 
