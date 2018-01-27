@@ -5,7 +5,9 @@
 			<div class="sortMiddle">
 				<mt-radio align="right" v-model="value" :options="options"></mt-radio>
 			</div>
-			<mt-button type="primary" size="large" @click='check'>确认</mt-button>
+			<div class="sortBottom">
+				<mt-button type="primary" size="large" @click='check'>确认</mt-button>
+			</div>
 		</div>
    	</mt-popup>
 </template>
