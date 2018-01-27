@@ -127,22 +127,22 @@
                     location.href="#/order?selected=2"
                 }
             },
-            mounted:function(){
-                var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
-                    document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
-                    var scale = 1/window.devicePixelRatio;
-                    var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
-                    document.getElementById("vp").content = mstr;
+            // mounted:function(){
+            //     var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+            //         document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+            //         var scale = 1/window.devicePixelRatio;
+            //         var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+            //         document.getElementById("vp").content = mstr;
                  
-            },
-            beforeRouteLeave(to,from,next){
-                //console.log(333)
-                document.getElementById("vp").content = ''
-                document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
-                document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
-                // console.log(333)
-                next()
-            },
+            // },
+            // beforeRouteLeave(to,from,next){
+            //     //console.log(333)
+            //     document.getElementById("vp").content = ''
+            //     document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
+            //     document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
+            //     // console.log(333)
+            //     next()
+            // },
             beforeMount:function(){
                  var self=this;
                 if(self.username){
@@ -176,10 +176,8 @@
 </script>
 <style>
     @import './my.scss';
-    /*#registerFoot #footer .mint-tab-item-label a{padding:10px 0;line-height: 45px;}
+  
+   /* #registerFoot #footer .mint-tab-item-label a{padding:0.133333rem 0;line-height: 0.6rem;}
     #registerFoot #footer>a>.mint-tab-item-label{font-size:0.402rem !important;}
-    #registerFoot #footer>a>.mint-tab-item-icon{width:48px;height:48px;margin-bottom:2px;} */
-    #registerFoot #footer .mint-tab-item-label a{padding:0.133333rem 0;line-height: 0.6rem;}
-    #registerFoot #footer>a>.mint-tab-item-label{font-size:0.402rem !important;}
-    #registerFoot #footer>a>.mint-tab-item-icon{width:0.64rem;height:0.64rem;margin-bottom:0.026667rem;} 
+    #registerFoot #footer>a>.mint-tab-item-icon{width:0.64rem;height:0.64rem;margin-bottom:0.026667rem;} */
 </style>
