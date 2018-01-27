@@ -12,6 +12,7 @@ import VueAxios from 'vue-axios';
 
 import store from './vuex/store';
 import {Lazyload} from "mint-ui";
+
 Vue.use(Lazyload, {
 	  preLoad: 2,
 	  loading: './src/assets/img/timg.gif',

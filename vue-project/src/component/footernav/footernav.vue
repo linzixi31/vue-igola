@@ -28,14 +28,16 @@ export default {
       selected: ''
     }
   },
-
   watch: {
     selected: function (val, oldVal) {
         // 这里就可以通过 val 的值变更来确定
-        console.log(this.selected)
+       var hh = '#'+this.selected
+        $(hh).addClass('is-selected')
+
         switch(val)
         {
           case "tab1":
+
              this.$router.push({path:'/index'})
             break;
           case "tab2":

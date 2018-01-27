@@ -18,13 +18,19 @@
             </router-link>  
            
           </div>
-        <mt-tab-container v-model="selected" :swipeable='swipeable' >
-         
+        <mt-tab-container v-model="selected" :swipeable='swipeable'  >
+         <div class="logcontainer" >
+              <div class="loading-warp">
+                <div class="box">
+                  <div>
+                    <img src="../../assets/img/loading_zx.gif" />
+                    <span class="text">下拉开始刷新</span>
+                  </div>
+                </div>
+              </div>
           <mt-tab-container-item id="1" v-show="!switchShow" >
             <ul class='order_list' >
-             
                 <li class='line1' v-for='(item,idx) in dataset' :key="idx" @click='pay(item)'>
-                  
                   <div>
                     <img slot="icon" src="../../assets/img/hotel.png" style='width:2rem'>
                   </div>
@@ -41,9 +47,7 @@
                     <span v-else-if="item.status== 0" style='color:red'>等待支付</span>
                     <span v-else-if="item.status== 3">订单过期</span>
                   </div>
-                
                 </li>
-               
             </ul>
           </mt-tab-container-item>
           <mt-tab-container-item id="2" v-show="!switchShow">
@@ -90,6 +94,8 @@
                 </li>
             </ul>
           </mt-tab-container-item>
+        </div>
+
         </mt-tab-container>
         <footernav></footernav> 
     </div>
@@ -103,6 +109,7 @@
     import http from '../../http/baseUrl.js'
     import { Spinner } from 'mint-ui';
     import { Navbar, TabItem } from 'mint-ui';
+    
     export default  {
         mounted(){
             var name = localStorage.getItem("username")
@@ -113,6 +120,8 @@
                 this.switchShow = false;
               }
             })
+            this.$store.dispatch('loginres',{name:name,urlh:'/order'})
+            this.dataset = this.$store.state.loginres.dataset
 
         },
         components:{
@@ -142,3 +151,9 @@
     }
 
 </script>
+<style type="text/css">
+  .loading-warp{ display: table; width: 100%; margin-top: -5.8rem; }
+.loading-warp .box{ width: 100%; padding-top: 1rem; padding-bottom: 1rem;
+ display: table-cell; text-align: center; vertical-align: middle; }
+.loading-warp .box img{ display: block; width: 2rem; height: 2rem; margin: 0 auto; }
+</style>
