@@ -36,8 +36,7 @@
 				imgUrl:'',
 				id:'',
 				kindDescription:[],
-				dataset:[],
-				// timer:''
+				dataset:[]
 			}
 		},
 		components:{
@@ -61,9 +60,8 @@
 					}
 					catch(err){
 					}
-					// console.log(this.dataset);
 					this.hotelInfor(this.dataset);
-
+					
 				}.bind(this));
 			},
 			hotelInfor:function(res){
@@ -76,13 +74,8 @@
 					this.enghotelName = res[0].enghotelName;
 					this.kindDescription = res[0].kindDescription.split('，');
 				}
-				catch(err){}
-				// this.address = res[0].address;
-				// this.hotelName = res[0].hotelName;
-				// this.stars = res[0].stars;
-				// this.imgUrl = res[0].image1;
-				// this.enghotelName = res[0].enghotelName;
-				// this.kindDescription = res[0].kindDescription.split('，');
+				catch(err){
+				}
 			},
 			toCeil:function(ele,height){
 				
@@ -109,7 +102,6 @@
             		this.id = this.$route.query.id;
 			this.detailAjax(this.id);
 			
-			// this.upDate();
 
 			var el = this.$refs.head.$el.lastChild;
 
@@ -123,7 +115,7 @@
 			document.getElementById("vp").content = ''
 			document.getElementById("vp").content = 'width=device-width, initial-scale=1.0'
 			document.getElementsByTagName("html")[0].style.fontSize = 10+"px"
-			// clearInterval(this.timer)
+			
 			next()
 		}
 	}

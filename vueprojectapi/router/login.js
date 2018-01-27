@@ -19,7 +19,7 @@ module.exports = {
                     })
                     data.token = token;
                   }
-                   
+                   console.log(data);
             	   res.send(data);
                 
             })

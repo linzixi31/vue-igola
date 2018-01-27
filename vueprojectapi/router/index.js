@@ -9,7 +9,6 @@ var rooms = require('./rooms')
 var login = require('./login')
 var reg = require('./register')
 
-var reg=require('./register')
 var jwt = require('jsonwebtoken');
 var listPage = require('./listPage')
 var homepage = require("./homepage")
