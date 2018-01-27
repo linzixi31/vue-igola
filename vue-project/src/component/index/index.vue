@@ -102,7 +102,6 @@
 				}
 			},
 			top(){
-				// console.logs(666)
 				if(window.pageYOffset > 400){
 					$('html body').animate({scrollTop:0},500);
 					$('html').animate({scrollTop:0},500);

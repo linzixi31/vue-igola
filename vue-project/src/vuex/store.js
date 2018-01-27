@@ -35,7 +35,6 @@ const mutations ={
 		var url = http.url + '/' + upgradeData[0].type;
 		axios.get(url,upgradeData[1]).then(response => {
 			data= response.data.data.results;
-			//console.log(data);
 			state.listData= data;
 		}).catch(function (error) {
 		    console.log(error);

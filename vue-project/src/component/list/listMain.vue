@@ -2,7 +2,7 @@
 	<main id="main">
 		<mt-spinner type="triple-bounce" :size="60" v-show="switchShow" class='order_containter'>
 		</mt-spinner>
-		<ul>
+		<ul class="current">
 			<li v-for="(item,idx) in $store.state.listData" :key="item.idx" @click = "routeToDetail(item.id)">
 				<div class="hotelNews">
 					<div class="hotelNewsLeft">
@@ -22,11 +22,13 @@
 				</div>
 			</li>
 		</ul>
+		<returnToTop></returnToTop>
 	</main>
 </template>
 
 <script>
-	import http from '../../http/baseUrl.js'
+	import http from '../../http/baseUrl.js';
+	import returnToTop from '../returnToTop/returnToTop.vue';
 	export default{
 		data(){
 			return {
@@ -34,9 +36,11 @@
 				id:'',
 				img:[],
 				switchShow:true,
-				stars:[]
+				stars:[],
+				scroll:this.$el
 			}
 		},
+		components:{returnToTop},
 		methods:{
 			routeToDetail:function(_id){
 				this.$router.push({ path: '/detail', query: { id: _id }});

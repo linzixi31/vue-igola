@@ -14,6 +14,7 @@
 	import listHead from './listHead';
 	import listMain from './listMain';
 	import listFoot from './listFoot';
+	
 	export default{
 		components:{listHead,listFoot,listMain}
 	}
