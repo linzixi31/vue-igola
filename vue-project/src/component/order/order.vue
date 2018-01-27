@@ -120,9 +120,12 @@
                 this.switchShow = false;
               }
             })
-            this.$store.dispatch('loginres',{name:name,urlh:'/order'})
-            this.dataset = this.$store.state.loginres.dataset
-
+            var parmas = {
+              sendData:{name:name},
+              urlh:'/order'
+            }
+            this.$store.dispatch('loginres',parmas)
+             this.$set(this.dataset,this.$store.state.loginres.dataset)
         },
         components:{
             footernav

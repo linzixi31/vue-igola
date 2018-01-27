@@ -22,7 +22,7 @@ const actions = {
         $('.logcontainer').pPullRefresh({
               $el: $('.logcontainer'),
               $loadingEl: $('.loading-warp'),
-              sendData: _parmas,
+              sendData:_parmas.sendData ,
               url: http.url+_parmas.urlh,
               autoHide:true,
               callbacks: {
