@@ -1,5 +1,5 @@
 <template>
-	<mt-popup v-model= "$store.state.showSort" position="bottom" modal=false>
+	<mt-popup v-model= "$store.state.listVuex.showSort" position="bottom" modal=false>
 	   	<div id="sort">
 			<p>排序方式</p>
 			<div class="sortMiddle">
@@ -45,7 +45,7 @@
 		methods:{  
         	check: function(){
 	           if(this.value){
-	           		this.$store.state.showSort = false;
+	           		this.$store.state.listVuex.showSort = false;
 	           		this.msg = [{type:"sort"},{params:{order:this.value}}];
 	           		this.$store.commit('listDataLoad',this.msg);
 	           }

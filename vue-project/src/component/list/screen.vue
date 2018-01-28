@@ -1,5 +1,5 @@
 <template>
-	<mt-popup class="shaixuan" v-model="$store.state.showScreen" position="bottom" modal=false>
+	<mt-popup class="shaixuan" v-model="$store.state.listVuex.showScreen" position="bottom" modal=false>
 		<div id="screen">
 			<div class="score">
 				<p>评分</p>
@@ -57,7 +57,6 @@
 				this.activeName = scoreName;
 			},
 			find:function(equipmentName){
-				//console.log(equipmentName)
 				if(equipmentName.type == 0){
 					equipmentName.type = 1;
 				}else{
@@ -71,7 +70,7 @@
 				this.activeName = false;
 			},
 			send:function(){
-				this.$store.state.showScreen = false;
+				this.$store.state.listVuex.showScreen = false;
 				this.msg = [{type:"shaixuan"},{params:{score:this.activeName,equipment:JSON.stringify(this.equipment)}}];
 				this.$store.commit('listDataLoad',this.msg);
 			},

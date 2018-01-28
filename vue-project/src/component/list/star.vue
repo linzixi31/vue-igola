@@ -1,5 +1,5 @@
 <template>
-	<mt-popup class="start" v-model="$store.state.showStar" position="bottom" modal=false>
+	<mt-popup class="start" v-model="$store.state.listVuex.showStar" position="bottom" modal=false>
 		<div id="star">
 			<p>星级</p>
 			<div class="startList">
@@ -60,7 +60,7 @@
 				this.rangeValue=500;
 			},
 			send:function(){
-				this.$store.state.showStar = false;
+				this.$store.state.listVuex.showStar = false;
 				this.msg = [{type:"upDataList"},{params:{stars:this.activeName,price:this.rangeValue}}];
 				this.$store.commit('listDataLoad',this.msg);
 			}

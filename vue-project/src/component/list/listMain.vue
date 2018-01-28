@@ -3,7 +3,7 @@
 		<mt-spinner type="triple-bounce" :size="60" v-show="switchShow" class='order_containter'>
 		</mt-spinner>
 		<ul class="current">
-			<li v-for="(item,idx) in $store.state.listData" :key="item.idx" @click = "routeToDetail(item.id)">
+			<li v-for="(item,idx) in $store.state.listVuex.listData" :key="item.idx" @click = "routeToDetail(item.id)">
 				<div class="hotelNews">
 					<div class="hotelNewsLeft">
 						<img class="hotelImgurl1" v-lazy=item.image1>
@@ -58,7 +58,7 @@
 				})
 			}else{
 				this.axios.get(http.url + '/listPage').then(response => {
-						this.$store.state.listData = response.data.data.results;
+						this.$store.state.listVuex.listData = response.data.data.results;
 						this.switchShow = false;
 						//console.log(response);
 				}).catch(function (error) {

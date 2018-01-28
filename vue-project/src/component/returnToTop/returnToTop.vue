@@ -7,15 +7,9 @@
 
 <script>
 	export default{
-		data(){
-			return{
-				changeScroll:''
-			}
-		},
 		methods:{
 			returnTop:function(){
 				$(this.$el.parentNode).animate({scrollTop:0},500);
-				this.changeScroll = this.$parent.$el.scrollTop;
 			},
 			showButton:function(){
 				if(this.$parent.$el.scrollTop>10){
