@@ -25,7 +25,7 @@ import feedback from '../component/my/feedback.vue'
 
 import paySuccess from "../component/payment/paySuccess.vue";
 
-import test from "../component/test/test.vue";
+import test from "../component/search/addCustomer.vue";
 
 
 import publicSearch from '../component/publicSearch/publicSearch.vue';

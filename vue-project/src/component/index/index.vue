@@ -90,8 +90,9 @@
 				this.$router.push({path:"/search"});
 			},
 			handleScroll(){
+
 				var scrollTop = window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop;
-				console.log(scrollTop)
+				//console.log(scrollTop)
 				if(scrollTop >= 400){
 					$(".cover").removeClass("cover").addClass("fix");
 					$(".cate .small").removeClass("small").addClass("small_action");

@@ -58,6 +58,10 @@ h1,p{
     position: fixed;
     top: 0;
     display: flex;
+    opacity: 0.8;
+    .cate{
+        flex: 1;
+    }
 }
 
 .index_header .fix .cate .small_action{
@@ -70,8 +74,8 @@ h1,p{
         color: #FFFFFF;
         line-height: 2rem;
         text-align: center;
-        margin: 1.3rem 6.3rem;
-    }
+        margin-top: 1.3rem;    
+}
     
 .swipe{
     color: #FFFFFF;
@@ -149,12 +153,17 @@ h1,p{
 }
 
 .index_main .content .detail .describe .left{
-    width: auto;
+    width: 16rem;
     height: 2.66rem;
     float: left;
 }
 .index_main .content .detail .describe .left p{
     font-size: 14px;
+}
+.index_main .content .detail .describe .left .enName{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .index_main .content .detail .describe .right{
     width: auto;

@@ -28,30 +28,6 @@ export default {
       selected:''
     }
   },
-  computed:{
-    // selected:{
-    //   get:function(){},
-    //   set: function (val, oldVal) {
-    //     // 这里就可以通过 val 的值变更来确定
-    //     switch(val)
-    //     {
-    //       case "tab1":
-
-    //          this.$router.push({path:'/index'})
-    //         break;
-    //       case "tab2":
-    //         this.$router.push({path:'/choice'})
-    //         break;
-    //       case "tab3":
-    //         this.$router.push({path:'/order'})
-    //         break;
-    //       case "tab4":
-    //         this.$router.push({path:'/my'})
-    //         break;
-    //     }
-    // }
-    // }
-  },
   methods:{
     send:function(e){
       var arr = ['A',"DIV","IMG"]
@@ -75,6 +51,7 @@ export default {
           }
       }
       
+
     }
     
   }

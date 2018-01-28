@@ -36,9 +36,15 @@
 		/*width: 100%;*/
 	}
 	#searchDatePick .select-time{
-		height: 100%;display: flex;padding-left:35px;
+		height: 100%;
+		display: flex;
+		padding-left:35px;
 	}
-	#searchDatePick .select-time>div{
+	.select-time>div{
+		height: 100%;
+		line-height:4.5em;
+	}
+	.select-time>div{
 		flex:1;
 		line-height:50px;
 	}
@@ -69,7 +75,9 @@
       }
 
       #searchDatePick .date h4{
-        font-size:1.48rem; text-align: center;line-height: 4rem;
+        font-size:1.48rem; 
+        text-align:center;
+        line-height: 4rem;
       }
 
 
@@ -89,7 +97,7 @@
           font-size: 1.32rem;
           line-height: 1.666667rem;
           width: 14.285%;
-          text-align: center;
+          text-align:center;
       }
 
       #searchDatePick .week li {
@@ -102,7 +110,7 @@
       }
 
      #searchDatePick  .day .leave {
-          background-color: salmon;
+          background-color:salmon;
           color: #fff
       }
 
