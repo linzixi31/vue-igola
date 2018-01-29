@@ -21,7 +21,8 @@ const store = new VueX.Store({
     modules:{
         payment,
         loginres,
-        listVuex
+        listVuex,
+        tc
     },
     state,
     mutations
